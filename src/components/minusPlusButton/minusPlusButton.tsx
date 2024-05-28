@@ -1,9 +1,9 @@
 import React from 'react'
 
-const minusPlusButton = () => {
+const MinusPlusButton = () => {
   return (
     <div>minusPlusButton</div>
   )
 }
 
-export default minusPlusButton
+export default MinusPlusButton

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const successScreen = () => {
+const SuccessScreen = () => {
   return (
     <div>successScreen</div>
   )
 }
 
-export default successScreen
+export default SuccessScreen
