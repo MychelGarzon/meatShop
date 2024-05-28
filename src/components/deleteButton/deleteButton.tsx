@@ -1,9 +1,9 @@
 import React from 'react'
 
-const deleteButton = () => {
+const DeleteButton = () => {
   return (
     <div>deleteButton</div>
   )
 }
 
-export default deleteButton
+export default DeleteButton

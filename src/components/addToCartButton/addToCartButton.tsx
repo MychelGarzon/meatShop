@@ -1,9 +1,9 @@
 import React from 'react'
 
-const addToCartButton = () => {
+const AddToCartButton = () => {
   return (
     <div>addToCartButton</div>
   )
 }
 
-export default addToCartButton
+export default AddToCartButton

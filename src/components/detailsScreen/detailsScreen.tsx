@@ -1,9 +1,9 @@
 import React from 'react'
 
-const detailsScreen = () => {
+const DetailsScreen = () => {
   return (
     <div>detailsScreen</div>
   )
 }
 
-export default detailsScreen
+export default DetailsScreen
