@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import data from '../../data/data'
 
 declare module '@mui/system' {
   interface BreakpointOverrides {
@@ -47,7 +48,7 @@ const Home: React.FC = () => {
         <Box className={styles.cardBox}>
           <Grid container
             spacing={{ android: 1, iphone: 1, tablet: 2, laptop: 3 }}>
-            {Array.from(Array(12)).map((_, index) => (
+            {data.map((product) => (
               <Grid
                 item
                 android={12}
@@ -55,16 +56,16 @@ const Home: React.FC = () => {
                 tablet={4}
                 laptop={4}
                 desktop={4}
-                key={index}
+                key={product.id}
                 className={styles.cardGrid}
               >
-                <ProductCard />
+                <ProductCard {...product} />
               </Grid>
             ))}
           </Grid>
         </Box>
       </Container>
-    </ThemeProvider>
+    </ThemeProvider >
   )
 }
 
