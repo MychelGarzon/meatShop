@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardMedia, ThemeProvider, Typography, createTheme } from "@mui/material"
+import { Button, Card, CardContent, CardMedia, Typography } from "@mui/material"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import data from '../../data/data'
 import styles from './productCard.module.css'
