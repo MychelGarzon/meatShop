@@ -1,4 +1,7 @@
 import styles from './home.module.css'
+import Banner from '../../components/banner/Banner'
+import Filter from '../../components/filter/Filter'
+import ProductCard from '../../components/productCard/ProductCard'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
@@ -35,18 +38,27 @@ const Home: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container className={styles.homeContainer}>
+        <Box className={styles.bannerBox}>
+          <Banner />
+        </Box>
+        <Box className={styles.filterBox}>
+          <Filter />
+        </Box>
         <Box className={styles.cardBox}>
-          <Grid container spacing={{ android: 1, iphone: 1, tablet: 2, laptop: 3 }}>
-            {Array.from(Array(3)).map((_, index) => (
+          <Grid container
+            spacing={{ android: 1, iphone: 1, tablet: 2, laptop: 3 }}>
+            {Array.from(Array(12)).map((_, index) => (
               <Grid
+                item
                 android={12}
                 iphone={6}
                 tablet={4}
                 laptop={4}
                 desktop={4}
                 key={index}
+                className={styles.cardGrid}
               >
-                
+                <ProductCard />
               </Grid>
             ))}
           </Grid>

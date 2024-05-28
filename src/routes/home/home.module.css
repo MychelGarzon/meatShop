@@ -12,3 +12,21 @@
   align-items: center;
   width: 100%;
 }
+
+.cardGrid {
+  text-align: center;
+}
+
+.bannerBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.filterBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
