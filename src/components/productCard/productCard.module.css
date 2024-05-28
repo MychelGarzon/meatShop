@@ -1,0 +1,21 @@
+.cardContent {
+    text-align: left;
+    color: #000000;
+}
+
+.productCard {
+    box-shadow: none !important;
+}
+
+.productCard:hover {
+    box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.20) !important;
+}
+
+.productName {
+    margin-bottom: 0.8rem !important;
+}
+
+.addToCardButton {
+    padding: 8px 22px !important;
+    margin: 1.5rem 0 0 0 !important;
+}
