@@ -1,0 +1,36 @@
+.shopping-cart {
+  background-color: #ECEFF1;
+  padding: 60px 80px;
+}
+
+.cols {
+  padding-top: 25px;
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+.col {
+  background-color: #FFF;
+  padding: 40px;
+}
+
+.left-col {
+  flex: 70%;
+}
+
+.right-col {
+  flex: 30%;
+}
+
+@media (max-width: 1194px) {
+  .shopping-cart {
+    padding: 60px 15px;
+  }
+}
+
+@media (max-width: 833px) {
+  .cols {
+    flex-direction: column;
+  }
+}
