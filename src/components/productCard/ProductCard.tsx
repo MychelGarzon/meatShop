@@ -1,10 +1,10 @@
 import { Button, Card, CardContent, CardMedia, Typography } from "@mui/material"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import data from '../../data/data'
 import styles from './productCard.module.css'
+import { Products } from "../../data/data";
 
-const ProductCard: React.FC = () => {
-
+const ProductCard: React.FC<Products> = ({ ...product
+}) => {
   return (
     <Card
       className={styles.productCard}
@@ -12,7 +12,7 @@ const ProductCard: React.FC = () => {
     >
       <CardMedia
         sx={{ height: 368, width: 368 }}
-        image={data[0].image}
+        image={product?.image}
         title="product image"
       />
       <CardContent className={styles.cardContent}>
@@ -23,10 +23,10 @@ const ProductCard: React.FC = () => {
           variant="h5"
           className={styles.productName}
         >
-          {data[0].name}
+          {product?.name}
         </Typography>
         <Typography variant="h6">
-          ${data[0].price}
+          ${product?.price}
         </Typography>
         <Typography variant="body1">
           Precio por kilo
