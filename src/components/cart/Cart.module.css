@@ -1,0 +1,14 @@
+.cart {
+  display: flex;
+}
+
+.cart > * {
+  flex: 1;
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+.no-items {
+  text-align: center;
+  font-size: 2rem;
+}
