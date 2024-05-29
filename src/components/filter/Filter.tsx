@@ -11,28 +11,43 @@ const Filter = () => {
         Selecciona la categoría de tu interés
       </Typography>
       <Box className={styles.filterButtons}>
-        <Chip
-          label="Todas"
-          color="primary"
-          size="medium"
-          variant="filled"
-          className={styles.todasChip}></Chip>
-        <Box className={styles.chipBox}>
+        <Box className={styles.chipBoxTodas}>
           <Chip
             label="Todas"
             color="primary"
             size="medium"
-            variant="filled"></Chip>
+            variant="filled"
+            className={styles.todasChip}></Chip>
+        </Box>
+        <Box className={styles.chipBoxSeparate}>
           <Chip
-            label="Todas"
+            label="Res"
             color="primary"
             size="medium"
-            variant="filled"></Chip>
+            variant="outlined"
+            className={styles.separateChip}>
+          </Chip>
           <Chip
-            label="Todas"
+            label="Cerdo"
             color="primary"
             size="medium"
-            variant="filled"></Chip>
+            variant="outlined"
+            className={styles.separateChip}>
+          </Chip>
+          <Chip
+            label="Pollo"
+            color="primary"
+            size="medium"
+            variant="outlined"
+            className={styles.separateChip}>
+          </Chip>
+          <Chip
+            label="Otros"
+            color="primary"
+            size="medium"
+            variant="outlined"
+            className={styles.separateChip}>
+          </Chip>
         </Box>
       </Box>
     </Box>
