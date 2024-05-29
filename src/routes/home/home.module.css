@@ -24,6 +24,7 @@
   display: grid;
   width: 100%;
   justify-content: center;
+  justify-items: center;
 }
 
 /* android */
@@ -31,6 +32,8 @@
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(298px, 1fr));
     column-gap: 0 !important;
+    row-gap: 20px !important;
+    justify-items: center;
   }
 }
 
@@ -39,6 +42,8 @@
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(356px, 1fr));
     column-gap: 0 !important;
+    row-gap: 20px !important;
+    justify-items: center;
   }
 }
 
@@ -47,6 +52,8 @@
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
     column-gap: 2px !important;
+    row-gap: 20px !important;
+    justify-items: center;
   }
 }
 
@@ -55,5 +62,7 @@
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(368px, 1fr));
     gap: 24px !important;
+    row-gap: 20px !important;
+    justify-items: center;
   }
 }
