@@ -1,10 +1,13 @@
 .cart {
   display: flex;
+  padding-top: 10px;
 }
 
 .cart > * {
   flex: 1;
-  font-size: 1.5rem;
+  font-family: var(--titleFontFamily);
+  font-weight: var(--font-weight-bold);
+  font-size: 24px;
   white-space: nowrap;
 }
 

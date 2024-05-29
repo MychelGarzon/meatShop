@@ -18,7 +18,7 @@ interface Props {
 }
 
 const CartItem: React.FC<Props> = ({ index, item, amount }) => {
-  const [quantity, /* setQuantity */] = useState<number>(amount)
+  const [quantity, setQuantity] = useState<number>(amount)
 
   // add a zero to the number if it is less than 10
   const formatNumber = (number: number): string => {
@@ -35,15 +35,10 @@ const CartItem: React.FC<Props> = ({ index, item, amount }) => {
   }
 
   // handle the quantity of the product
-  /* const handleQuanitity = (action: string) => () => {
-    if (action === 'add') {
-      setQuantity((prevQuantity) => prevQuantity + 1)
-    } else {
-      if (quantity > 1) {
-        setQuantity((prevQuantity) => prevQuantity - 1)
-      }
-    }
-  } */
+  const handleQuantity = (action: string) => () => {
+    if (action === 'add') return setQuantity((prevQuantity) => prevQuantity + 1)
+    if (quantity > 1) setQuantity((prevQuantity) => prevQuantity - 1)
+  }
 
   // handle the delete of the product
   const handleDelete = (id: string) => {
@@ -53,21 +48,25 @@ const CartItem: React.FC<Props> = ({ index, item, amount }) => {
   return (
     <div className={styles['cart-item']}>
       <div className={styles.flex}>
-        <p>{formatNumber(index + 1)}</p>
+        <p className={styles['line-number']}>{formatNumber(index + 1)}</p>
         <div className={styles.product}>
-          <img src={item.image} width="100px" height="100px" alt="product" />
-          <p><b>{item.type}</b></p>
-          <p>{item.name}</p>
+          <img src={item.image} width="88px" height="88px" alt="product" />
+          <p className={styles.type}>{item.type}</p>
+          <p className={styles.name}>{item.name}</p>
         </div>
       </div>
       <div className={styles.flex3}>
-        <MinusButton />
-        <p>{quantity}</p>
-        <PlusButton />
+        <div className={styles['button-size']} onClick={handleQuantity('')}>
+          <MinusButton />
+        </div>
+        <p className={styles.quantity}>{quantity}</p>
+        <div onClick={handleQuantity('add')}>
+          <PlusButton />
+        </div>
       </div>
       <div className={styles.flex2}>
-        <p>{formatPrice(item.price)}</p>
-        <p>{<DeleteIcon color='primary' onClick={() => handleDelete(item.id)} />}</p>
+        <p className={styles.price}>{formatPrice(item.price)}</p>
+        <p className={styles.delete}>{<DeleteIcon color='primary' onClick={() => handleDelete(item.id)} />}</p>
       </div>
     </div>
   )
