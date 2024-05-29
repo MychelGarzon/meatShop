@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import styles from './CartItem.module.css';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
-import { useState } from 'react';
+
+import MinusButton from '../minusPlusButton/MinusButton';
+import PlusButton from '../minusPlusButton/PlusButton';
 
 interface Props {
   index: number
@@ -17,7 +18,7 @@ interface Props {
 }
 
 const CartItem: React.FC<Props> = ({ index, item, amount }) => {
-  const [quantity, setQuantity] = useState<number>(amount)
+  const [quantity, /* setQuantity */] = useState<number>(amount)
 
   // add a zero to the number if it is less than 10
   const formatNumber = (number: number): string => {
@@ -34,7 +35,7 @@ const CartItem: React.FC<Props> = ({ index, item, amount }) => {
   }
 
   // handle the quantity of the product
-  const handleCantidad = (action: string) => () => {
+  /* const handleQuanitity = (action: string) => () => {
     if (action === 'add') {
       setQuantity((prevQuantity) => prevQuantity + 1)
     } else {
@@ -42,7 +43,7 @@ const CartItem: React.FC<Props> = ({ index, item, amount }) => {
         setQuantity((prevQuantity) => prevQuantity - 1)
       }
     }
-  }
+  } */
 
   // handle the delete of the product
   const handleDelete = (id: string) => {
@@ -59,14 +60,10 @@ const CartItem: React.FC<Props> = ({ index, item, amount }) => {
           <p>{item.name}</p>
         </div>
       </div>
-      <div className={styles.cantidad}>
-        <p>
-          {<RemoveCircleIcon
-            color={quantity !== 1 ? 'primary' : 'inherit'}
-            onClick={handleCantidad('')} />}
-          {quantity}
-          {<AddCircleIcon color='primary' onClick={handleCantidad('add')} />}
-        </p>
+      <div className={styles.flex3}>
+        <MinusButton />
+        <p>{quantity}</p>
+        <PlusButton />
       </div>
       <div className={styles.flex2}>
         <p>{formatPrice(item.price)}</p>
