@@ -14,6 +14,13 @@
 }
 
 .filterBox {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.bannerBox {
   display: flex;
   justify-content: center;
   align-items: center;

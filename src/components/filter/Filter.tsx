@@ -1,6 +1,5 @@
 import { Typography, Box, Chip } from '@mui/material'
 import styles from './filter.module.css'
-
 import React from 'react';
 
 type FilterProps = {
@@ -11,7 +10,7 @@ const Filter: React.FC<FilterProps> = ({ setFilter }) => {
   const handleFilter = (filter: string) => {
     setFilter(filter);
   }
-
+  
   return (
     <Box className={styles.filterBox}>
       <Typography
@@ -73,6 +72,7 @@ const Filter: React.FC<FilterProps> = ({ setFilter }) => {
       </Box>
     </Box>
   )
+
 }
 
 export default Filter
