@@ -1,7 +1,10 @@
-import { Button, Card, CardContent, CardMedia, Typography, useMediaQuery } from "@mui/material"
+import { Box, Button, Card, CardContent, CardMedia, Typography, useMediaQuery } from "@mui/material"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import styles from './productCard.module.css'
 import { Products } from "../../data/data";
+import MinusButton from "../minusPlusButton/MinusButton";
+import PlusButton from "../minusPlusButton/PlusButton";
+
 
 const ProductCard: React.FC<Products> = ({ image, name, price, type }) => {
   const XS = useMediaQuery('(min-width:0px)');
@@ -45,6 +48,14 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type }) => {
           className={styles.pricePerKilo}>
           Precio por kilo
         </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          
+          }}
+        >
         <Button
           variant="outlined"
           color="primary"
@@ -52,6 +63,9 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type }) => {
           className={styles.addToCardButton}>Agregar
           <ShoppingCartIcon className={styles.addToCartIcon} />
         </Button>
+          <MinusButton />
+          <PlusButton />
+        </Box>
       </CardContent>
     </Card >
   )

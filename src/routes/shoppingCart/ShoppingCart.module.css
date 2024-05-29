@@ -1,6 +1,6 @@
 .shopping-cart {
-  background-color: #ECEFF1;
   padding: 60px 80px;
+  background-color: var(--main-bg-color);
 }
 
 .cols {

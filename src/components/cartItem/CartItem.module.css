@@ -1,0 +1,29 @@
+.cart-item {
+  display: flex;
+  padding-bottom: 1.5rem;
+}
+
+.cart-item > * {
+  flex: 1;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  gap: 1rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product {
+  padding-top: 1rem;
+  font-size: 1rem;
+}
+
+.cantidad {
+  padding-top: 0.5rem;
+}
