@@ -1,42 +1,39 @@
 .filterTitle {
-    font-size: 40px;
-    font-weight: 500;
     margin-bottom: 1rem;
 }
-
 
 /* android/XS */
 @media (min-width: 0px) {
     .filterTitle {
-        font-size: 24px;
-        font-weight: 500;
-        margin-bottom: 1rem;
+        font-size: 24px !important;
+        font-weight: 500 !important;
+        margin-bottom: 1rem !important;
     }
 }
 
 /* iphone/S */
 @media (min-width: 430px) {
     .filterTitle {
-        font-size: 24px;
-        font-weight: 500;
-        margin-bottom: 1rem;
+        font-size: 24px !important;
+        font-weight: 500 !important;
+        margin-bottom: 1rem !important;
     }
 }
 
 /* tablet/M */
 @media (min-width: 834px) {
     .filterTitle {
-        font-size: 40px;
-        font-weight: 500;
-        margin-bottom: 1rem;
+        font-size: 40px !important;
+        font-weight: 500 !important;
+        margin-bottom: 1rem !important;
     }
 }
 
 /* laptop/L */
 @media (min-width: 1024px) {
     .filterTitle {
-        font-size: 40px;
-        font-weight: 500;
-        margin-bottom: 1rem;
+        font-size: 40px !important;
+        font-weight: 500 !important;
+        margin-bottom: 1rem !important;
     }
 }
