@@ -49,12 +49,7 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type }) => {
           Precio por kilo
         </Typography>
         <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            position: 'relative',
-            alignItems: 'center',
-          }}
+          className={styles.addToCartBox}
         >
           <Button
             variant="outlined"
@@ -63,8 +58,14 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type }) => {
             className={styles.addToCardButton}>Agregar
             <ShoppingCartIcon className={styles.addToCartIcon} />
           </Button>
-          <MinusButton />
-          <PlusButton />
+          <Box className={styles.quantityBox}>
+            <Box className={styles.minusButton}>
+              <MinusButton />
+            </Box>
+            <Box className={styles.plusButton}>
+              <PlusButton />
+            </Box>
+          </Box>
         </Box>
       </CardContent>
     </Card >

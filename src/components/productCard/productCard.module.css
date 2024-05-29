@@ -21,6 +21,13 @@
     object-fit: contain !important;
 }
 
+.addToCartBox {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 80px !important;
+}
+
 .addToCardButton {
     padding: 8px 22px !important;
     margin: 1rem 0 1rem 0 !important;
@@ -28,6 +35,21 @@
 
 .addToCartIcon {
     margin-left: 0.5rem !important;
+}
+
+.minusButton {
+    margin: 0.5rem 0.5rem 2rem 1rem !important;
+}
+
+.plusButton {
+    margin: 0.5rem 0.5rem 2rem !important;
+}
+
+.quantityBox {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-right: 1rem !important;
 }
 
 /* android/XS */
