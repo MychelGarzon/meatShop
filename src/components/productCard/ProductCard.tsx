@@ -51,18 +51,18 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type }) => {
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center',
+            flexDirection: 'row',
+            position: 'relative',
             alignItems: 'center',
-          
           }}
         >
-        <Button
-          variant="outlined"
-          color="primary"
-          size={buttonSize}
-          className={styles.addToCardButton}>Agregar
-          <ShoppingCartIcon className={styles.addToCartIcon} />
-        </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            size={buttonSize}
+            className={styles.addToCardButton}>Agregar
+            <ShoppingCartIcon className={styles.addToCartIcon} />
+          </Button>
           <MinusButton />
           <PlusButton />
         </Box>
