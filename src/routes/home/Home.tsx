@@ -52,7 +52,7 @@ const Home: React.FC = () => {
               <Grid
                 item
                 android={12}
-                iphone={6}
+                iphone={12}
                 tablet={4}
                 laptop={4}
                 desktop={4}
