@@ -2,7 +2,7 @@ import styles from './home.module.css'
 import Banner from '../../components/banner/Banner'
 import Filter from '../../components/filter/Filter'
 import ProductCard from '../../components/productCard/ProductCard'
-import Grid from '@mui/material/Grid'
+import Grid from '@mui/material/Unstable_Grid2'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
@@ -47,10 +47,9 @@ const Home: React.FC = () => {
         </Box>
         <Box className={styles.cardBox}>
           <Grid container
-            spacing={{ android: 1, iphone: 1, tablet: 2, laptop: 3 }}>
+            spacing={{ android: 1, iphone: 1, tablet: 2, laptop: 2 }}>
             {data.map((product) => (
               <Grid
-                item
                 android={12}
                 iphone={12}
                 tablet={4}

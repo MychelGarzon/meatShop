@@ -1,0 +1,12 @@
+*{
+    margin:0%;
+    padding: 0%;
+}
+:root{
+--main-bg-color: #ECEFF1;
+--titleFontFamily: "EB Garamond", serif;
+--titleFontWeight: 500; 
+--subTittleFontFamily: "Roboto", sans-serif;
+--subTitleFontWeight: 500;
+}
+

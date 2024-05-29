@@ -1,0 +1,42 @@
+.filterTitle {
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+
+/* android/XS */
+@media (min-width: 0px) {
+    .filterTitle {
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+}
+
+/* iphone/S */
+@media (min-width: 430px) {
+    .filterTitle {
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+}
+
+/* tablet/M */
+@media (min-width: 834px) {
+    .filterTitle {
+        font-size: 40px;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+}
+
+/* laptop/L */
+@media (min-width: 1024px) {
+    .filterTitle {
+        font-size: 40px;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+}

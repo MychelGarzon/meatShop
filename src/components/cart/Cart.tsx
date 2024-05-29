@@ -1,12 +1,13 @@
-import { Button } from '@mui/material';
-import styles from './Cart.module.css'
 import { Link } from 'react-router-dom';
+
+import styles from './Cart.module.css'
+import { Button } from '@mui/material';
+
 import data from '../../data/data';
+import CartItem from '../cartItem/CartItem';
 
 const Cart: React.FC = () => {
-  const cartItems = [];
-
-  console.log(data)
+  const cartItems = [...data];
 
   return (
     <>
@@ -15,7 +16,7 @@ const Cart: React.FC = () => {
         <div className={styles['no-items']}>
           <p>Aún no tienes productos seleccionados</p>
           <Link to="/">
-            <Button variant='contained' color='primary' fullWidth >Regresar a productos</Button>
+            <Button variant='contained' color='primary' fullWidth>Regresar a productos</Button>
           </Link>
         </div>
         :
@@ -25,6 +26,9 @@ const Cart: React.FC = () => {
             <p>Cantidad</p>
             <p>Precio por kilo</p>
           </div>
+          {cartItems.map((item, index) => (
+            <CartItem key={item.id} item={item} index={index} amount={1} />
+          ))}
         </div>}
     </>
   )
