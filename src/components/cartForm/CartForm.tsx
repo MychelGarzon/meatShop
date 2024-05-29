@@ -39,17 +39,15 @@ const CartForm: React.FC = () => {
       </div>
     </div>
 
-    <div>
-      <p className={styles.title}>Tus datos para la orden</p>
-      <small className={styles.small}>* Campo obligatorio</small>
-    </div>
+    <p className={styles.title}>Tus datos para la orden</p>
+    <small className={styles.light}>* Campo obligatorio</small>
 
     <form>
 
     </form>
 
-    <div>
-      <p>Luego de enviar tu orden nuestro equipo de logística se comunicará contigo para definir la fecha de envío de los productos y el método de pago.</p>
+    <div className={styles['info-text']}>
+      <p className={styles.light}>Luego de enviar tu orden nuestro equipo de logística se comunicará contigo para definir la fecha de envío de los productos y el método de pago.</p>
     </div>
   </div>
 }

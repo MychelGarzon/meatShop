@@ -13,14 +13,14 @@
 
 .total-container > div:not(:first-child) {
   padding: 12px 0;
-  font-family: Roboto;
+  font-family: var(--subTittleFontFamily);
   font-size: 16px;
   font-weight: 400;
 }
 
-.total {
-  font-weight: 500;
-  font-size: 24px;
+.total > p {
+  font-weight: var(--titleFontWeight);
+  font-size: 20px;
 }
 
 .line {
@@ -28,9 +28,17 @@
 }
 
 .title {
-  font-family: 'Eb Garamond';
+  font-family: var(--titleFontFamily);
+  font-weight: var(--titleFontWeight);
   font-size: 24px;
-  font-weight: 500;
   padding-bottom: 10px;
   font-weight: 400;
+}
+
+.light {
+  opacity: 0.6;
+}
+
+.info-text {
+  margin-top: 20px;
 }
