@@ -5,7 +5,6 @@ function MinusButton() {
   return (
     <SpeedDial
       ariaLabel="SpeedDial basic example"
-      sx={{ position: "absolute", right: "7rem", bottom: "1rem" }}
       icon={<RemoveIcon sx={{ color: "text.secondary" }} />}
       FabProps={{
         sx: {

@@ -5,7 +5,6 @@ function PlusButton() {
   return (
     <SpeedDial
       ariaLabel="SpeedDial basic example"
-      sx={{ position: "absolute", right: "2.5rem", bottom: "1rem" }}
       icon={<SpeedDialIcon sx={{ color: "text.secondary" }} />}
       FabProps={{
         sx: {

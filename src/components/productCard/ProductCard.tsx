@@ -61,7 +61,7 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type }) => {
             color="primary"
             size={buttonSize}
             className={styles.addToCardButton}>Agregar
-            <ShoppingCartIcon />
+            <ShoppingCartIcon className={styles.addToCartIcon} />
           </Button>
           <MinusButton />
           <PlusButton />

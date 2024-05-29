@@ -6,21 +6,6 @@
   min-height: 100vh;
 }
 
-.cardBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.cardGrid {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  display: grid;
-  gap: 24px !important;
-}
-
 .bannerBox {
   display: flex;
   justify-content: center;
@@ -33,4 +18,42 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.cardGrid {
+  display: grid;
+  width: 100%;
+  justify-content: center;
+}
+
+/* android */
+@media (min-width: 0px) {
+  .cardGrid {
+    grid-template-columns: repeat(auto-fill, minmax(298px, 1fr));
+    column-gap: 0 !important;
+  }
+}
+
+/* iphone */
+@media (min-width: 430px) {
+  .cardGrid {
+    grid-template-columns: repeat(auto-fill, minmax(356px, 1fr));
+    column-gap: 0 !important;
+  }
+}
+
+/* tablet */
+@media (min-width: 834px) {
+  .cardGrid {
+    grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+    column-gap: 2px !important;
+  }
+}
+
+/* laptop */
+@media (min-width: 1024px) {
+  .cardGrid {
+    grid-template-columns: repeat(auto-fill, minmax(368px, 1fr));
+    gap: 24px !important;
+  }
 }
