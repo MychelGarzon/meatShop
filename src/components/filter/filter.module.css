@@ -60,6 +60,15 @@
         font-weight: 500 !important;
         margin-bottom: 1rem !important;
     }
+
+    .chipBoxTodas {
+        width: 20% !important;
+        padding-right: 0 !important;
+    }
+
+    .chipBoxSeparate {
+        padding-left: 0.5rem !important;
+    }
 }
 
 /* iphone/S */
@@ -68,6 +77,15 @@
         font-size: 24px !important;
         font-weight: 500 !important;
         margin-bottom: 1rem !important;
+    }
+
+    .chipBoxTodas {
+        width: 20% !important;
+        padding-right: 0 !important;
+    }
+
+    .chipBoxSeparate {
+        padding-left: 0.5rem !important;
     }
 }
 
@@ -78,6 +96,15 @@
         font-weight: 500 !important;
         margin-bottom: 1rem !important;
     }
+
+    .chipBoxTodas {
+        width: 10% !important;
+        padding-right: 0.5rem !important;
+    }
+
+    .chipBoxSeparate {
+        padding-left: 1rem !important;
+    }
 }
 
 /* laptop/L */
@@ -86,5 +113,14 @@
         font-size: 40px !important;
         font-weight: 500 !important;
         margin-bottom: 1rem !important;
+    }
+
+    .chipBoxTodas {
+        width: 10% !important;
+        padding-right: 0.5rem !important;
+    }
+
+    .chipBoxSeparate {
+        padding-left: 1rem !important;
     }
 }
