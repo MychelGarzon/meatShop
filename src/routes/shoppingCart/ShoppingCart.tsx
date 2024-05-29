@@ -5,6 +5,7 @@ import { Button } from '@mui/material'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 
 import Cart from '../../components/cart/Cart'
+import CartForm from '../../components/cartForm/CartForm'
 
 const ShoppingCart: React.FC = () => {
     return (
@@ -18,7 +19,9 @@ const ShoppingCart: React.FC = () => {
                 <div className={`${styles.col} ${styles['left-col']}`}>
                     <Cart />
                 </div>
-                <div className={`${styles.col} ${styles['right-col']}`}><h4>Form Container</h4><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, quam officiis? Illum provident doloremque, aliquid molestias sint quam odio quis modi ea quidem a incidunt nobis cum temporibus? Velit commodi dignissimos maiores optio, officia ratione suscipit eligendi saepe, dolor quia omnis reiciendis voluptatem placeat! Expedita quos sed, velit atque quisquam dolore quod dicta esse voluptates cupiditate eos, amet beatae molestias. Ut consequuntur, sunt voluptas amet perspiciatis, quis veniam eum rem consequatur ratione veritatis suscipit assumenda ab minima iusto, consectetur adipisci? Saepe magnam, praesentium quia laudantium nostrum recusandae laboriosam obcaecati. Officia nisi veniam modi eum ipsam omnis possimus repellendus iusto culpa!</p></div>
+                <div className={`${styles.col} ${styles['right-col']}`}>
+                    <CartForm />
+                </div>
             </div>
         </div>
     )

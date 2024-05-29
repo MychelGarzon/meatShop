@@ -1,0 +1,36 @@
+.cart-form {
+  padding: 30px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-container {
+  padding-bottom: 50px;
+}
+
+.total-container > div:not(:first-child) {
+  padding: 12px 0;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.total {
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.line {
+  border-bottom: 1px solid #000;
+}
+
+.title {
+  font-family: 'Eb Garamond';
+  font-size: 24px;
+  font-weight: 500;
+  padding-bottom: 10px;
+  font-weight: 400;
+}
