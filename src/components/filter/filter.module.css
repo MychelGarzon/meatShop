@@ -29,7 +29,7 @@
 }
 
 .separateChip {
-    margin-right: 0.5rem;
+    margin-right: 0.5rem !important;
     background-color: white !important;
     color: black !important;
     border: black 1px solid !important;
