@@ -8,12 +8,12 @@ import data from '../../data/data'
 import { useState } from 'react'
 
 const Home: React.FC = () => {
-  const [filter, setFilter] = useState('Todas');
+  const [filter, setFilter] = useState<string[]>(['Todas']);
 
   const filteredProducts = data.filter(product => {
-    if (filter === 'Todas' || filter === '') return true;
-    if (filter === 'Otros') return product.type !== 'Pollo' && product.type !== 'Cerdo' && product.type !== 'Res';
-    return product.type === filter;
+    if (filter.includes('Todas') || filter.length === 0) return true;
+    if (filter.includes('otros') && product.type !== 'pollo' && product.type !== 'cerdo' && product.type !== 'res') return true;
+    return filter.includes(product.type);
   });
 
   return (
