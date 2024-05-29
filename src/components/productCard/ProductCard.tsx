@@ -1,7 +1,10 @@
-import { Button, Card, CardContent, CardMedia, Typography } from "@mui/material"
+import { Box, Button, Card, CardContent, CardMedia, Typography } from "@mui/material"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import styles from './productCard.module.css'
 import { Products } from "../../data/data";
+import MinusButton from "../minusPlusButton/MinusButton";
+import PlusButton from "../minusPlusButton/PlusButton";
+
 
 const ProductCard: React.FC<Products> = ({ ...product
 }) => {
@@ -31,13 +34,24 @@ const ProductCard: React.FC<Products> = ({ ...product
         <Typography variant="body1">
           Precio por kilo
         </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          
+          }}
+        >
         <Button
           variant="outlined"
           color="primary"
           size="large"
           className={styles.addToCardButton}>Agregar
           <ShoppingCartIcon />
-        </Button>
+          </Button>
+          <MinusButton />
+          <PlusButton />
+        </Box>
       </CardContent>
     </Card >
   )
