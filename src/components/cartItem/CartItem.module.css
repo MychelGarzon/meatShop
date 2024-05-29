@@ -19,11 +19,13 @@
   justify-content: space-between;
 }
 
-.product {
-  padding-top: 1rem;
-  font-size: 1rem;
+.flex3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.cantidad {
-  padding-top: 0.5rem;
-}
+/* .product {
+  padding-top: 1rem;
+  font-size: 1rem;
+} */
