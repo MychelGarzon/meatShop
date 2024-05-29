@@ -1,9 +1,11 @@
 .cardContent {
-    text-align: left;
-    color: #000000;
+    text-align: left !important;
+    color: #000000 !important;
+    padding: 16px !important;
 }
 
 .productCard {
+    max-width: 100% !important;
     box-shadow: none !important;
 }
 
@@ -15,7 +17,151 @@
     margin-bottom: 0.8rem !important;
 }
 
+.cardMedia {
+    object-fit: contain !important;
+}
+
 .addToCardButton {
     padding: 8px 22px !important;
-    margin: 1.5rem 0 0 0 !important;
+    margin: 1rem 0 1rem 0 !important;
+}
+
+.addToCartIcon {
+    margin-left: 0.5rem !important;
+}
+
+/* android/XS */
+@media (min-width: 0px) {
+    .productCard {
+        width: 298px !important;
+        height: 492px !important;
+    }
+
+    .cardMedia {
+        height: 298px !important;
+        width: 298px !important;
+    }
+
+    .cardContent {
+        padding: 16px !important;
+    }
+
+    .productType {
+        font-size: 16px !important;
+    }
+
+    .productName {
+        font-weight: 500 !important;
+        font-size: 16px !important;
+    }
+
+    .productPrice {
+        font-size: 16px !important;
+    }
+
+    .pricePerKilo {
+        font-size: 14px !important;
+    }
+}
+
+/* iphone/S */
+@media (min-width: 430px) {
+    .productCard {
+        width: 356px !important;
+        height: 550px !important;
+    }
+
+    .cardMedia {
+        height: 356px !important;
+        width: 356px !important;
+    }
+
+    .cardContent {
+        padding: 16px !important;
+    }
+
+    .productType {
+        font-size: 16px !important;
+    }
+
+    .productName {
+        font-weight: 500 !important;
+        font-size: 16px !important;
+    }
+
+    .productPrice {
+        font-size: 16px !important;
+    }
+
+    .pricePerKilo {
+        font-size: 14px !important;
+    }
+}
+
+/* tablet/M */
+@media (min-width: 834px) {
+    .productCard {
+        width: 268px !important;
+        height: 486px !important;
+    }
+
+    .cardMedia {
+        height: 268px !important;
+        width: 268px !important;
+    }
+
+    .cardContent {
+        padding: 16px !important;
+    }
+
+    .productType {
+        font-size: 16px !important;
+    }
+
+    .productName {
+        font-weight: 400 !important;
+        font-size: 24px !important;
+    }
+
+    .productPrice {
+        font-size: 20px !important;
+    }
+
+    .pricePerKilo {
+        font-size: 16px !important;
+    }
+}
+
+/* laptop/L */
+@media (min-width: 1024px) {
+    .productCard {
+        width: 368px !important;
+        height: 594px !important;
+    }
+
+    .cardMedia {
+        height: 368px !important;
+        width: 368px !important;
+    }
+
+    .cardContent {
+        padding: 16px !important;
+    }
+
+    .productType {
+        font-size: 16px !important;
+    }
+
+    .productName {
+        font-weight: 400 !important;
+        font-size: 24px !important;
+    }
+
+    .productPrice {
+        font-size: 20px !important;
+    }
+
+    .pricePerKilo {
+        font-size: 16px !important;
+    }
 }
