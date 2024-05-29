@@ -37,6 +37,14 @@ const data: Products[] = [
     description: "El lomo de cerdo es un corte magro y tierno de la espalda del cerdo, valorado por su sabor suave y versatilidad en una variedad de preparaciones culinarias, desde asados hasta filetes.",
     image: lomoCerdo,
   },
+  {
+    id: "4",
+    name: "Chuleta de Cerdo",
+    price: 6000,
+    type: "test",
+    description: "La chuleta de cerdo es un corte jugoso y sabroso de la costilla del cerdo, apreciado por su sabor intenso y su versatilidad en una variedad de preparaciones culinarias, desde asados hasta frituras.",
+    image: lomoCerdo,
+  }
 ];
 
 export default data;

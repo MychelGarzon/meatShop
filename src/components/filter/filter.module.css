@@ -23,9 +23,16 @@
 }
 
 .todasChip {
+    background-color: white !important;
+    color: black !important;
+    border: black 1px solid !important;
+}
+
+.chipClicked {
     background-color: black !important;
     color: white !important;
     border: black 1px solid !important;
+    margin-right: 0.5rem !important;
 }
 
 .separateChip {
@@ -33,6 +40,17 @@
     background-color: white !important;
     color: black !important;
     border: black 1px solid !important;
+}
+
+.separateChipClicked {
+    margin-right: 0.5rem !important;
+    background-color: black !important;
+    color: white !important;
+    border: black 1px solid !important;
+}
+
+.MuiChip-deleteIconOutlinedColorPrimary {
+    color: black !important;
 }
 
 /* android/XS */
