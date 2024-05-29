@@ -1,7 +1,17 @@
 import { Typography, Box, Chip } from '@mui/material'
 import styles from './filter.module.css'
 
-const Filter = () => {
+import React from 'react';
+
+type FilterProps = {
+  setFilter: (filter: string) => void;
+};
+
+const Filter: React.FC<FilterProps> = ({ setFilter }) => {
+  const handleFilter = (filter: string) => {
+    setFilter(filter);
+  }
+
   return (
     <Box className={styles.filterBox}>
       <Typography
@@ -17,7 +27,10 @@ const Filter = () => {
             color="primary"
             size="medium"
             variant="filled"
-            className={styles.todasChip}></Chip>
+            className={styles.todasChip}
+            component="button"
+            onClick={() => handleFilter("Todas")}
+          ></Chip>
         </Box>
         <Box className={styles.chipBoxSeparate}>
           <Chip
@@ -25,6 +38,8 @@ const Filter = () => {
             color="primary"
             size="medium"
             variant="outlined"
+            component="button"
+            onClick={() => handleFilter("res")}
             className={styles.separateChip}>
           </Chip>
           <Chip
@@ -32,6 +47,8 @@ const Filter = () => {
             color="primary"
             size="medium"
             variant="outlined"
+            component="button"
+            onClick={() => handleFilter("cerdo")}
             className={styles.separateChip}>
           </Chip>
           <Chip
@@ -39,6 +56,8 @@ const Filter = () => {
             color="primary"
             size="medium"
             variant="outlined"
+            component="button"
+            onClick={() => handleFilter("pollo")}
             className={styles.separateChip}>
           </Chip>
           <Chip
@@ -46,13 +65,14 @@ const Filter = () => {
             color="primary"
             size="medium"
             variant="outlined"
+            component="button"
+            onClick={() => handleFilter("otros")}
             className={styles.separateChip}>
           </Chip>
         </Box>
       </Box>
     </Box>
   )
-
 }
 
 export default Filter
