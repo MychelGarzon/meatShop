@@ -5,6 +5,7 @@ import ConfirmationModal from '../confirmationModal/ConfirmationModal';
 
 import MinusButton from '../minusPlusButton/MinusButton';
 import PlusButton from '../minusPlusButton/PlusButton';
+import { useAppSelector } from '../../hooks/useAppDispatch';
 
 interface Props {
   index: number;
@@ -21,7 +22,8 @@ interface Props {
 const CartItem: React.FC<Props> = ({ index, item, amount }) => {
   const [quantity, setQuantity] = useState<number>(amount);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
+  const cart = useAppSelector((state) => state.cart.cart);
+  console.log(cart,"this is cart info")
   const formatNumber = (number: number): string => {
     return number < 10 ? `0${number}` : `${number}`;
   };
