@@ -1,4 +1,5 @@
 import styles from './home.module.css'
+import Header from '../../components/header/Header'
 import Banner from '../../components/banner/Banner'
 import Filter from '../../components/filter/Filter'
 import ProductCard from '../../components/productCard/ProductCard'
@@ -9,6 +10,7 @@ import data from '../../data/data'
 const Home: React.FC = () => {
   return (
     <Container className={styles.homeContainer}>
+      <Header className={styles.headerBox} />
       <Box className={styles.bannerBox}>
         <Banner />
       </Box>
