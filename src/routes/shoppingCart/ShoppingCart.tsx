@@ -9,11 +9,13 @@ import Cart from '../../components/cart/Cart'
 const ShoppingCart: React.FC = () => {
     return (
         <div className={styles['shopping-cart']}>
-            <Link to="/">
-                <Button color='primary'>
-                    {<ArrowBackIosIcon fontSize='inherit' />} REGRESAR A PRODUCTOS
-                </Button>
-            </Link>
+            <div className={`${styles.cols} ${styles['back-btn']}`}>
+                <Link to="/">
+                    <Button color='primary'>
+                        {<ArrowBackIosIcon fontSize='inherit' />} REGRESAR A PRODUCTOS
+                    </Button>
+                </Link>
+            </div>
             <div className={styles.cols}>
                 <div className={`${styles.col} ${styles['left-col']}`}>
                     <Cart />

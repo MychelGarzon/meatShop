@@ -1,6 +1,5 @@
 .cart {
   display: flex;
-  padding-top: 10px;
 }
 
 .cart > * {
@@ -14,4 +13,10 @@
 .no-items {
   text-align: center;
   font-size: 2rem;
+}
+
+@media (max-width: 720px) {
+  .hide {
+    display: none;
+  }
 }
