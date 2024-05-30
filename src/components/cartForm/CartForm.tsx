@@ -5,16 +5,17 @@ interface FormData {
   city: string;
   address: string;
   neighborhood: string;
-  town: string;
+  locality: string;
   phone: string;
   email: string;
-  message?: string;
+  comment?: string;
 }
 
 const CartForm: React.FC = () => {
+  const cities = ['Barrios Unidos', 'Chapinero', 'Suba', 'Teusaquillo', 'Usaquen'];
   const formData: FormData[] = [];
 
-  console.log(formData)
+  console.log(cities, formData)
 
   return <div className={styles['cart-form']}>
     <div className={styles['total-container']}>
@@ -42,8 +43,31 @@ const CartForm: React.FC = () => {
     <p className={styles.title}>Tus datos para la orden</p>
     <small className={styles.light}>* Campo obligatorio</small>
 
-    <form>
-
+    <form className={styles.form}>
+      <label>
+        <input type="text" required placeholder='Nombre *' name='name' />
+      </label>
+      <label>
+        <input type="text" required placeholder='Ciudad *' name='city' />
+      </label>
+      <label>
+        <input type="text" required placeholder='Dirección *' name='address' />
+      </label>
+      <label>
+        <input type="text" required placeholder='Barrio *' name='neighborhood' />
+      </label>
+      <label>
+        <input type="text" required placeholder='Localidad *' name='locality' />
+      </label>
+      <label>
+        <input type="text" required placeholder='Teléfono de contacto *' name='phone' />
+      </label>
+      <label>
+        <input type="text" required placeholder='Correo electrónico *' name='email' />
+      </label>
+      <label>
+        <input type="text" placeholder='Comentarios' name='comment' />
+      </label>
     </form>
 
     <div className={styles['info-text']}>
