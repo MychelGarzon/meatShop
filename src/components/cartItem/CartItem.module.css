@@ -1,13 +1,17 @@
 .cart-item {
   display: flex;
   margin-top: 2.5rem;
-  /* border: 1px solid var(--main-bg-color); */
 }
 
 .cart-item > * {
   flex: 1;
   white-space: nowrap;
   gap: 1rem;
+}
+
+.cart-item img {
+  width: 88px;
+  height: 88px;
 }
 
 .flex {
@@ -50,7 +54,7 @@
 }
 
 .quantity {
-  padding-top: 34px;
+  padding: 34px 14px 0 14px;
 }
 
 .price {
@@ -68,4 +72,35 @@
 
 .button-size {
   font-size: 10px;
+}
+
+.hide {
+  display: flex;
+}
+
+.show {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .cart-item {
+    flex-direction: column;
+  }
+
+  .cart-item img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+
+  .show {
+    display: flex;
+  }
+
+  .hide {
+    display: none;
+  }
 }
