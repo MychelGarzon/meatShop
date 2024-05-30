@@ -16,7 +16,7 @@ interface HeaderProps {
   const Header: React.FC<HeaderProps> = ({ className }) => {
   return (
     <Box className={styles.headerBox} sx={{ flexGrow: 1, width: '100vw', margin: 10 }}>   
-      <AppBar position="absolute" sx={{ backgroundColor: '#000000'}}>
+      <AppBar className={styles.appBar} position="absolute" sx={{ backgroundColor: '#000000'}}>
         <Toolbar>
           <IconButton
             size="large"
@@ -27,7 +27,7 @@ interface HeaderProps {
           >
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <img src={logo} alt="Logo" style={{ height: '40px', width: '33px', marginTop: '8px' }} />
+          <img src={logo} alt="Logo" style={{ height: '40px', width: '145px', marginTop: '8px' }} />
           </Typography>
           <Button color="inherit"><ShoppingCartIcon sx={{ height: 24, width: 24 }}/></Button>
         </Toolbar>
