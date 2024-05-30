@@ -1,20 +1,19 @@
 import SpeedDial from "@mui/material/SpeedDial";
-import SpeedDialIcon from "@mui/material/SpeedDialIcon";
-
+import AddIcon from '@mui/icons-material/Add';
 function PlusButton() {
   return (
     <SpeedDial
-      ariaLabel="SpeedDial basic example"
-      icon={<SpeedDialIcon sx={{ color: "text.secondary" }} />}
-      FabProps={{
-        sx: {
+    ariaLabel="SpeedDial basic example"
+    icon={<AddIcon sx={{color:"text.secondary"}} />}
+    FabProps={{
+      sx: {
+        bgcolor: "inherit",
+        "&:hover": {
           bgcolor: "inherit",
-          "&:hover": {
-            bgcolor: "inherit",
-          },
         },
-      }}
-    ></SpeedDial>
+      },
+    }}
+  ></SpeedDial>
   );
 }
 
