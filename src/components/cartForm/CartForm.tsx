@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 import styles from './CartForm.module.css';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { setUser } from '../../store/userSlice';
 
 interface FormData {
   name: string;
@@ -26,6 +28,8 @@ const CartForm: React.FC = () => {
     email: '',
     comments: '',
   });
+  const dispatch = useAppDispatch();
+  
 
   const validateForm = (data: FormData) => {
     return data.name !== '' &&
@@ -52,6 +56,7 @@ const CartForm: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    dispatch(setUser(formData))
     console.log('Form Data:', formData);
   };
 
