@@ -1,4 +1,4 @@
-import { Typography, Box, Chip } from '@mui/material';
+import { Box, Chip } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import styles from './filter.module.css';
 import React from 'react';
@@ -36,9 +36,9 @@ const Filter: React.FC<FilterProps> = ({ setFilter }) => {
 
   return (
     <Box className={styles.filterContainer}>
-      <Typography variant="h6" className={styles.filterTitle}>
+      <p className={styles.filterTitle}>
         Selecciona la categoría de tu interés
-      </Typography>
+      </p>
       <Box className={styles.filterButtons}>
         <Chip
           label="Todas"
