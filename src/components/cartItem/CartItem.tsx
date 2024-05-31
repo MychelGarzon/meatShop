@@ -5,7 +5,7 @@ import ConfirmationModal from '../confirmationModal/ConfirmationModal';
 
 import MinusButton from '../minusPlusButton/MinusButton';
 import PlusButton from '../minusPlusButton/PlusButton';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppDispatch, useAppSelector } from '../../hooks/useAppDispatch';
 import { setCart } from '../../store/cartSlice';
 
 import { formatNumber } from '../../helpers/formatNumber';
@@ -19,17 +19,18 @@ interface Props {
   setCartItems: React.Dispatch<React.SetStateAction<Products[]>>;
 }
 
-const CartItem: React.FC<Props> = ({ index, item, cartItems, setCartItems }) => {
-  const [quantity, setQuantity] = useState<number>(0);
+const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
+  const [quantity, setQuantity] = useState<number>(item.amount || 0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.cart.cart);
 
   const handleQuantity = (action: string, id: string) => () => {
     if (action === 'add') {
       setQuantity((prevQuantity) => prevQuantity + 1);
 
-      const updatedCart: Products[] = cartItems.map(cartItem =>
+      const updatedCart: Products[] = cart.map(cartItem =>
         cartItem.id === id ? { ...cartItem, amount: quantity + 1 } : cartItem
       );
 
@@ -38,7 +39,7 @@ const CartItem: React.FC<Props> = ({ index, item, cartItems, setCartItems }) => 
       if (quantity > 0) {
         setQuantity((prevQuantity) => prevQuantity - 1);
 
-        const updatedCart: Products[] = cartItems.map(cartItem =>
+        const updatedCart: Products[] = cart.map(cartItem =>
           cartItem.id === id ? { ...cartItem, amount: quantity - 1 } : cartItem
         );
 
@@ -49,7 +50,7 @@ const CartItem: React.FC<Props> = ({ index, item, cartItems, setCartItems }) => 
 
   const handleDelete = (id: string) => {
     // find by id and delete
-    const newArr = cartItems.filter((item) => item.id !== id);
+    const newArr = cart.filter((item) => item.id !== id);
     setCartItems(newArr);
     dispatch(setCart(newArr));
 

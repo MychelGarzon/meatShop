@@ -9,6 +9,7 @@ export interface Products {
   type: string;
   description: string;
   image: string;
+  amount?: number;
 }
 
 const data: Products[] = [
@@ -20,7 +21,6 @@ const data: Products[] = [
     description: "El ojo de bife es un corte de carne jugoso y tierno del lomo de la res, conocido por su sabor intenso y su marmoleado, ideal para asados y parrillas.",
     image: ojoDeBife,
   },
-
   {
     id: "2",
     name: "Pechuga",

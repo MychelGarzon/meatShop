@@ -18,7 +18,7 @@ interface FormData {
 
 const CartForm: React.FC = () => {
   const cities = ['Barrios Unidos', 'Chapinero', 'Suba', 'Teusaquillo', 'Usaquen'];
-  const [subtotal/* , setSubtotal */] = useState<number>(10000);
+  const [total/* , setSubtotal */] = useState<number>(10000);
   const [isFormCompleted, setIsFormCompleted] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -30,7 +30,6 @@ const CartForm: React.FC = () => {
     email: '',
     comments: '',
   });
-
 
   const dispatch = useAppDispatch();
 
@@ -70,11 +69,11 @@ const CartForm: React.FC = () => {
       </div>
       <div className={styles.flex}>
         <p>Subtotal</p>
-        <p>{formatPrice(subtotal)}</p>
+        <p>{formatPrice(total)}</p>
       </div>
       <div className={styles.flex}>
         <p>IVA (20%)</p>
-        <p>{formatPrice(subtotal * .20)}</p>
+        <p>{formatPrice(total * .20)}</p>
       </div>
       <div className={`${styles.flex} ${styles.line}`}>
         <p>Envío</p>
@@ -82,7 +81,7 @@ const CartForm: React.FC = () => {
       </div>
       <div className={`${styles.flex} ${styles.total}`}>
         <p>Total</p>
-        <p>{formatPrice(subtotal)}</p>
+        <p>{formatPrice(total)}</p>
       </div>
     </div>
 

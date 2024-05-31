@@ -8,7 +8,7 @@ export interface CartState {
  
 // Initial state
 const initialState: CartState = {
-    cart: data
+    cart: data.map((product) => ({ ...product, amount: 1 })),
     // cart: []
 };
  
