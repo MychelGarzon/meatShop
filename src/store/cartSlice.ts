@@ -1,21 +1,15 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import data, { Products } from "../data/data";
  
 // Define slice state type
 export interface CartState {
-  cart:{
-  name: string;
-  amount: number; 
-  price: number;
-  }
+  cart: Products[]
 }
  
 // Initial state
 const initialState: CartState = {
-    cart:{
-    name: "",
-    amount: 0,
-    price: 0
-    }
+    cart: data
+    // cart: []
 };
  
 export const cartSlice = createSlice({

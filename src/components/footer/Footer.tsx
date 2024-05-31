@@ -3,13 +3,13 @@ import logo from '../../assets/LogoAlCorte.svg';
 
 const Footer: React.FC = () => {
   return (
-    
-    <div style={{ position: 'absolute', left: 0, display: 'flex', flexDirection: 'row', width: '100vw', backgroundColor: '#000000', padding: '60px', marginTop: '45px', boxSizing: 'border-box' }}>
 
-        
+    <div style={{ position: 'absolute', left: 0, display: 'flex', flexDirection: 'row', width: '100vw', backgroundColor: '#000000', padding: '60px', boxSizing: 'border-box' }}>
+
+
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', marginTop: '-105px', marginRight: '20px' }}>
-      <img src={logo} alt="Logo" style={{ height: '150px', width: '150px' }} />
+        <img src={logo} alt="Logo" style={{ height: '150px', width: '150px' }} />
       </div>
 
       {/* First Column with Headline and Links */}

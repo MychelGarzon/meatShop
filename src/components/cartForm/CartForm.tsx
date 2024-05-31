@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 import styles from './CartForm.module.css';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppDispatch, useAppSelector } from '../../hooks/useAppDispatch';
 import { setUser } from '../../store/userSlice';
+import { formatPrice } from '../../helpers/formatPrice';
 
 interface FormData {
   name: string;
@@ -28,8 +29,11 @@ const CartForm: React.FC = () => {
     email: '',
     comments: '',
   });
+
   const dispatch = useAppDispatch();
-  
+  const cart = useAppSelector((state) => state.cart.cart);
+
+  const total = cart.reduce((total, item) => total + (item.subtotal ? item.subtotal : 0), 0);
 
   const validateForm = (data: FormData) => {
     return data.name !== '' &&
@@ -67,11 +71,11 @@ const CartForm: React.FC = () => {
       </div>
       <div className={styles.flex}>
         <p>Subtotal</p>
-        <p>$ 120.000</p>
+        <p>{formatPrice(total)}</p>
       </div>
       <div className={styles.flex}>
-        <p>IVA</p>
-        <p>$ 0</p>
+        <p>IVA (20%)</p>
+        <p>{formatPrice(total * .20)}</p>
       </div>
       <div className={`${styles.flex} ${styles.line}`}>
         <p>Envío</p>
@@ -79,7 +83,7 @@ const CartForm: React.FC = () => {
       </div>
       <div className={`${styles.flex} ${styles.total}`}>
         <p>Total</p>
-        <p>$ 120.000</p>
+        <p>{formatPrice(total)}</p>
       </div>
     </div>
 
