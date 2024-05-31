@@ -3,6 +3,10 @@
   margin-top: 2.5rem;
 }
 
+.kilo-price {
+  font-size: 14px
+}
+
 .cart-item > * {
   flex: 1;
   white-space: nowrap;

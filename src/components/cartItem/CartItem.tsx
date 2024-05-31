@@ -76,6 +76,7 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
             <img src={item.image} alt="product" />
             <p className={styles.name}>{item.name}</p>
             <p className={styles.type}>{item.type}</p>
+            <p className={styles['kilo-price']}>{`${formatPrice(item.price)} / ${item.unit}`}</p>
           </div>
         </div>
         <div className={styles.flex3}>
@@ -88,7 +89,7 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
           </div>
         </div>
         <div className={styles.flex2}>
-          <p className={styles.price}>{formatPrice(item.price)}</p>
+          <p className={styles.price}>{formatPrice(item.subtotal || 0)}</p>
           <p className={styles.delete}>
             <DeleteIcon color="primary" onClick={openModal} />
           </p>
@@ -104,7 +105,8 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
           <div>
             <p className={styles.type}>{item.type}</p>
             <p className={styles.name}>{item.name}</p>
-            <p className={styles.price}>{formatPrice(item.price)}</p>
+            <p className={styles['kilo-price']}>{`${formatPrice(item.price)} / ${item.unit}`}</p>
+            <p className={styles.price}>{formatPrice(item.subtotal || 0)}</p>
             <div className={styles.flex2}>
               <div className={styles.flex3}>
                 <div className={styles['button-size']} onClick={handleQuantity('', item.id)}>
