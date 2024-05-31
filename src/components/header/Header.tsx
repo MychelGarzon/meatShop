@@ -6,18 +6,21 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import logo from '../../assets/LogoAlCorte.svg'
+import {Link} from 'react-router-dom';
 import styles from './Header.module.css'
 import { Link } from 'react-router-dom';
 
 
 interface HeaderProps {
-  className?: string;
-}
 
-const Header: React.FC<HeaderProps> = ({ className }) => {
+    className?: string;
+  }
+  
+  const Header: React.FC<HeaderProps> = () => {
   return (
-    <Box className={styles.headerBox} sx={{ flexGrow: 1, width: '100vw' }}>
-      <AppBar className={styles.appBar} position="absolute" sx={{ backgroundColor: '#000000' }}>
+    <Box className={styles.headerBox} sx={{ flexGrow: 1, width: '100vw' }}>   
+      <AppBar className={styles.appBar} position="absolute" sx={{ backgroundColor: '#000000'}}>
+
         <Toolbar>
           <IconButton
             size="large"
@@ -28,9 +31,15 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           >
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <img src={logo} alt="Logo" style={{ height: '40px', width: '145px', marginTop: '8px' }} />
+
+            <Link to="/">
+          <img src={logo} alt="Logo" style={{ height: '40px', width: '145px', marginTop: '8px' }} />
+          </Link>
           </Typography>
-          <Button color="inherit"><Link to="/cart"><ShoppingCartIcon sx={{ height: 24, width: 24 }} /></Link></Button>
+
+          <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>
+          <Button color="inherit"><ShoppingCartIcon sx={{ height: 24, width: 24 }}/></Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box >
