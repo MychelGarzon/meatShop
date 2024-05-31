@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import data, { Products } from "../data/data";
+import /* data,  */{ Products } from "../data/data";
  
 // Define slice state type
 export interface CartState {
@@ -8,8 +8,8 @@ export interface CartState {
  
 // Initial state
 const initialState: CartState = {
-    cart: data
-    // cart: []
+    // cart: data
+    cart: []
 };
  
 export const cartSlice = createSlice({

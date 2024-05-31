@@ -17,7 +17,7 @@ const Cart: React.FC = () => {
         <div className={styles['no-items']}>
           <p>Aún no tienes productos seleccionados</p>
           <Link to="/">
-            <Button variant='contained' color='primary' fullWidth>Regresar a productos</Button>
+            <Button variant='contained' color='primary' >Regresar a productos</Button>
           </Link>
         </div>
         :

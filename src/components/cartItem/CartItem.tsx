@@ -65,9 +65,11 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
     console.log('delete', newArr);
     setIsModalOpen(false);
   };
+
   const openModal = () => {
     setIsModalOpen(true);
   };
+
   const closeModal = () => {
     setIsModalOpen(false);
   };

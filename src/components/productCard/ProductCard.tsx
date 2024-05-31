@@ -3,9 +3,53 @@ import styles from './productCard.module.css'
 import { Products } from "../../data/data";
 import MinusButton from "../minusPlusButton/MinusButton";
 import PlusButton from "../minusPlusButton/PlusButton";
+import { useEffect, useState } from "react";
+import { setCart } from "../../store/cartSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks/useAppDispatch";
 
 
-const ProductCard: React.FC<Products> = ({ image, name, price, type }) => {
+const ProductCard: React.FC<Products> = ({ image, name, price, type, id, unit, description }) => {
+  const [quantity, setQuantity] = useState<number>(0)
+  const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.cart.cart)
+
+  const handleQuantity = (action: string) => {
+    if (action === 'add') {
+      setQuantity((prevQuantity) => prevQuantity + 1)
+    } else {
+      if (quantity > 0) {
+        setQuantity((prevQuantity) => prevQuantity - 1)
+      }
+    }
+  }
+
+
+
+  useEffect(() => {
+    if (quantity === 0) {
+      // find by id and delete
+      const newArr = cart.filter((item) => item.id !== id);
+      dispatch(setCart(newArr));
+      return
+    }
+    const newObj = { image, name, price, type, id, unit, description, amount: quantity, subtotal: quantity * price }
+
+    // Find the index of the object with the given id
+    const index = cart.findIndex(obj => obj.id === id);
+
+    if (index === -1) {
+      // If the object does not exist, add the new object
+      dispatch(setCart([...cart, newObj]))
+    } else {
+      // If the object exists, update its properties
+      const updatedCart: Products[] = cart.map(cartItem =>
+        cartItem.id === id ? { image, name, price, type, id, unit, description, amount: quantity, subtotal: quantity * price } : cartItem
+      );
+
+      dispatch(setCart(updatedCart))
+    }
+  }, [quantity])
+
   return (
     <Card
       className={styles.productCard}
@@ -41,16 +85,20 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type }) => {
           Precio por kilo
         </Typography>
         <Box className={styles.quantityBox}>
-          <Box className={styles.minusButton}>
-            <MinusButton />
+          <Box className={styles.minusButton} >
+            <div onClick={() => handleQuantity('')}>
+              <MinusButton />
+            </div>
           </Box>
           <Box className={styles.quantity}>
             <Typography variant="h6">
-              0
+              {quantity}
             </Typography>
           </Box>
-          <Box className={styles.plusButton}>
-            <PlusButton />
+          <Box className={styles.plusButton} >
+            <div onClick={() => handleQuantity('add')}>
+              <PlusButton />
+            </div>
           </Box>
         </Box>
       </CardContent>
