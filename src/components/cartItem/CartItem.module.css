@@ -4,7 +4,7 @@
 }
 
 .kilo-price {
-  font-size: 14px
+  font-size: 14px;
 }
 
 .cart-item > * {
@@ -64,6 +64,10 @@
 
 .price {
   padding-top: 6px;
+}
+
+.mob-price {
+  padding: 8px 0;
 }
 
 .delete {
