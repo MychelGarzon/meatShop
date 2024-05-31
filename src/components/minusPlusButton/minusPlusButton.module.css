@@ -1,16 +1,26 @@
-.minusButton {
-    background-color: white;
+.minusPlusButton {
     color: rgb(116, 112, 112);
     border-radius: 50%;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.347);
     border: none;
     width: 50px;
     height: 50px;
-    font-size: 24px;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 }
 
-.minusButton:hover {
-    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.475);
-    background-color: rgb(244, 243, 243);
+.minusButton {
+    background-color: rgb(221, 219, 219);
+}
+
+.plusButton {
+    background-color: white;
+
+}
+
+.minusPlusButton:active {
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.475);
 }
