@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 import styles from './CartForm.module.css';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { useAppDispatch, useAppSelector } from '../../hooks/useAppDispatch';
 import { setUser } from '../../store/userSlice';
 import { formatPrice } from '../../helpers/formatPrice';
 
@@ -18,7 +18,6 @@ interface FormData {
 
 const CartForm: React.FC = () => {
   const cities = ['Barrios Unidos', 'Chapinero', 'Suba', 'Teusaquillo', 'Usaquen'];
-  const [total/* , setSubtotal */] = useState<number>(10000);
   const [isFormCompleted, setIsFormCompleted] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -32,6 +31,9 @@ const CartForm: React.FC = () => {
   });
 
   const dispatch = useAppDispatch();
+  const cart = useAppSelector((state) => state.cart.cart);
+
+  const total = cart.reduce((total, item) => total + (item.subtotal ? item.subtotal : 0), 0);
 
   const validateForm = (data: FormData) => {
     return data.name !== '' &&

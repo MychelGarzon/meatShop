@@ -28,22 +28,24 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
 
   const handleQuantity = (action: string, id: string) => () => {
     if (action === 'add') {
-      setQuantity((prevQuantity) => prevQuantity + 1);
-
-      const updatedCart: Products[] = cart.map(cartItem =>
-        cartItem.id === id ? { ...cartItem, amount: quantity + 1 } : cartItem
-      );
-
-      dispatch(setCart(updatedCart));
+      setQuantity((prevQuantity) => {
+        const newQuantity = prevQuantity + 1;
+        const updatedCart: Products[] = cart.map(cartItem =>
+          cartItem.id === id ? { ...cartItem, amount: newQuantity, subtotal: newQuantity * cartItem.price } : cartItem
+        );
+        dispatch(setCart(updatedCart));
+        return newQuantity;
+      });
     } else {
       if (quantity > 0) {
-        setQuantity((prevQuantity) => prevQuantity - 1);
-
-        const updatedCart: Products[] = cart.map(cartItem =>
-          cartItem.id === id ? { ...cartItem, amount: quantity - 1 } : cartItem
-        );
-
-        dispatch(setCart(updatedCart));
+        setQuantity((prevQuantity) => {
+          const newQuantity = prevQuantity - 1;
+          const updatedCart: Products[] = cart.map(cartItem =>
+            cartItem.id === id ? { ...cartItem, amount: newQuantity, subtotal: newQuantity * cartItem.price } : cartItem
+          );
+          dispatch(setCart(updatedCart));
+          return newQuantity;
+        });
       }
     }
   };

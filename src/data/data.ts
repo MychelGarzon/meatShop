@@ -10,6 +10,7 @@ export interface Products {
   description: string;
   image: string;
   amount?: number;
+  subtotal?: number;
 }
 
 const data: Products[] = [
