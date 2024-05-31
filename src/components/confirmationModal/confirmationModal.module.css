@@ -1,17 +1,19 @@
 .overlay {
-    display: flex; /* Initially hidden */
+    display: flex; 
     position: fixed;
     z-index: 2;
     left: 0;
     top: 0;
     height: 100vh;
     width: 100vw;
-    background-color: grey; 
+    background-color: #808080; 
     justify-content: center;
     align-items: center;
+    overflow: auto;
 }
 
 .modal {
+    border-radius: 8px;
     display: flex;
     position: relative;
     z-index: 2;
@@ -19,12 +21,13 @@
     padding: 20px;
     border: 1px solid #888;
     width: 90%;
-    max-width: 600px;
+    max-width: 444px;
     text-align: center;
     cursor: pointer;
     margin: 0 auto;
     top: 50px;
     bottom: 50px; 
+    justify-content: center;
 }
 
 .modal-content {
@@ -43,3 +46,39 @@ button {
     font-size: 16px;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 800px) {
+    .overlay {
+        height: 100%;
+    }
+    .modal {
+       width: 80%; 
+       padding: 15px; 
+     }
+    .buttons {
+       flex-direction: column; 
+     }
+     button {
+       width: 100%; 
+       margin-bottom: 10px; 
+     }
+   }
+   
+ 
+   @media only screen and (max-width: 932px) {
+    .modal {
+       width: 85%;
+       padding: 12px; 
+     }
+    .buttons {
+       flex-direction: column;
+     }
+     button {
+       width: 100%;
+       margin-bottom: 10px; 
+     }
+   }
+
+
+
+   

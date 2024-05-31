@@ -127,7 +127,7 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
           onConfirm={() => handleDelete(item.id)}
           onCancel={closeModal}
           message="¿Estás seguro de eliminar el producto?"
-        />
+          />
       )}
     </>
   );
