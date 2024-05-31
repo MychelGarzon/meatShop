@@ -11,8 +11,6 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-bottom: 1rem;
-  height: 360px;
 }
 
 .filterBox {
@@ -22,27 +20,25 @@
   width: 100%;
 }
 
-.bannerBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
 .cardGrid {
   display: grid;
   width: 100%;
+  max-width: 1200px;
   justify-content: center;
-  justify-items: center;
+  gap: 24px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
 }
 
 /* android */
 @media (min-width: 0px) {
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(298px, 1fr));
-    column-gap: 0 !important;
-    row-gap: 20px !important;
-    justify-items: center;
+  }
+
+  .bannerBox {
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -50,9 +46,10 @@
 @media (min-width: 430px) {
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(356px, 1fr));
-    column-gap: 0 !important;
-    row-gap: 20px !important;
-    justify-items: center;
+  }
+
+  .bannerBox {
+    margin-bottom: 1rem;
   }
 }
 
@@ -60,9 +57,10 @@
 @media (min-width: 834px) {
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
-    column-gap: 2px !important;
-    row-gap: 20px !important;
-    justify-items: center;
+  }
+
+  .bannerBox {
+    margin-bottom: 2rem;
   }
 }
 
@@ -70,8 +68,10 @@
 @media (min-width: 1024px) {
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(368px, 1fr));
-    gap: 24px !important;
-    row-gap: 20px !important;
-    justify-items: center;
+    gap: 24px;
+  }
+
+  .bannerBox {
+    margin-bottom: 3.5rem;
   }
 }
