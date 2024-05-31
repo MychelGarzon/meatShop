@@ -11,19 +11,10 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-bottom: 1rem;
-  height: 360px;
 }
 
 .filterBox {
   text-align: center;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.bannerBox {
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -44,6 +35,10 @@
     row-gap: 20px !important;
     justify-items: center;
   }
+
+  .bannerBox {
+    margin-bottom: 0.5rem;
+  }
 }
 
 /* iphone */
@@ -53,6 +48,10 @@
     column-gap: 0 !important;
     row-gap: 20px !important;
     justify-items: center;
+  }
+
+  .bannerBox {
+    margin-bottom: 1rem;
   }
 }
 
@@ -64,6 +63,10 @@
     row-gap: 20px !important;
     justify-items: center;
   }
+
+  .bannerBox {
+    margin-bottom: 2rem;
+  }
 }
 
 /* laptop */
@@ -73,5 +76,9 @@
     gap: 24px !important;
     row-gap: 20px !important;
     justify-items: center;
+  }
+
+  .bannerBox {
+    margin-bottom: 3.5rem;
   }
 }

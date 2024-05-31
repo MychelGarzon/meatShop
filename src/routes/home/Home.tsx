@@ -1,10 +1,8 @@
 import styles from './home.module.css'
-import Footer from '../../components/footer/Footer'
 import Banner from '../../components/banner/Banner'
 import Filter from '../../components/filter/Filter'
 import ProductCard from '../../components/productCard/ProductCard'
 import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
 import data from '../../data/data'
 import { useState } from 'react'
 
@@ -18,7 +16,7 @@ const Home: React.FC = () => {
   });
 
   return (
-    <Container className={styles.homeContainer}>
+    <Box className={styles.homeContainer}>
       <Box className={styles.bannerBox}>
         <Banner />
       </Box>
@@ -30,7 +28,7 @@ const Home: React.FC = () => {
           <ProductCard key={product.id} {...product} />
         ))}
       </Box>
-    </Container>
+    </Box>
   )
 }
 

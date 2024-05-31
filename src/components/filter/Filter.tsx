@@ -14,19 +14,17 @@ const Filter: React.FC<FilterProps> = ({ setFilter }) => {
     if (filter === 'Todas') {
       setSelectedFilter(['Todas']);
       setFilter(['Todas']);
+    } else if (selectedFilter.includes('Todas')) {
+      setSelectedFilter([filter]);
+      setFilter([filter]);
+    } else if (selectedFilter.includes(filter)) {
+      const newFilter = selectedFilter.filter(f => f !== filter);
+      setSelectedFilter(newFilter);
+      setFilter(newFilter);
     } else {
-      if (selectedFilter.includes('Todas')) {
-        setSelectedFilter([filter]);
-        setFilter([filter]);
-      } else if (selectedFilter.includes(filter)) {
-        const newFilter = selectedFilter.filter(f => f !== filter);
-        setSelectedFilter(newFilter);
-        setFilter(newFilter);
-      } else {
-        const newFilter = [...selectedFilter, filter];
-        setSelectedFilter(newFilter);
-        setFilter(newFilter);
-      }
+      const newFilter = [...selectedFilter, filter];
+      setSelectedFilter(newFilter);
+      setFilter(newFilter);
     }
   }
 
@@ -35,7 +33,7 @@ const Filter: React.FC<FilterProps> = ({ setFilter }) => {
     setSelectedFilter(newFilter);
     setFilter(newFilter);
   }
-  
+
   return (
     <Box className={styles.filterBox}>
       <Typography
