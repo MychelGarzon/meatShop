@@ -46,15 +46,13 @@ const CartItem: React.FC<Props> = ({ index, item, amount }) => {
     }
   };
 
-  const handleDelete = () => {
-    console.log('delete', item.id);
-    setIsModalOpen(false);
-  };
-
+  // handle the delete of the product
+  const handleDelete = (id: string) => {
+    console.log('delete', id)
+  }
   const openModal = () => {
     setIsModalOpen(true);
   };
-
   const closeModal = () => {
     setIsModalOpen(false);
   };
