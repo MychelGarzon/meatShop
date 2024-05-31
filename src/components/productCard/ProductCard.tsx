@@ -48,23 +48,17 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type }) => {
           className={styles.pricePerKilo}>
           Precio por kilo
         </Typography>
-        <Box
-          className={styles.addToCartBox}
-        >
-          <Button
-            variant="outlined"
-            color="primary"
-            size={buttonSize}
-            className={styles.addToCardButton}>Agregar
-            <ShoppingCartIcon className={styles.addToCartIcon} />
-          </Button>
-          <Box className={styles.quantityBox}>
-            <Box className={styles.minusButton}>
-              <MinusButton />
-            </Box>
-            <Box className={styles.plusButton}>
-              <PlusButton />
-            </Box>
+        <Box className={styles.quantityBox}>
+          <Box className={styles.minusButton}>
+            <MinusButton />
+          </Box>
+          <Box className={styles.quantity}>
+            <Typography variant="h6">
+              0
+            </Typography>
+          </Box>
+          <Box className={styles.plusButton}>
+            <PlusButton />
           </Box>
         </Box>
       </CardContent>

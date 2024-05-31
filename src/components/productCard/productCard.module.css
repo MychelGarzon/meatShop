@@ -7,6 +7,7 @@
 .productCard {
     max-width: 100% !important;
     box-shadow: none !important;
+    border: 1px solid #E0E0E0 !important;
 }
 
 .productCard:hover {
@@ -21,35 +22,19 @@
     object-fit: contain !important;
 }
 
-.addToCartBox {
+.quantityBox {
     display: flex !important;
-    justify-content: space-between !important;
+    justify-content: left !important;
     align-items: center !important;
-    height: 80px !important;
-}
-
-.addToCardButton {
-    padding: 8px 22px !important;
-    margin: 1rem 0 1rem 0 !important;
-}
-
-.addToCartIcon {
-    margin-left: 0.5rem !important;
+    margin: 1.4rem 0 1.4rem !important;
 }
 
 .minusButton {
-    margin: 0.5rem 0.5rem 2rem 1rem !important;
+    margin-right: 1rem !important;
 }
 
 .plusButton {
-    margin: 0.5rem 0.5rem 2rem !important;
-}
-
-.quantityBox {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin-right: 1rem !important;
+    margin-left: 1rem !important;
 }
 
 /* android/XS */
