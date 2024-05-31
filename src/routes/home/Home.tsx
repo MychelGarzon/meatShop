@@ -1,5 +1,4 @@
 import styles from './home.module.css'
-import Footer from '../../components/footer/Footer'
 import Banner from '../../components/banner/Banner'
 import Filter from '../../components/filter/Filter'
 import ProductCard from '../../components/productCard/ProductCard'
