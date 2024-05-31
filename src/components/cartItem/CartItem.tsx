@@ -7,6 +7,9 @@ import MinusButton from '../minusPlusButton/MinusButton';
 import PlusButton from '../minusPlusButton/PlusButton';
 import { useAppSelector } from '../../hooks/useAppDispatch';
 
+import { formatNumber } from '../../helpers/formatNumber';
+import { formatPrice } from '../../helpers/formatPrice';
+
 interface Props {
   index: number;
   item: {
@@ -23,18 +26,8 @@ const CartItem: React.FC<Props> = ({ index, item, amount }) => {
   const [quantity, setQuantity] = useState<number>(amount);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const cart = useAppSelector((state) => state.cart.cart);
-  console.log(cart,"this is cart info")
-  const formatNumber = (number: number): string => {
-    return number < 10 ? `0${number}` : `${number}`;
-  };
 
-  const formatPrice = (price: number): string => {
-    return price.toLocaleString('es-CO', {
-      style: 'currency',
-      currency: 'COP',
-      minimumFractionDigits: 0,
-    });
-  };
+  console.log(cart, "this is cart info")
 
   const handleQuantity = (action: string) => () => {
     if (action === 'add') {
