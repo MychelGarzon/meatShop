@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import styles from './Cart.module.css'
 import { Button } from '@mui/material';
 
-import data from '../../data/data';
 import CartItem from '../cartItem/CartItem';
+import { useState } from 'react';
+import { useAppSelector } from '../../hooks/useAppDispatch';
 
 const Cart: React.FC = () => {
-  const cartItems = [...data];
+  const [cartItems, setCartItems] = useState(useAppSelector((state) => state.cart.cart))
 
   return (
     <>
@@ -27,7 +28,7 @@ const Cart: React.FC = () => {
             <p className={styles.hide}>Precio por kilo</p>
           </div>
           {cartItems.map((item, index) => (
-            <CartItem key={item.id} item={item} index={index} amount={1} />
+            <CartItem key={item.id} item={item} index={index} cartItems={cartItems} setCartItems={setCartItems} />
           ))}
         </div>}
     </>

@@ -3,6 +3,7 @@ import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, T
 import styles from './CartForm.module.css';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { setUser } from '../../store/userSlice';
+import { formatPrice } from '../../helpers/formatPrice';
 
 interface FormData {
   name: string;
@@ -17,6 +18,7 @@ interface FormData {
 
 const CartForm: React.FC = () => {
   const cities = ['Barrios Unidos', 'Chapinero', 'Suba', 'Teusaquillo', 'Usaquen'];
+  const [subtotal/* , setSubtotal */] = useState<number>(10000);
   const [isFormCompleted, setIsFormCompleted] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -28,8 +30,9 @@ const CartForm: React.FC = () => {
     email: '',
     comments: '',
   });
+
+
   const dispatch = useAppDispatch();
-  
 
   const validateForm = (data: FormData) => {
     return data.name !== '' &&
@@ -67,11 +70,11 @@ const CartForm: React.FC = () => {
       </div>
       <div className={styles.flex}>
         <p>Subtotal</p>
-        <p>$ 120.000</p>
+        <p>{formatPrice(subtotal)}</p>
       </div>
       <div className={styles.flex}>
-        <p>IVA</p>
-        <p>$ 0</p>
+        <p>IVA (20%)</p>
+        <p>{formatPrice(subtotal * .20)}</p>
       </div>
       <div className={`${styles.flex} ${styles.line}`}>
         <p>Envío</p>
@@ -79,7 +82,7 @@ const CartForm: React.FC = () => {
       </div>
       <div className={`${styles.flex} ${styles.total}`}>
         <p>Total</p>
-        <p>$ 120.000</p>
+        <p>{formatPrice(subtotal)}</p>
       </div>
     </div>
 
