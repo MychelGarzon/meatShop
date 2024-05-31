@@ -23,17 +23,18 @@
 .cardGrid {
   display: grid;
   width: 100%;
+  max-width: 1200px;
   justify-content: center;
-  justify-items: center;
+  gap: 20px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
 }
 
 /* android */
 @media (min-width: 0px) {
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(298px, 1fr));
-    column-gap: 0 !important;
-    row-gap: 20px !important;
-    justify-items: center;
   }
 
   .bannerBox {
@@ -45,9 +46,6 @@
 @media (min-width: 430px) {
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(356px, 1fr));
-    column-gap: 0 !important;
-    row-gap: 20px !important;
-    justify-items: center;
   }
 
   .bannerBox {
@@ -59,9 +57,6 @@
 @media (min-width: 834px) {
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
-    column-gap: 2px !important;
-    row-gap: 20px !important;
-    justify-items: center;
   }
 
   .bannerBox {
@@ -73,9 +68,7 @@
 @media (min-width: 1024px) {
   .cardGrid {
     grid-template-columns: repeat(auto-fill, minmax(368px, 1fr));
-    gap: 24px !important;
-    row-gap: 20px !important;
-    justify-items: center;
+    gap: 24px;
   }
 
   .bannerBox {
