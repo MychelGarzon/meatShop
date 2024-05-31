@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardMedia, Typography, useMediaQuery } from "@mui/material"
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material"
 import styles from './productCard.module.css'
 import { Products } from "../../data/data";
 import MinusButton from "../minusPlusButton/MinusButton";
