@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/useAppDispatch";
 
 
 const ProductCard: React.FC<Products> = ({ image, name, price, type, id, unit, description }) => {
-  const [quantity, setQuantity] = useState<number>(0)
+  const [quantity, setQuantity] = useState<number>(useAppSelector((state) => state.cart.cart.find((item) => item.id === id)?.amount || 0))
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart.cart)
 
@@ -23,15 +23,7 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type, id, unit, d
     }
   }
 
-
-
-  useEffect(() => {
-    if (quantity === 0) {
-      // find by id and delete
-      const newArr = cart.filter((item) => item.id !== id);
-      dispatch(setCart(newArr));
-      return
-    }
+  const addToCart = () => {
     const newObj = { image, name, price, type, id, unit, description, amount: quantity, subtotal: quantity * price }
 
     // Find the index of the object with the given id
@@ -48,6 +40,20 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type, id, unit, d
 
       dispatch(setCart(updatedCart))
     }
+  }
+
+  const deleteFromCart = () => {
+    // find by id and delete
+    const newArr = cart.filter((item) => item.id !== id);
+    dispatch(setCart(newArr));
+  }
+
+  useEffect(() => {
+    if (quantity === 0) {
+      deleteFromCart()
+      return;
+    }
+    addToCart()
   }, [quantity])
 
   return (

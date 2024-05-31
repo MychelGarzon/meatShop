@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import logo from '../../assets/LogoAlCorte.svg'
 import styles from './Header.module.css'
+import { Link } from 'react-router-dom';
 
 
 interface HeaderProps {
@@ -29,10 +30,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <img src={logo} alt="Logo" style={{ height: '40px', width: '145px', marginTop: '8px' }} />
           </Typography>
-          <Button color="inherit"><ShoppingCartIcon sx={{ height: 24, width: 24 }} /></Button>
+          <Button color="inherit"><Link to="/cart"><ShoppingCartIcon sx={{ height: 24, width: 24 }} /></Link></Button>
         </Toolbar>
       </AppBar>
-    </Box>
+    </Box >
   );
 }
 
