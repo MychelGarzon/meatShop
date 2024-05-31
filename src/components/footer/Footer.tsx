@@ -4,9 +4,11 @@ import styles from './footer.module.css';
 
 const Footer: React.FC = () => {
   return (
+
     <div className={styles.footer}>
       
       <div className={styles.logo}>
+
         <img src={logo} alt="Logo" style={{ height: '150px', width: '150px' }} />
       </div>
 

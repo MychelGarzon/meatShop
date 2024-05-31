@@ -1,0 +1,55 @@
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-container {
+  padding-bottom: 50px;
+}
+
+.total-container > div:not(:first-child) {
+  padding: 12px 0;
+  font-family: var(--subTittleFontFamily);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.total > p {
+  font-weight: var(--titleFontWeight);
+  font-size: 20px;
+}
+
+.line {
+  border-bottom: 1px solid #000;
+}
+
+.title {
+  font-family: var(--titleFontFamily);
+  font-weight: var(--titleFontWeight);
+  font-size: 24px;
+  padding-bottom: 10px;
+  font-weight: 400;
+}
+
+.light {
+  opacity: 0.6;
+}
+
+.form {
+  margin-top: 20px;
+}
+
+.form > div {
+  margin-bottom: 20px;
+}
+
+.form {
+  font-family: var(--titleFontFamily);
+  font-weight: 400;
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.info-text {
+  margin-top: 20px;
+}

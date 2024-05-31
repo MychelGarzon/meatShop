@@ -11,6 +11,7 @@ import styles from './Header.module.css'
 
 
 interface HeaderProps {
+
     className?: string;
   }
   
@@ -18,6 +19,7 @@ interface HeaderProps {
   return (
     <Box className={styles.headerBox} sx={{ flexGrow: 1, width: '100vw' }}>   
       <AppBar className={styles.appBar} position="absolute" sx={{ backgroundColor: '#000000'}}>
+
         <Toolbar>
           <IconButton
             size="large"
@@ -28,6 +30,7 @@ interface HeaderProps {
           >
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+
             <Link to="/">
           <img src={logo} alt="Logo" style={{ height: '40px', width: '145px', marginTop: '8px' }} />
           </Link>
@@ -35,6 +38,7 @@ interface HeaderProps {
           <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>
           <Button color="inherit"><ShoppingCartIcon sx={{ height: 24, width: 24 }}/></Button>
           </Link>
+
         </Toolbar>
       </AppBar>
     </Box>
