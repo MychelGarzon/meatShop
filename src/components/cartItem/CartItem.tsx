@@ -51,8 +51,6 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
     const newArr = cart.filter((item) => item.id !== id);
     setCartItems(newArr);
     dispatch(setCart(newArr));
-
-    console.log('delete', newArr);
     setIsModalOpen(false);
   };
 
@@ -134,7 +132,7 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
           onConfirm={() => handleDelete(item.id)}
           onCancel={closeModal}
           message="¿Estás seguro de eliminar el producto?"
-          />
+        />
       )}
     </>
   );
