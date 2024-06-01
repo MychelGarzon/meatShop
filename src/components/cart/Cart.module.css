@@ -15,6 +15,10 @@
   font-size: 2rem;
 }
 
+.no-items p {
+  padding-bottom: 30px;
+}
+
 @media (max-width: 720px) {
   .hide {
     display: none;

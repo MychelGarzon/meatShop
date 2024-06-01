@@ -3,6 +3,11 @@
   margin-top: 2.5rem;
 }
 
+.kilo-price {
+  font-size: 14px;
+  font-weight: bold;
+}
+
 .cart-item > * {
   flex: 1;
   white-space: nowrap;
@@ -55,11 +60,15 @@
 }
 
 .quantity {
-  padding: 34px 14px 0 14px;
+  padding: 12px 6px 6px 6px;
 }
 
 .price {
   padding-top: 6px;
+}
+
+.mob-price {
+  padding: 8px 0;
 }
 
 .delete {

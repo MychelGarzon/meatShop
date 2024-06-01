@@ -7,11 +7,9 @@ interface RootState {
 cart: CartState,
 user: UserState
 }
-
-
  
 // Load Initial State from sessionStorage
-/* function loadState(): RootState | undefined {
+function loadState(): RootState | undefined {
   try {
     const serializedState = sessionStorage.getItem("reduxState");
     if (serializedState === null) {
@@ -22,20 +20,20 @@ user: UserState
     console.error("Error loading state from sessionStorage:", err);
     return undefined; // If an error occurs, return undefined
   }
-} */
+}
  
 // Save State to sessionStorage
-/* function saveState(state: RootState) {
+function saveState(state: RootState) {
   try {
     const serializedState = JSON.stringify(state);
     sessionStorage.setItem("reduxState", serializedState);
   } catch (err) {
     console.error("Error saving state to sessionStorage:", err);
   }
-} */
+}
  
 // Load initial state from sessionStorage
-// const persistedState = loadState();
+const persistedState = loadState();
  
 // Create Redux store with persisted state
 export const store = configureStore({
@@ -43,13 +41,13 @@ export const store = configureStore({
     cart: cartReducer,
     user: userReducer
   },
-  /* preloadedState: persistedState, */ // Initialize store with persisted state
+  preloadedState: persistedState, // Initialize store with persisted state
 });
  
 // Subscribe to store updates and save state to sessionStorage
-/* store.subscribe(() => {
+store.subscribe(() => {
   saveState(store.getState());
-}); */
+});
  
 export type AppDispatch = typeof store.dispatch;
 export type { RootState };

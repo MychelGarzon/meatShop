@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './CartItem.module.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ConfirmationModal from '../confirmationModal/ConfirmationModal';
@@ -22,33 +22,29 @@ interface Props {
 const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
   const [quantity, setQuantity] = useState<number>(item.amount || 0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [precio, setPrecio] = useState<number>(item.subtotal || 0);
 
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart.cart);
 
-  const handleQuantity = (action: string, id: string) => () => {
+  const handleQuantity = (action: string) => {
     if (action === 'add') {
-      setQuantity((prevQuantity) => {
-        const newQuantity = prevQuantity + 1;
-        const updatedCart: Products[] = cart.map(cartItem =>
-          cartItem.id === id ? { ...cartItem, amount: newQuantity, subtotal: newQuantity * cartItem.price } : cartItem
-        );
-        dispatch(setCart(updatedCart));
-        return newQuantity;
-      });
+      setQuantity((prevQuantity) => prevQuantity + 1)
     } else {
       if (quantity > 0) {
-        setQuantity((prevQuantity) => {
-          const newQuantity = prevQuantity - 1;
-          const updatedCart: Products[] = cart.map(cartItem =>
-            cartItem.id === id ? { ...cartItem, amount: newQuantity, subtotal: newQuantity * cartItem.price } : cartItem
-          );
-          dispatch(setCart(updatedCart));
-          return newQuantity;
-        });
+        setQuantity((prevQuantity) => prevQuantity - 1)
       }
     }
-  };
+  }
+
+  const updateCart = (id: string) => {
+    const updatedCart: Products[] = cart.map(cartItem =>
+      cartItem.id === id ? { ...cartItem, amount: quantity, subtotal: quantity * cartItem.price } : cartItem
+    );
+    cart.map(cartItem => cartItem.id === id ? setPrecio(quantity * cartItem.price) : null)
+
+    dispatch(setCart(updatedCart))
+  }
 
   const handleDelete = (id: string) => {
     // find by id and delete
@@ -59,9 +55,16 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
     console.log('delete', newArr);
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    handleQuantity
+    updateCart(item.id)
+  }, [quantity])
+
   const openModal = () => {
     setIsModalOpen(true);
   };
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -76,19 +79,20 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
             <img src={item.image} alt="product" />
             <p className={styles.name}>{item.name}</p>
             <p className={styles.type}>{item.type}</p>
+            <p className={styles['kilo-price']}>{`${formatPrice(item.price)} / ${item.unit}`}</p>
           </div>
         </div>
         <div className={styles.flex3}>
-          <div className={styles['button-size']} onClick={handleQuantity('', item.id)}>
+          <div className={styles['button-size']} onClick={() => handleQuantity('')}>
             <MinusButton />
           </div>
           <p className={styles.quantity}>{quantity}</p>
-          <div onClick={handleQuantity('add', item.id)}>
+          <div onClick={() => handleQuantity('add')}>
             <PlusButton />
           </div>
         </div>
         <div className={styles.flex2}>
-          <p className={styles.price}>{formatPrice(item.price)}</p>
+          <p className={styles.price}>{formatPrice(precio)}</p>
           <p className={styles.delete}>
             <DeleteIcon color="primary" onClick={openModal} />
           </p>
@@ -104,14 +108,17 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
           <div>
             <p className={styles.type}>{item.type}</p>
             <p className={styles.name}>{item.name}</p>
-            <p className={styles.price}>{formatPrice(item.price)}</p>
+            <div className={styles['mob-price']}>
+              <p className={styles['kilo-price']}>{`${formatPrice(item.price)} / ${item.unit}`}</p>
+              <p className={styles.price}>{formatPrice(precio)}</p>
+            </div>
             <div className={styles.flex2}>
               <div className={styles.flex3}>
-                <div className={styles['button-size']} onClick={handleQuantity('', item.id)}>
+                <div className={styles['button-size']} onClick={() => handleQuantity('')}>
                   <MinusButton />
                 </div>
                 <p className={styles.quantity}>{quantity}</p>
-                <div onClick={handleQuantity('add', item.id)}>
+                <div onClick={() => handleQuantity('add')}>
                   <PlusButton />
                 </div>
               </div>

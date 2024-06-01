@@ -8,6 +8,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import logo from '../../assets/LogoAlCorte.svg'
 import {Link} from 'react-router-dom';
 import styles from './Header.module.css'
+import { Link } from 'react-router-dom';
 
 
 interface HeaderProps {
@@ -35,13 +36,13 @@ interface HeaderProps {
           <img src={logo} alt="Logo" style={{ height: '40px', width: '145px', marginTop: '8px' }} />
           </Link>
           </Typography>
+
           <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>
           <Button color="inherit"><ShoppingCartIcon sx={{ height: 24, width: 24 }}/></Button>
           </Link>
-
         </Toolbar>
       </AppBar>
-    </Box>
+    </Box >
   );
 }
 
