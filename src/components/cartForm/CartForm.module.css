@@ -5,6 +5,7 @@
 
 .total-container {
   padding-bottom: 50px;
+  white-space: nowrap;
 }
 
 .total-container > div:not(:first-child) {
@@ -29,6 +30,7 @@
   font-size: 24px;
   padding-bottom: 10px;
   font-weight: 400;
+  white-space: nowrap;
 }
 
 .light {
@@ -37,17 +39,14 @@
 
 .form {
   margin-top: 20px;
-}
-
-.form > div {
-  margin-bottom: 20px;
-}
-
-.form {
   font-family: var(--titleFontFamily);
   font-weight: 400;
   font-size: 16px;
   opacity: 0.6;
+}
+
+.form > div {
+  margin-bottom: 20px;
 }
 
 .info-text {
