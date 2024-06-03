@@ -39,7 +39,7 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
 
   const updateCart = (id: string) => {
     const updatedCart: Products[] = cart.map(cartItem =>
-      cartItem.id === id ? { ...cartItem, amount: quantity, subtotal: quantity * cartItem.price } : cartItem
+      cartItem.id === id ? { ...cartItem, amount: quantity, subtotal: quantity * cartItem.price, itemVatTotal: quantity * cartItem.price * cartItem.vat } : cartItem
     );
     cart.map(cartItem => cartItem.id === id ? setPrecio(quantity * cartItem.price) : null)
 
