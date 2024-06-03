@@ -51,8 +51,6 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
     const newArr = cart.filter((item) => item.id !== id);
     setCartItems(newArr);
     dispatch(setCart(newArr));
-
-    console.log('delete', newArr);
     setIsModalOpen(false);
   };
 
@@ -84,7 +82,7 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
         </div>
         <div className={styles.flex3}>
           <div className={styles['button-size']} onClick={() => handleQuantity('')}>
-            <MinusButton />
+            <MinusButton id={item.id} />
           </div>
           <p className={styles.quantity}>{quantity}</p>
           <div onClick={() => handleQuantity('add')}>
@@ -101,7 +99,7 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
       {/* mobile view */}
       <div className={`${styles['cart-item']} ${styles.show}`}>
         <p className={styles['line-number']}>{formatNumber(index + 1)}</p>
-        <div className={styles.flex3}>
+        <div className={styles.flex4}>
           <div>
             <img src={item.image} alt="product" />
           </div>
@@ -115,7 +113,7 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
             <div className={styles.flex2}>
               <div className={styles.flex3}>
                 <div className={styles['button-size']} onClick={() => handleQuantity('')}>
-                  <MinusButton />
+                  <MinusButton id={item.id} />
                 </div>
                 <p className={styles.quantity}>{quantity}</p>
                 <div onClick={() => handleQuantity('add')}>
@@ -134,7 +132,7 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
           onConfirm={() => handleDelete(item.id)}
           onCancel={closeModal}
           message="¿Estás seguro de eliminar el producto?"
-          />
+        />
       )}
     </>
   );

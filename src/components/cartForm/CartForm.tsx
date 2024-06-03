@@ -19,16 +19,7 @@ interface FormData {
 const CartForm: React.FC = () => {
   const cities = ['Barrios Unidos', 'Chapinero', 'Suba', 'Teusaquillo', 'Usaquen'];
   const [isFormCompleted, setIsFormCompleted] = useState<boolean>(false);
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    city: '',
-    address: '',
-    neighborhood: '',
-    locality: '',
-    phone: '',
-    email: '',
-    comments: '',
-  });
+  const [formData, setFormData] = useState<FormData>(useAppSelector((state) => state.user.user));
 
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart.cart);
@@ -61,7 +52,7 @@ const CartForm: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(setUser(formData))
-    console.log('Form Data:', formData);
+    console.log({ user: formData, order: cart, summary: { total } })
   };
 
   return <div className={styles['cart-form']}>

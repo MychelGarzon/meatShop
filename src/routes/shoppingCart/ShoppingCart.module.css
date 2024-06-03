@@ -35,13 +35,17 @@
     flex-direction: column;
     align-items: stretch;
   }
+
+  .back-btn {
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 720px) {
   .shopping-cart {
     background-color: #FFF;
   }
-
+  
   .col {
     padding: 40px 10px;
   }
