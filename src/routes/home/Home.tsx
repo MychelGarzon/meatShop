@@ -11,7 +11,7 @@ const Home: React.FC = () => {
 
   const filteredProducts = data.filter(product => {
     if (filter.includes('Todas') || filter.length === 0) return true;
-    if (filter.includes('otros') && product.type !== 'pollo' && product.type !== 'cerdo' && product.type !== 'res') return true;
+    if (filter.includes('otros') && product.type !== 'pollo' && product.type !== 'cerdo' && product.type !== 'res' && product.type !== 'charcuteria') return true;
     return filter.includes(product.type);
   });
 

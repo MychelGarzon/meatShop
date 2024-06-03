@@ -50,7 +50,7 @@ const Filter: React.FC<FilterProps> = ({ setFilter }) => {
           onClick={() => handleFilter("Todas")}
         />
         <Box className={styles.divider} />
-        {["res", "cerdo", "pollo", "otros"].map((label) => (
+        {["res", "cerdo", "pollo", "charcutería", "otros"].map((label) => (
           <Chip
             key={label}
             label={label.charAt(0).toUpperCase() + label.slice(1)}
