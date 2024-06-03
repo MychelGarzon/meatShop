@@ -31,6 +31,7 @@ export interface Products {
   amount?: number;
   subtotal?: number;
   vat:number;
+  itemVatTotal?: number;
 }
 
 const data: Products[] = [
@@ -144,7 +145,7 @@ const data: Products[] = [
       "Rellena con queso derretido que aporta una textura cremosa y un sabor irresistible. Ideal para el desayuno, la cena o como un antojito a cualquier hora del día, la arepa con queso combina simplicidad y sabor en cada bocado.",
     image: arepa,
     unit: "Paquete",
-    vat:0,
+    vat:0.16,
   },
 ];
 

@@ -25,6 +25,7 @@ const CartForm: React.FC = () => {
   const cart = useAppSelector((state) => state.cart.cart);
 
   const total = cart.reduce((total, item) => total + (item.subtotal ? item.subtotal : 0), 0);
+  const vatTotal = cart.reduce((total, item) => total + (item.itemVatTotal ? item.itemVatTotal : 0), 0);
 
   const validateForm = (data: FormData) => {
     return data.name !== '' &&
@@ -65,8 +66,8 @@ const CartForm: React.FC = () => {
         <p>{formatPrice(total)}</p>
       </div>
       <div className={styles.flex}>
-        <p>IVA (20%)</p>
-        <p>{formatPrice(total * .20)}</p>
+        <p>IVA</p>
+        <p>{formatPrice(vatTotal)}</p>
       </div>
       <div className={`${styles.flex} ${styles.line}`}>
         <p>Envío</p>
