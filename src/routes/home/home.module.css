@@ -7,6 +7,7 @@
 }
 
 .bannerBox {
+  margin-top: 64px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,12 +31,14 @@
   box-sizing: border-box;
   margin: 0 auto;
   justify-items: center;
+  margin: 1rem 0 1.5rem 0;
 }
 
 /* android */
 @media (min-width: 0px) {
   .cardGrid {
-    grid-template-columns: repeat(auto-fill, minmax(298px, 1fr));
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 0.5rem;
   }
 
   .bannerBox {
@@ -46,7 +49,8 @@
 /* iphone */
 @media (min-width: 430px) {
   .cardGrid {
-    grid-template-columns: repeat(auto-fill, minmax(356px, 1fr));
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 0.5rem;
   }
 
   .bannerBox {
@@ -57,7 +61,8 @@
 /* tablet */
 @media (min-width: 834px) {
   .cardGrid {
-    grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 1rem;
   }
 
   .bannerBox {
@@ -68,11 +73,25 @@
 /* laptop */
 @media (min-width: 1024px) {
   .cardGrid {
-    grid-template-columns: repeat(auto-fill, minmax(368px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+    margin-top: 1rem;
   }
 
   .bannerBox {
     margin-bottom: 3.5rem;
+  }
+}
+
+/* desktop */
+@media (min-width: 1500px) {
+  .cardGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 1rem;
+  }
+
+  .bannerBox {
+    margin-bottom: 4rem;
   }
 }

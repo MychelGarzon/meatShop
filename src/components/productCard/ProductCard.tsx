@@ -6,7 +6,7 @@ import PlusButton from "../minusPlusButton/PlusButton";
 import { useEffect, useState } from "react";
 import { setCart } from "../../store/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/useAppDispatch";
-
+import { formatPrice } from "../../helpers/formatPrice";
 
 const ProductCard: React.FC<Products> = ({ image, name, price, type, id, unit, description }) => {
   const [quantity, setQuantity] = useState<number>(useAppSelector((state) => state.cart.cart.find((item) => item.id === id)?.amount || 0))
@@ -83,17 +83,17 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type, id, unit, d
           variant="h6"
           className={styles.productPrice}
         >
-          ${price}
+          {formatPrice(price)}
         </Typography>
         <Typography
           variant="body1"
           className={styles.pricePerKilo}>
-          Precio por kilo
+          {`Precio por ${unit}`}
         </Typography>
         <Box className={styles.quantityBox}>
           <Box className={styles.minusButton} >
             <div onClick={() => handleQuantity('')}>
-              <MinusButton />
+              <MinusButton id={id} />
             </div>
           </Box>
           <Box className={styles.quantity}>

@@ -12,8 +12,6 @@
 
 .logo {
   display: flex;
-  align-items: center;
-  margin-top: -140px;
   margin-right: 25px;
   margin-left: 20px;
 }
@@ -56,6 +54,7 @@
 
 /* Media queries for responsiveness */
 @media only screen and (max-width: 700px) {
+
   /* Mobile up to iPad mini */
   .footer {
     flex-direction: row;
@@ -81,6 +80,7 @@
   .firstColumn h2 {
     margin-left: 8px;
   }
+
   .secondColumn {
     margin-left: -120px;
     margin-right: -20px;

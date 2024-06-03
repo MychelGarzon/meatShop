@@ -2,7 +2,7 @@ import { useAppSelector } from '../../hooks/useAppDispatch';
 import styles from './minusPlusButton.module.css';
 
 interface Props {
-  id: string;
+  id?: string;
 }
 
 const MinusButton: React.FC<Props> = ({ id }) => {
@@ -14,7 +14,7 @@ const MinusButton: React.FC<Props> = ({ id }) => {
   return (
     <button
       className={`${styles.minusPlusButton} ${styles.minusButton}`}
-      disabled={objById?.amount === 0}>
+      disabled={objById?.amount === 0 || objById?.amount === undefined}>
       -
     </button>
   );

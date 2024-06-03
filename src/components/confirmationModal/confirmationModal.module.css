@@ -1,72 +1,71 @@
 .overlay {
-    display: flex; 
-    position: fixed;
-    z-index: 2;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: #808080; 
-    justify-content: center;
-    align-items: center;
-    overflow: auto;
+  display: flex;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #808080;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
 }
 
 .modal {
-    border-radius: 8px;
-    display: flex;
-    position: relative;
-    z-index: 2;
-    background-color: whitesmoke;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 90%;
-    max-width: 444px;
-    text-align: center;
-    cursor: pointer;
-    margin: 0 auto;
-    top: 50px;
-    bottom: 50px; 
-    justify-content: center;
+  border-radius: 8px;
+  display: flex;
+  position: relative;
+  z-index: 2;
+  background-color: whitesmoke;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 444px;
+  text-align: center;
+  cursor: pointer;
+  margin: 0 auto;
+  top: 50px;
+  bottom: 50px;
+  justify-content: center;
 }
 
 .modal-content {
-    position: relative;
-    z-index: 3;
+  position: relative;
+  z-index: 3;
 }
 
 .buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 800px) {
-    .overlay {
-        height: 100%;
-    }
-    .modal {
-       width: 80%; 
-       padding: 15px; 
-     }
-    .buttons {
-       flex-direction: column; 
-     }
-    
-   }
-   
- 
-   @media only screen and (max-width: 932px) {
-    .modal {
-       width: 85%;
-       padding: 12px; 
-     }
-    .buttons {
-       flex-direction: column;
-     }
-  
-   }
+  .overlay {
+    height: 100%;
+  }
+
+  .modal {
+    width: 80%;
+    padding: 15px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+}
 
 
+@media only screen and (max-width: 932px) {
+  .modal {
+    width: 85%;
+    padding: 12px;
+  }
 
-   
+  .buttons {
+    flex-direction: column;
+  }
+
+}
