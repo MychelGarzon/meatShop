@@ -17,11 +17,11 @@
 }
 
 .left-col {
-  flex: 70%;
+  flex: 75%;
 }
 
 .right-col {
-  flex: 30%;
+  flex: 25%;
 }
 
 .back-btn {
