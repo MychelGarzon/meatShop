@@ -1,17 +1,20 @@
 .cart-item {
-  display: flex;
   margin-top: 2.5rem;
 }
 
 .kilo-price {
   font-size: 14px;
   font-weight: bold;
+  padding-top: 8px;
 }
 
-.cart-item > * {
-  flex: 1;
+.cart-item > div {
+  flex: 3;
   white-space: nowrap;
-  gap: 1rem;
+}
+
+.cart-item > div:nth-child(3) {
+  flex: 2;
 }
 
 .cart-item img {
@@ -41,10 +44,6 @@
   font-size: 24px;
 }
 
-.product {
-  padding-right: 16px;
-}
-
 .type {
   text-transform: capitalize;
   font-weight: 500;
@@ -60,7 +59,7 @@
 }
 
 .quantity {
-  padding: 12px 10px 6px 10px;
+  padding: 12px 16px 6px;
 }
 
 .price {
@@ -68,7 +67,7 @@
 }
 
 .mob-price {
-  padding: 8px 0;
+  padding: 12px 0 16px;
 }
 
 .delete {
@@ -80,15 +79,11 @@
   font-size: 20px;
 }
 
-.button-size {
-  font-size: 10px;
-}
-
-.hide {
+.desktop {
   display: flex;
 }
 
-.show {
+.mobile {
   display: none;
 }
 
@@ -112,11 +107,11 @@
     max-width: 400px;
  }
 
-  .show {
+  .mobile {
     display: flex;
   }
 
-  .hide {
+  .desktop {
     display: none;
   }
 }
