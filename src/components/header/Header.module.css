@@ -1,0 +1,10 @@
+.cartAmount {
+  width: 20px;
+  height: 20px;
+  background-color: #2196F3;
+  border-radius: 50%;
+  transform: translateX(-10px) translateY(-12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

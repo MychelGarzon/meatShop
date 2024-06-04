@@ -39,7 +39,7 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
 
   const updateCart = (id: string) => {
     const updatedCart: Products[] = cart.map(cartItem =>
-      cartItem.id === id ? { ...cartItem, amount: quantity, subtotal: quantity * cartItem.price } : cartItem
+      cartItem.id === id ? { ...cartItem, amount: quantity, subtotal: quantity * cartItem.price, itemVatTotal: quantity * cartItem.price * cartItem.vat } : cartItem
     );
     cart.map(cartItem => cartItem.id === id ? setPrecio(quantity * cartItem.price) : null)
 
@@ -70,18 +70,18 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
   return (
     <>
       {/* desktop view */}
-      <div className={`${styles['cart-item']} ${styles.hide}`}>
+      <div className={`${styles['cart-item']} ${styles.desktop}`}>
         <div className={styles.flex}>
           <p className={styles['line-number']}>{formatNumber(index + 1)}</p>
-          <div className={styles.product}>
+          <div>
             <img src={item.image} alt="product" />
             <p className={styles.name}>{item.name}</p>
             <p className={styles.type}>{item.type}</p>
             <p className={styles['kilo-price']}>{`${formatPrice(item.price)} / ${item.unit}`}</p>
           </div>
         </div>
-        <div className={styles.flex3}>
-          <div className={styles['button-size']} onClick={() => handleQuantity('')}>
+        <div className={styles.flex}>
+          <div onClick={() => handleQuantity('')}>
             <MinusButton id={item.id} />
           </div>
           <p className={styles.quantity}>{quantity}</p>
@@ -97,7 +97,7 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
         </div>
       </div>
       {/* mobile view */}
-      <div className={`${styles['cart-item']} ${styles.show}`}>
+      <div className={`${styles['cart-item']} ${styles.mobile}`}>
         <p className={styles['line-number']}>{formatNumber(index + 1)}</p>
         <div className={styles.flex4}>
           <div>
@@ -106,13 +106,13 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
           <div>
             <p className={styles.type}>{item.type}</p>
             <p className={styles.name}>{item.name}</p>
+            <p className={styles['kilo-price']}>{`${formatPrice(item.price)} / ${item.unit}`}</p>
             <div className={styles['mob-price']}>
-              <p className={styles['kilo-price']}>{`${formatPrice(item.price)} / ${item.unit}`}</p>
               <p className={styles.price}>{formatPrice(precio)}</p>
             </div>
             <div className={styles.flex2}>
               <div className={styles.flex3}>
-                <div className={styles['button-size']} onClick={() => handleQuantity('')}>
+                <div onClick={() => handleQuantity('')}>
                   <MinusButton id={item.id} />
                 </div>
                 <p className={styles.quantity}>{quantity}</p>

@@ -1,0 +1,27 @@
+import { Button } from '@mui/material';
+import ThankYou from '../../components/thankYou/ThankYou';
+import styles from './Success.module.css';
+import { useNavigate } from 'react-router';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { setCart } from '../../store/cartSlice';
+
+const Success: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    dispatch(setCart([]))
+    navigate('/');
+  }
+
+  return (
+    <div className={styles.success}>
+      <ThankYou />
+      <div className={styles.btn}>
+        <Button onClick={handleClick} variant='outlined' color='primary' size='large'>ir a página principal</Button>
+      </div>
+    </div>
+  )
+}
+
+export default Success;

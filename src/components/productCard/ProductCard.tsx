@@ -8,7 +8,7 @@ import { setCart } from "../../store/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/useAppDispatch";
 import { formatPrice } from "../../helpers/formatPrice";
 
-const ProductCard: React.FC<Products> = ({ image, name, price, type, id, unit, description }) => {
+const ProductCard: React.FC<Products> = ({ image, name, price, type, id, unit, vat, description }) => {
   const [quantity, setQuantity] = useState<number>(useAppSelector((state) => state.cart.cart.find((item) => item.id === id)?.amount || 0))
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart.cart)
@@ -24,7 +24,7 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type, id, unit, d
   }
 
   const addToCart = () => {
-    const newObj = { image, name, price, type, id, unit, description, amount: quantity, subtotal: quantity * price }
+    const newObj = { image, name, price, type, id, unit, description, vat, itemVatTotal: quantity * price * vat, amount: quantity, subtotal: quantity * price }
 
     // Find the index of the object with the given id
     const index = cart.findIndex(obj => obj.id === id);
@@ -35,7 +35,7 @@ const ProductCard: React.FC<Products> = ({ image, name, price, type, id, unit, d
     } else {
       // If the object exists, update its properties
       const updatedCart: Products[] = cart.map(cartItem =>
-        cartItem.id === id ? { image, name, price, type, id, unit, description, amount: quantity, subtotal: quantity * price } : cartItem
+        cartItem.id === id ? { image, name, price, type, id, unit, description, vat, itemVatTotal: quantity * cartItem.price * vat, amount: quantity, subtotal: quantity * price } : cartItem
       );
 
       dispatch(setCart(updatedCart))

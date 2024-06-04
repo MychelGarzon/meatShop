@@ -22,10 +22,13 @@ const Cart: React.FC = () => {
         </div>
         :
         <div>
-          <div className={styles.cart}>
+          <div className={`${styles.cart} ${styles.desktop}`}>
             <p>Producto</p>
-            <p className={styles.hide}>Cantidad</p>
-            <p className={styles.hide}>Precio</p>
+            <p>Cantidad</p>
+            <p>Precio</p>
+          </div>
+          <div className={`${styles.cart} ${styles.mobile}`}>
+            <p>Lista De Productos</p>
           </div>
           {cartItems.map((item, index) => (
             <CartItem key={item.id} item={item} index={index} cartItems={cartItems} setCartItems={setCartItems} />
