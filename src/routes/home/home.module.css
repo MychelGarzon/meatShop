@@ -31,7 +31,7 @@
   box-sizing: border-box;
   margin: 0 auto;
   justify-items: center;
-  margin: 1rem 0 1.5rem 0;
+  padding: 1rem;
 }
 
 /* android */
@@ -50,7 +50,8 @@
 @media (min-width: 430px) {
   .cardGrid {
     grid-template-columns: repeat(1, 1fr);
-    margin-top: 0.5rem;
+    gap: 24px;
+    padding: 1rem;
   }
 
   .bannerBox {
@@ -62,7 +63,8 @@
 @media (min-width: 834px) {
   .cardGrid {
     grid-template-columns: repeat(3, 1fr);
-    margin-top: 1rem;
+    gap: 10px;
+    padding: 1rem;
   }
 
   .bannerBox {
@@ -71,11 +73,11 @@
 }
 
 /* laptop */
-@media (min-width: 1024px) {
+@media (min-width: 1194px) {
   .cardGrid {
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin-top: 1rem;
+    padding: 1rem;
   }
 
   .bannerBox {
@@ -88,7 +90,7 @@
   .cardGrid {
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    margin-top: 1rem;
+    padding: 1rem;
   }
 
   .bannerBox {

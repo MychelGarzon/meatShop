@@ -140,7 +140,7 @@
 }
 
 /* laptop/L */
-@media (min-width: 1024px) {
+@media (min-width: 1194px) {
     .productCard {
         width: 368px !important;
         height: 594px !important;
