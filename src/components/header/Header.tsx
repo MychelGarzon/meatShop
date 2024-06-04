@@ -7,11 +7,9 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import logo from '../../assets/LogoAlCorte.svg'
 import { Link } from 'react-router-dom';
-import styles from './Header.module.css'
-
+import styles from './header.module.css'
 
 interface HeaderProps {
-
   className?: string;
 }
 
