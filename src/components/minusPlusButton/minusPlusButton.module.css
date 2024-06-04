@@ -4,8 +4,6 @@
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.347);
     padding: 0.5rem;
     border: none;
-    width: 50px;
-    height: 50px;
     font-size: 28px;
     display: flex;
     justify-content: center;
@@ -59,10 +57,10 @@
 }
 
 /* laptop */
-@media (min-width: 1024px) {
+@media (min-width: 1194px) {
     .minusPlusButton {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         font-size: 36px;
     }
 }
