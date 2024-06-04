@@ -56,6 +56,7 @@ const CartForm: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (cart.length === 0) return;
     dispatch(setUser(formData))
     console.log({ user: formData, order: cart, summary: { total } })
     navigate('/success')
