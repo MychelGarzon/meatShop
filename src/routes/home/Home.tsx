@@ -1,6 +1,7 @@
 import styles from './home.module.css'
 import Banner from '../../components/banner/Banner'
 import Filter from '../../components/filter/Filter'
+import ExtraInfoBanner from '../../components/extraInfoBanner/ExtraInfoBanner'
 import ProductCard from '../../components/productCard/ProductCard'
 import Box from '@mui/material/Box'
 import data from '../../data/data'
@@ -19,6 +20,9 @@ const Home: React.FC = () => {
     <Box className={styles.homeContainer}>
       <Box className={styles.bannerBox}>
         <Banner />
+      </Box>
+      <Box className={styles.extraInfoBox}>
+        <ExtraInfoBanner />
       </Box>
       <Box className={styles.filterBox}>
         <Filter setFilter={setFilter} />
