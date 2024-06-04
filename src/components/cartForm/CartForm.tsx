@@ -4,6 +4,7 @@ import styles from './CartForm.module.css';
 import { useAppDispatch, useAppSelector } from '../../hooks/useAppDispatch';
 import { setUser } from '../../store/userSlice';
 import { formatPrice } from '../../helpers/formatPrice';
+import { useNavigate } from 'react-router';
 
 interface FormData {
   name: string;
@@ -21,6 +22,7 @@ const CartForm: React.FC = () => {
   const [isFormCompleted, setIsFormCompleted] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>(useAppSelector((state) => state.user.user));
 
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart.cart);
 
@@ -54,6 +56,7 @@ const CartForm: React.FC = () => {
     event.preventDefault();
     dispatch(setUser(formData))
     console.log({ user: formData, order: cart, summary: { total } })
+    navigate('/success')
   };
 
   return <div className={styles['cart-form']}>

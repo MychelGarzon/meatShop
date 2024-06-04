@@ -6,41 +6,40 @@ import PageNotFound from './routes/pageNotFound/PageNotFound'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from './store/store';
 import { Provider } from 'react-redux';
+import Success from './routes/success/Success';
 
-const App: React.FC = () =>{
-  const router = createBrowserRouter ( [
-{
-path:"/",
-element:<Root/>,
-children: [
-  {
-    path: "/",
-    element: <Home />
-  },
-  {
-    path: "/cart",
-    element: <ShoppingCart />
-  },
-  {
-    path: "*",
-    element: <PageNotFound />
-  },
-],
-errorElement:<ErrorComponent/>
-
-
-},
-  
+const App: React.FC = () => {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Root />,
+      children: [
+        {
+          path: "/",
+          element: <Home />
+        },
+        {
+          path: "/cart",
+          element: <ShoppingCart />
+        },
+        {
+          path: "/success",
+          element: <Success />
+        },
+        {
+          path: "*",
+          element: <PageNotFound />
+        },
+      ],
+      errorElement: <ErrorComponent />
+    },
   ]);
+
   return (
     <Provider store={store}>
-    <RouterProvider router={router}>
-    </RouterProvider>
+      <RouterProvider router={router}></RouterProvider>
     </Provider>
   )
-  
-
 }
 
 export default App;
-
