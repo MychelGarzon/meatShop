@@ -13,9 +13,9 @@ const Footer: React.FC = () => {
         <Box className={styles.columns} >
           <Box className={styles.column}>
             <p className={styles.footerTitle}>Compañía</p>
-            <Link href="#" className={styles.footerSubTitle}>Sobre nosotros</Link>
-            <Link href="#" className={styles.footerSubTitle}>Términos y condiciones</Link>
-            <Link href="#" className={styles.footerSubTitle}>Privacidad</Link>
+            <Link href="/about" className={styles.footerSubTitle}>Sobre nosotros</Link>
+            <Link href="/terms" className={styles.footerSubTitle}>Términos y condiciones</Link>
+            <Link href="/privacy" className={styles.footerSubTitle}>Privacidad</Link>
           </Box>
           <Box className={styles.column}>
             <p className={styles.footerTitle}>Contacto</p>

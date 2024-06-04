@@ -7,6 +7,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from './store/store';
 import { Provider } from 'react-redux';
 import Success from './routes/success/Success';
+import TermsAndConditions from './routes/termsAndConditions/TermsAndConditions';
+import About from './routes/about/About';
+import Privacy from './routes/privacy/Privacy';
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -21,6 +24,18 @@ const App: React.FC = () => {
         {
           path: "/cart",
           element: <ShoppingCart />
+        },
+        {
+          path: "/about",
+          element: <About />
+        },
+        {
+          path: "/terms",
+          element: <TermsAndConditions />
+        },
+        {
+          path: "/privacy",
+          element: <Privacy />
         },
         {
           path: "/success",
