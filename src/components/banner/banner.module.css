@@ -24,7 +24,7 @@
     font-size: 64px !important;
     font-weight: 500 !important;
     text-align: center;
-    font-family: var(---titleFontFamily);
+    font-family: var(--titleFontFamily);
     z-index: 2;
     white-space: normal;
 }

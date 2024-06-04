@@ -86,3 +86,9 @@
     padding: 1rem;
   }
 }
+
+@media (max-width: 600px) {
+  .bannerBox {
+    margin-top: 56px;
+  }
+}
