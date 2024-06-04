@@ -17,7 +17,6 @@ const Header: React.FC = () => {
   return (
     <Box className={styles.headerBox} sx={{ flexGrow: 1, width: '100vw' }}>
       <AppBar className={styles.appBar} position="absolute" sx={{ backgroundColor: '#000000' }}>
-
         <Toolbar>
           <IconButton
             size="large"

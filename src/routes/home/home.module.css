@@ -54,7 +54,7 @@
 @media (min-width: 430px) {
   .cardGrid {
     grid-template-columns: repeat(1, 1fr);
-    gap: 24px;
+    gap: 32px;
     padding: 1rem;
   }
 }
@@ -64,7 +64,7 @@
   .cardGrid {
     max-width: 900px;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 56px 24px;
     padding: 1rem;
   }
 }
@@ -73,7 +73,7 @@
 @media (min-width: 1194px) {
   .cardGrid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 64px 24px;
     padding: 1rem;
   }
 }
@@ -82,7 +82,7 @@
 @media (min-width: 1500px) {
   .cardGrid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 64px 24px;
     padding: 1rem;
   }
 }
