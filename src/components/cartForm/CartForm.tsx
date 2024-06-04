@@ -69,8 +69,8 @@ const CartForm: React.FC = () => {
   };
 
   const validateOrder = () => {
-    // !isFormCompleted || cart.length === 0 || cart.length === 1 && cart[0].amount === 0
-    return !isFormCompleted || cart.length === 0 || cart.length === 1 && cart[0].amount === 0;
+    // check if the form is completed or the cart is empty or if all of the its amount properties are 0
+    return !isFormCompleted || cart.length === 0 || cart.every((item) => item.amount === 0);
   }
 
   return <div className={styles['cart-form']}>
