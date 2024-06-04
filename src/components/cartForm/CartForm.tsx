@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useAppDispatch';
 import { setUser } from '../../store/userSlice';
 import { formatPrice } from '../../helpers/formatPrice';
 import { useLocation, useNavigate } from 'react-router';
+import { Products } from '../../data/data';
+import { setCart } from '../../store/cartSlice';
 
 interface FormData {
   name: string;
@@ -54,13 +56,21 @@ const CartForm: React.FC = () => {
     });
   };
 
+  const removeZeroRows = (cart: Products[]) => {
+    return cart.filter((item: Products) => item.amount && item.amount > 0);
+  }
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (cart.length === 0) return;
     dispatch(setUser(formData))
-    console.log({ user: formData, order: cart, summary: { total } })
+    dispatch(setCart(removeZeroRows(cart)))
+    console.log({ user: formData, order: removeZeroRows(cart), summary: { total } })
     navigate('/success')
   };
+
+  const validateOrder = () => {
+    return !isFormCompleted || cart.length === 0 || cart.every((item) => item.amount === 0);
+  }
 
   return <div className={styles['cart-form']}>
     <div className={styles['total-container']}>
@@ -175,7 +185,7 @@ const CartForm: React.FC = () => {
           type="submit"
           variant="contained"
           color="primary"
-          disabled={!isFormCompleted}
+          disabled={validateOrder()}
           fullWidth>
           Enviar orden
         </Button>
