@@ -8,14 +8,11 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import logo from '../../assets/LogoAlCorte.svg'
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css'
+import { useAppSelector } from '../../hooks/useAppDispatch';
 
+const Header: React.FC = () => {
+  const cart = useAppSelector(state => state.cart.cart)
 
-interface HeaderProps {
-
-  className?: string;
-}
-
-const Header: React.FC<HeaderProps> = () => {
   return (
     <Box className={styles.headerBox} sx={{ flexGrow: 1, width: '100vw' }}>
       <AppBar className={styles.appBar} position="absolute" sx={{ backgroundColor: '#000000' }}>
@@ -37,7 +34,10 @@ const Header: React.FC<HeaderProps> = () => {
           </Typography>
 
           <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>
-            <Button color="inherit"><ShoppingCartIcon sx={{ height: 24, width: 24 }} /></Button>
+            <Button color="inherit">
+              <ShoppingCartIcon sx={{ height: 24, width: 24 }} />
+              {cart.length !== 0 && <div className={styles.cartAmount}>{cart.length}</div>}
+            </Button>
           </Link>
         </Toolbar>
       </AppBar>
