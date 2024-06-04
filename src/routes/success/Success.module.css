@@ -1,8 +1,23 @@
 .success {
   padding-top: 56px;
+  background-color: #fff;
 }
 
 .btn {
   text-align: center;
   margin-bottom: 80px;
+}
+
+.title {
+  font-family: var(--titleFontFamily);
+  font-weight: var(--titleFontWeight);
+  font-size: 24px;
+  padding: 80px 50px 0;
+}
+
+@media (max-width: 720px) {
+  .title {
+    text-align: center;
+    padding: 30px 0 0;
+  }
 }
