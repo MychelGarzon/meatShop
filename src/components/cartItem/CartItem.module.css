@@ -115,4 +115,8 @@
   .desktop {
     display: none;
   }
+
+  .mob-right-col {
+    width: 130px;
+  }
 }
