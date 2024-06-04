@@ -25,12 +25,18 @@
 /* android */
 @media (min-width: 0px) {
     .extraInfoBanner {
-        height: 388px;
+        height: 222px;
         padding: 48px, 24px, 48px, 24px;
     }
 
     .extraInfoTitle {
         width: 312px;
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+
+    .extraInfoSubTitle {
+        margin-bottom: 8px;
     }
 }
 
@@ -44,6 +50,11 @@
     .extraInfoTitle {
         font-size: 24px;
         width: 382px;
+        margin-bottom: 24px;
+    }
+
+    .extraInfoSubTitle {
+        margin-bottom: 8px;
     }
 }
 

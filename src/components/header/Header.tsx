@@ -15,7 +15,7 @@ const Header: React.FC = () => {
   const cart = useAppSelector(state => state.cart.cart)
 
   return (
-    <Box className={styles.headerBox} sx={{ flexGrow: 1, width: '100vw' }}>
+    <Box className={styles.headerBox} sx={{ flexGrow: 1, width: '100%' }}>
       <AppBar className={styles.appBar} position="fixed" sx={{ backgroundColor: '#000000' }}>
         <Toolbar>
           <IconButton
