@@ -16,8 +16,7 @@ const Header: React.FC = () => {
 
   return (
     <Box className={styles.headerBox} sx={{ flexGrow: 1, width: '100vw' }}>
-      <AppBar className={styles.appBar} position="absolute" sx={{ backgroundColor: '#000000' }}>
-
+      <AppBar className={styles.appBar} position="fixed" sx={{ backgroundColor: '#000000' }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -28,12 +27,10 @@ const Header: React.FC = () => {
           >
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-
             <Link to="/">
               <img src={logo} alt="Logo" style={{ height: '40px', width: '145px', marginTop: '8px' }} />
             </Link>
           </Typography>
-
           {(pathname !== '/success') && <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>
             <Button color="inherit">
               <ShoppingCartIcon sx={{ height: 24, width: 24 }} />
