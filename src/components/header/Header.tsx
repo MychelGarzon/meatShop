@@ -6,11 +6,12 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import logo from '../../assets/LogoAlCorte.svg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.module.css'
 import { useAppSelector } from '../../hooks/useAppDispatch';
 
 const Header: React.FC = () => {
+  const { pathname } = useLocation();
   const cart = useAppSelector(state => state.cart.cart)
 
   return (
@@ -33,12 +34,12 @@ const Header: React.FC = () => {
             </Link>
           </Typography>
 
-          <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>
+          {(pathname !== '/success') && <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>
             <Button color="inherit">
               <ShoppingCartIcon sx={{ height: 24, width: 24 }} />
               {cart.length !== 0 && <div className={styles.cartAmount}>{cart.length}</div>}
             </Button>
-          </Link>
+          </Link>}
         </Toolbar>
       </AppBar>
     </Box >
