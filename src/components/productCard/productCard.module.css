@@ -8,6 +8,7 @@
     max-width: 100% !important;
     box-shadow: none !important;
     border: 1px solid #E0E0E0 !important;
+    cursor: pointer;
 }
 
 .productCard:hover {
@@ -26,7 +27,7 @@
     display: flex !important;
     justify-content: left !important;
     align-items: center !important;
-    margin: 1.4rem 0 1.4rem !important;
+    margin: 1rem 0 0.5rem !important;
 }
 
 .minusButton {
@@ -35,6 +36,13 @@
 
 .plusButton {
     margin-left: 1rem !important;
+}
+
+.productName,
+.productType,
+.productPrice,
+.pricePerKilo {
+    line-height: 1.2;
 }
 
 /* android/XS */
@@ -47,10 +55,6 @@
     .cardMedia {
         height: 298px !important;
         width: 298px !important;
-    }
-
-    .cardContent {
-        padding: 16px !important;
     }
 
     .productType {
@@ -83,10 +87,6 @@
         width: 356px !important;
     }
 
-    .cardContent {
-        padding: 16px !important;
-    }
-
     .productType {
         font-size: 16px !important;
     }
@@ -117,10 +117,6 @@
         width: 268px !important;
     }
 
-    .cardContent {
-        padding: 16px !important;
-    }
-
     .productType {
         font-size: 16px !important;
     }
@@ -149,10 +145,6 @@
     .cardMedia {
         height: 368px !important;
         width: 368px !important;
-    }
-
-    .cardContent {
-        padding: 16px !important;
     }
 
     .productType {
