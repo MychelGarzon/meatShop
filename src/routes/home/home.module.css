@@ -79,7 +79,7 @@
 }
 
 /* desktop */
-@media (min-width: 1500px) {
+@media (min-width: 1600px) {
   .cardGrid {
     grid-template-columns: repeat(4, 1fr);
     gap: 64px 24px;

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Typography, IconButton, CardContent, CardMedia, Box } from "@mui/material";
+import { Typography, IconButton, CardContent, CardMedia, Box, useMediaQuery } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import { Products } from "../../data/data";
 import styles from './screenDetails.module.css';
 import MinusButton from '../minusPlusButton/MinusButton';
 import PlusButton from '../minusPlusButton/PlusButton';
+import { formatPrice } from '../../helpers/formatPrice';
 
 interface ScreenDetailsProps {
     product: Products;
@@ -14,30 +15,48 @@ interface ScreenDetailsProps {
 }
 
 const ScreenDetails: React.FC<ScreenDetailsProps> = ({ product, handleClose, quantity, handleQuantity }) => {
+    const isMobile = useMediaQuery('(max-width:833px)');
+
     return (
         <div className={styles.overlayScreenDetails}>
-            <Box className={styles.screenDetails}>
-                <CardMedia
-                    component="img"
-                    image={product.image}
-                    alt={product.name}
-                    className={styles.productImage}
-                />
-                <CardContent className={styles.cardDetails}>
-                    <Typography className={styles.type}>{product.type}</Typography>
-                    <Typography className={styles.nameProduct}>{product.name}</Typography>
-                    <Typography variant="body1">{product.description}</Typography>
-                    <Typography className={styles.priceInfo}>{`$ ${product.price}`}</Typography>
-                    <Typography variant="body1">{`Precio por ${product.unit}`}</Typography>
+            <Box className={styles.screenDetails} style={{ flexDirection: isMobile ? 'column' : 'row' }}>
+                {isMobile ? (
+                    <>
+                        <Typography variant="h6" className={styles.type}>{product.type}</Typography>
+                        <Typography variant="h4" className={styles.nameProduct}>{product.name}</Typography>
+                        <CardMedia
+                            component="img"
+                            image={product.image}
+                            alt={product.name}
+                            className={styles.productImage}
+                        />
+                    </>
+                ) : (
+                    <CardMedia
+                        component="img"
+                        image={product.image}
+                        alt={product.name}
+                        className={styles.productImage}
+                    />
+                )}
+                <CardContent className={styles.cardContent}>
+                    {!isMobile && (
+                        <>
+                            <Typography variant="h6" className={styles.type}>{product.type}</Typography>
+                            <Typography variant="h4" className={styles.nameProduct}>{product.name}</Typography>
+                        </>
+                    )}
+                    <Typography variant="body1" className={styles.cardDetails}>{product.description}</Typography>
+                    <Typography variant="h4" className={styles.priceInfo}>{formatPrice(product.price)}</Typography>
+                    <Typography variant="body2">{`Precio por ${product.unit}`}</Typography>
                     <Box className={styles.quantityBoxDetails}>
                         <Box className={styles.minusButton}>
                             <div onClick={(e) => { e.stopPropagation(); handleQuantity('subtract'); }}>
                                 <MinusButton id={product.id} />
-
                             </div>
                         </Box>
                         <Box className={styles.quantity}>
-                            <Typography>{quantity}</Typography>
+                            <Typography variant="body1">{quantity}</Typography>
                         </Box>
                         <Box className={styles.plusButton}>
                             <div onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
