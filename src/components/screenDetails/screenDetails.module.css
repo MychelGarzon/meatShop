@@ -5,59 +5,63 @@
   left: 0;
   top: 0;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.9); 
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .screenDetails {
+  position: relative;
   display: flex;
   flex-direction: row;
   background-color: black;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   color: white;
-  max-width: 1284px;
-  max-height: 496px;
-  margin: 264px 78;
-}
-
-.productImage {
-  max-width: 400px;
-  max-height: 400px;
-  margin: 48px;
+  max-width: 894px;
+  max-height: 538px;
+  font-family: var(--subTittleFontFamily);
 }
 
 .nameProduct {
-  font-size: 70px !important;
+  font-size: 60px !important;
   margin-bottom: 16px !important;
+  font-weight: 300;
+  text-align: left;
 }
 
-.cardDetails {
-  margin-top: 35px;
+.cardContent {
+  margin: 20px 0;
+  font-size: 16px;
+  font-weight: 400;
   background-color: black;
   color: white;
 }
 
 .type {
   font-size: 20px;
+  font-weight: 500;
   text-transform: capitalize;
+  margin-bottom: 5px;
 }
 
 .priceInfo {
-  font-size: 60px !important;
+  font-size: 48px !important;
+  margin: 8px 0;
+  text-align: left;
 }
 
 .closeIconBox {
-  margin: 35px 35px 0 0;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 10px 10px 0 0;
 }
 
 .closeIcon {
   color: white;
-  top: 10px;
-  right: 10px;
 }
 
 .quantityBoxDetails {
@@ -75,7 +79,30 @@
   margin-left: 1rem !important;
 }
 
-@media only screen and (min-width: 834px) and (max-width: 1194px) {
+/* desktop and laptop */
+@media (min-width: 1195px) {
+  .screenDetails {
+    max-width: 1284px;
+    max-height: 496px;
+  }
+
+  .nameProduct {
+    font-size: 60px !important;
+  }
+
+  .priceInfo {
+    font-size: 48px !important;
+  }
+
+  .productImage {
+    margin: 40px;
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* tablet */
+@media (min-width: 834px) and (max-width: 1194px) {
   .nameProduct {
     font-size: 50px !important;
   }
@@ -85,68 +112,92 @@
   }
 
   .productImage {
+    margin: 40px;
     max-width: 228px;
     max-height: 228px;
   }
 
-  .screenDetails {
-    min-width: 894px;
-    min-height: 538px;
-    margin: 150px;
+  .cardDetails {
+    padding-right: 16px;
   }
 
-  h6 {
-    font-size: 48px;
+  .screenDetails {
+    min-width: 894px;
+    max-height: 538px;
   }
 }
 
-@media only screen and (max-width: 833px) and (min-width: 360px) {
+/* iphone */
+@media (min-width: 430px) and (max-width: 833px) {
   .screenDetails {
-    flex-direction: column;
     max-width: 356px;
     max-height: 813px;
-    margin: 50px 37px;
+    padding: 20px;
   }
 
-  .type {
-    order: 1;
-    font-size: 30px !important;  
+  .cardContent {
+    margin-left: 10px;
+    margin-top: 0;
   }
 
   .nameProduct {
-    font-size: 30px !important;
-    order: 2;
+    font-size: 34px !important;
+    text-align: left;
   }
 
   .priceInfo {
     font-size: 30px !important;
-    order: 3;
+    text-align: left;
   }
 
- .productImage {
+  .productImage {
     max-width: 308px;
     max-height: 308px;
-    order: 4;
-   margin: 24px; 
+    margin: 0;
+    align-self: center;
+  }
 
- }
+  .nameProduct {
+    margin-left: 20px;
+  }
 
- .closeIconBox {
-  order: 1;
-  position: absolute;
-margin-left: 20rem;}
-
-
-  h6 {
-    font-size: 34px;
+  .type {
+    margin-left: 20px;
   }
 }
 
-@media  screen and (min-width: 360px) {
+/* android */
+@media (max-width: 429px) {
+  .screenDetails {
+    max-width: 298px;
+    max-height: 813px;
+    padding: 20px;
+  }
+
+  .cardContent {
+    margin-left: 10px;
+    margin-top: 0;
+    padding-bottom: 0 !important;
+  }
+
+  .nameProduct {
+    font-size: 30px !important;
+    margin-left: 20px;
+  }
+
+  .type {
+    margin-left: 20px;
+  }
+
+  .priceInfo {
+    font-size: 30px !important;
+    text-align: left;
+  }
 
   .productImage {
     max-width: 250px;
     max-height: 250px;
-
- }
+    margin: 0;
+    align-self: center;
+  }
 }
