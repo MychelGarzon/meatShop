@@ -7,7 +7,7 @@ interface RouteError {
   message?: string;
 }
 
-const Error: React.FC = () => {
+const ErrorComponent: React.FC = () => {
   const error = useRouteError() as RouteError;
   return (
     <div>
@@ -18,10 +18,10 @@ const Error: React.FC = () => {
           <p>Status Text: {error.statusText}</p>
         </>
       ) : (
-        <p>{error.message || 'An unexpected error occurred'}</p>
+        <p>{error.message ?? 'An unexpected error occurred'}</p>
       )}
     </div>
   );
 };
 
-export default Error;
+export default ErrorComponent;

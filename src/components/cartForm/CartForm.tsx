@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useAppDispatch';
 import { setUser } from '../../store/userSlice';
 import { formatPrice } from '../../helpers/formatPrice';
 import { useLocation, useNavigate } from 'react-router';
-import { Products } from '../../data/data';
+import { Product } from '../../data/data';
 import { setCart } from '../../store/cartSlice';
 
 interface FormData {
@@ -56,8 +56,8 @@ const CartForm: React.FC = () => {
     });
   };
 
-  const removeZeroRows = (cart: Products[]) => {
-    return cart.filter((item: Products) => item.amount && item.amount > 0);
+  const removeZeroRows = (cart: Product[]) => {
+    return cart.filter((item: Product) => item.amount && item.amount > 0);
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

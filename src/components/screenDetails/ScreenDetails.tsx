@@ -1,14 +1,14 @@
 import React from 'react';
 import { Typography, IconButton, CardContent, CardMedia, Box, useMediaQuery } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
-import { Products } from "../../data/data";
+import { Product } from "../../data/data";
 import styles from './screenDetails.module.css';
 import MinusButton from '../minusPlusButton/MinusButton';
 import PlusButton from '../minusPlusButton/PlusButton';
 import { formatPrice } from '../../helpers/formatPrice';
 
 interface ScreenDetailsProps {
-    product: Products;
+    product: Product;
     handleClose: () => void;
     quantity: number;
     handleQuantity: (action: string) => void;
@@ -51,7 +51,7 @@ const ScreenDetails: React.FC<ScreenDetailsProps> = ({ product, handleClose, qua
                     <Typography variant="body2">{`Precio por ${product.unit}`}</Typography>
                     <Box className={styles.quantityBoxDetails}>
                         <Box className={styles.minusButton}>
-                            <div onClick={(e) => { e.stopPropagation(); handleQuantity('subtract'); }}>
+                            <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('subtract'); }}>
                                 <MinusButton id={product.id} />
                             </div>
                         </Box>
@@ -59,7 +59,7 @@ const ScreenDetails: React.FC<ScreenDetailsProps> = ({ product, handleClose, qua
                             <Typography variant="body1">{quantity}</Typography>
                         </Box>
                         <Box className={styles.plusButton}>
-                            <div onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
+                            <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
                                 <PlusButton />
                             </div>
                         </Box>

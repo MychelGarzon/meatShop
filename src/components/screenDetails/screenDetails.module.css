@@ -140,11 +140,6 @@
     margin-top: 0;
   }
 
-  .nameProduct {
-    font-size: 34px !important;
-    text-align: left;
-  }
-
   .priceInfo {
     font-size: 30px !important;
     text-align: left;
@@ -158,6 +153,8 @@
   }
 
   .nameProduct {
+    font-size: 34px !important;
+    text-align: left;
     margin-left: 20px;
   }
 

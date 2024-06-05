@@ -20,7 +20,7 @@ import pechuga from "../assets/chicken/pechuga.jpg";
 
 import arepa from "../assets/others/arepa.jpg";
 
-export interface Products {
+export interface Product {
   id: string;
   name: string;
   price: number;
@@ -30,11 +30,11 @@ export interface Products {
   image: string;
   amount?: number;
   subtotal?: number;
-  vat:number;
+  vat: number;
   itemVatTotal?: number;
 }
 
-const data: Products[] = [
+const data: Product[] = [
   /* Beef */
   {
     id: "1",
@@ -45,7 +45,7 @@ const data: Products[] = [
       "El ojo de bife es un corte de carne jugoso y tierno del lomo de la res, conocido por su sabor intenso y su marmoleado, ideal para asados y parrillas.",
     image: ojoDeBife,
     unit: "lb.",
-    vat:0,
+    vat: 0,
   },
   {
     id: "2",
@@ -56,7 +56,7 @@ const data: Products[] = [
       "La pechuga de pollo es un corte magro y versátil de carne blanca, apreciado por su alto contenido de proteínas y su capacidad para adaptarse a diversas preparaciones culinarias, desde asados hasta salteados y rellenos.",
     image: pechuga,
     unit: "Libra",
-    vat:0,
+    vat: 0,
   },
   /*Pork*/
   {
@@ -68,7 +68,7 @@ const data: Products[] = [
       "El lomo de cerdo es un corte magro y tierno de la espalda del cerdo, valorado por su sabor suave y versatilidad en una variedad de preparaciones culinarias, desde asados hasta filetes.",
     image: lomoCerdo,
     unit: "lb.",
-    vat:0,
+    vat: 0,
   },
   {
     id: "4",
@@ -79,7 +79,7 @@ const data: Products[] = [
       "El lomo de res es un corte magro y tierno de la espalda de la res, valorado por su sabor suave y versatilidad en una variedad de preparaciones culinarias, desde asados hasta filetes.",
     image: lomoRes,
     unit: "lb.",
-    vat:0,
+    vat: 0,
   },
   {
     id: "5",
@@ -90,7 +90,7 @@ const data: Products[] = [
       "Este corte, apreciado por su sabor intenso y textura única, es perfecto para preparar guisos y estofados que se derriten en la boca, brindando una experiencia culinaria irresistible.",
     image: codito,
     unit: "lb.",
-    vat:0,
+    vat: 0,
   },
   {
     id: "6",
@@ -101,7 +101,7 @@ const data: Products[] = [
       "El tocino barriguero es un corte premium del cerdo, proveniente de la parte baja del vientre, conocido por su jugosidad y su irresistible sabor. Con su equilibrada combinación de carne y grasa, es ideal para darle un toque gourmet a cualquier platillo, ya sea en crujientes frituras, ahumados deliciosos.",
     image: tocinoBarriguero,
     unit: "lb.",
-    vat:0,
+    vat: 0,
   },
   {
     id: "7",
@@ -112,7 +112,7 @@ const data: Products[] = [
       "Es un corte específico de carne de res conocido por su versatilidad y ternura. Proveniente de la parte del cuarto trasero, este corte es ideal para guisos y estofados debido a su capacidad de absorber sabores y mantenerse jugoso durante la cocción. Su textura suave y sabor robusto lo hacen perfecto para preparar platos tradicionales y contemporáneos que deleitan el paladar.",
     image: goulash,
     unit: "lb.",
-    vat:0,
+    vat: 0,
   },
   {
     id: "8",
@@ -123,7 +123,7 @@ const data: Products[] = [
       "Proviene de la parte baja del lomo y es conocido por su suavidad y jugosidad. Este corte es ideal para una variedad de preparaciones culinarias, desde asados a la parrilla hasta guisos y estofados, ofreciendo una experiencia gastronómica deliciosa y satisfactoria.",
     image: murillo,
     unit: "lb.",
-    vat:0,
+    vat: 0,
   },
   {
     id: "9",
@@ -134,7 +134,7 @@ const data: Products[] = [
       "La pierna pernil de pollo es una de las partes más jugosas y sabrosas del ave, conocida por su carne tierna y su piel crujiente cuando se asa o se fríe. Este corte es muy versátil, ideal para una amplia gama de preparaciones culinarias que van desde guisos y estofados hasta asados y barbacoas, proporcionando siempre un bocado delicioso y lleno de sabor.",
     image: piernaPernil,
     unit: "lb.",
-    vat:0,
+    vat: 0,
   },
   {
     id: "10",
@@ -145,7 +145,7 @@ const data: Products[] = [
       "Rellena con queso derretido que aporta una textura cremosa y un sabor irresistible. Ideal para el desayuno, la cena o como un antojito a cualquier hora del día, la arepa con queso combina simplicidad y sabor en cada bocado.",
     image: arepa,
     unit: "Paquete",
-    vat:0.16,
+    vat: 0.16,
   },
 ];
 
