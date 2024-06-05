@@ -18,6 +18,7 @@
 
 .left-col {
   flex: 75%;
+  padding-right: 30px;
 }
 
 .right-col {
@@ -34,7 +35,7 @@
   background-color: #FFF;
 }
 
-@media (max-width: 833px) {
+@media (max-width: 920px) {
   .cols {
     flex-direction: column;
     align-items: stretch;
@@ -45,7 +46,7 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 650px) {
   .shopping-cart {
     background-color: #FFF;
   }
