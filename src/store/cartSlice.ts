@@ -1,14 +1,13 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import /* data,  */{ Products } from "../data/data";
+import { Product } from "../data/data";
  
 // Define slice state type
 export interface CartState {
-  cart: Products[]
+  cart: Product[]
 }
  
 // Initial state
 const initialState: CartState = {
-    // cart: data
     cart: []
 };
  

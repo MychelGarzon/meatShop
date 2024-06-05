@@ -10,14 +10,14 @@ import { setCart } from '../../store/cartSlice';
 
 import { formatNumber } from '../../helpers/formatNumber';
 import { formatPrice } from '../../helpers/formatPrice';
-import { Products } from '../../data/data';
+import { Product } from '../../data/data';
 import { useLocation } from 'react-router';
 
 interface Props {
   index: number;
-  item: Products;
-  cartItems: Products[];
-  setCartItems: React.Dispatch<React.SetStateAction<Products[]>>;
+  item: Product;
+  cartItems: Product[];
+  setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
 }
 
 const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
@@ -32,15 +32,13 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
   const handleQuantity = (action: string) => {
     if (action === 'add') {
       setQuantity((prevQuantity) => prevQuantity + 1)
-    } else {
-      if (quantity > 0) {
-        setQuantity((prevQuantity) => prevQuantity - 1)
-      }
+    } else if (quantity > 0) {
+      setQuantity((prevQuantity) => prevQuantity - 1)
     }
   }
 
   const updateCart = (id: string) => {
-    const updatedCart: Products[] = cart.map(cartItem =>
+    const updatedCart: Product[] = cart.map(cartItem =>
       cartItem.id === id ? { ...cartItem, amount: quantity, subtotal: quantity * cartItem.price, itemVatTotal: quantity * cartItem.price * cartItem.vat } : cartItem
     );
     cart.map(cartItem => cartItem.id === id ? setPrecio(quantity * cartItem.price) : null)
@@ -83,11 +81,11 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
           </div>
         </div>
         <div className={styles.flex}>
-          {pathname !== '/success' && <div onClick={() => handleQuantity('')}>
+          {pathname !== '/success' && <div role="button" onClick={() => handleQuantity('')}>
             <MinusButton id={item.id} />
           </div>}
           <p className={styles.quantity}>{quantity} {pathname === '/success' && item.unit}</p>
-          {pathname !== '/success' && <div onClick={() => handleQuantity('add')}>
+          {pathname !== '/success' && <div role="button" onClick={() => handleQuantity('add')}>
             <PlusButton />
           </div>}
         </div>
@@ -114,11 +112,11 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
             </div>
             <div className={styles.flex2}>
               <div className={styles.flex3}>
-                {pathname !== '/success' && <div onClick={() => handleQuantity('')}>
+                {pathname !== '/success' && <div role="button" onClick={() => handleQuantity('')}>
                   <MinusButton id={item.id} />
                 </div>}
                 <p className={styles.quantity}>{quantity} {pathname === '/success' && item.unit}</p>
-                {pathname !== '/success' && <div onClick={() => handleQuantity('add')}>
+                {pathname !== '/success' && <div role="button" onClick={() => handleQuantity('add')}>
                   <PlusButton />
                 </div>}
               </div>
