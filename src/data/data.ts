@@ -55,7 +55,7 @@ const data: Products[] = [
     description:
       "La pechuga de pollo es un corte magro y versátil de carne blanca, apreciado por su alto contenido de proteínas y su capacidad para adaptarse a diversas preparaciones culinarias, desde asados hasta salteados y rellenos.",
     image: pechuga,
-    unit: "lb.",
+    unit: "Libra",
     vat:0,
   },
   /*Pork*/
