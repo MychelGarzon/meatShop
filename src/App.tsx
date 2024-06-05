@@ -1,15 +1,19 @@
 import Root from './layout/Root';
-import Home from './routes/home/Home';
-import ShoppingCart from './routes/shoppingCart/ShoppingCart';
 import ErrorComponent from './components/errorComponent/ErrorComponent';
-import PageNotFound from './routes/pageNotFound/PageNotFound'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from './store/store';
 import { Provider } from 'react-redux';
-import Success from './routes/success/Success';
-import TermsAndConditions from './routes/termsAndConditions/TermsAndConditions';
-import About from './routes/about/About';
-import Privacy from './routes/privacy/Privacy';
+
+// lazy load routes
+import { lazy } from 'react';
+
+const Home = lazy(() => import('./routes/home/Home'));
+const PageNotFound = lazy(() => import('./routes/pageNotFound/PageNotFound'));
+const TermsAndConditions = lazy(() => import('./routes/termsAndConditions/TermsAndConditions'));
+const ShoppingCart = lazy(() => import('./routes/shoppingCart/ShoppingCart'));
+const About = lazy(() => import('./routes/about/About'));
+const Success = lazy(() => import('./routes/success/Success'));
+const Privacy = lazy(() => import('./routes/privacy/Privacy'));
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
