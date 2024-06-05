@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
     <Box className={styles.footer}>
       <Box className={styles.allColumns}>
         <Box className={styles.logo}>
-          <img src={logo} alt="Logo" />
+          <img src={logo} alt="Logo" width={'160.92px'} height={'40px'} />
         </Box>
         <Box className={styles.columns} >
           <Box className={styles.column}>
