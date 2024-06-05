@@ -73,6 +73,7 @@
 
 .delete {
   padding-top: 10px;
+  cursor: pointer;
 }
 
 .quantity, .price {
