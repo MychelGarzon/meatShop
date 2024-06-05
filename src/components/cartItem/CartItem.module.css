@@ -88,7 +88,7 @@
   display: none;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 520px) {
   .cart-item {
     flex-direction: column;
   }
@@ -117,6 +117,6 @@
   }
 
   .mob-right-col {
-    width: 130px;
+    width: 150px;
   }
 }

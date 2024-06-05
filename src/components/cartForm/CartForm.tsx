@@ -95,7 +95,7 @@ const CartForm: React.FC = () => {
       </div>
     </div>
 
-    {pathname !== '/success' && <><p className={styles.title}>Tus datos para la orden</p>
+    {pathname !== '/success' && <><p className={`${styles.title} ${styles.gap}`}>Tus datos para la orden</p>
       <small className={styles.light}>* Campo obligatorio</small>
 
       <form onSubmit={handleSubmit} className={styles.form}>
@@ -116,6 +116,7 @@ const CartForm: React.FC = () => {
             name='city'
             value={formData?.city}
             onChange={handleChange}
+            label="Ciudad "
           >
             {cities.map((city) => (
               <MenuItem key={city} value={city}>{city}</MenuItem>

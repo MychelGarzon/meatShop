@@ -28,7 +28,7 @@ const Cart: React.FC = () => {
             <p>Precio</p>
           </div>
           <div className={`${styles.cart} ${styles.mobile}`}>
-            <p>Lista De Productos</p>
+            <p>Lista de productos</p>
           </div>
           {cartItems.map((item, index) => (
             <CartItem key={item.id} item={item} index={index} cartItems={cartItems} setCartItems={setCartItems} />
