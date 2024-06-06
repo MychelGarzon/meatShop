@@ -2,14 +2,14 @@ import { Box, Chip } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import styles from './filter.module.css';
 import React, { useEffect } from 'react';
-import { Products } from '../../data/data';
+import { Product } from '../../data/data';
 
 const filterAll = 'todas';
 const filterOther = 'otros';
 const filterCategories = ['res', 'cerdo', 'pollo', 'charcutería', filterOther];
 
 type FilterProps = {
-  data: Products[];
+  data: Product[];
   setFilteredProducts: (products: unknown[]) => void;
 };
 
