@@ -10,6 +10,7 @@ const Success: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  // empty the cart and navigate to the home page
   const handleClick = () => {
     dispatch(setCart([]))
     navigate('/');

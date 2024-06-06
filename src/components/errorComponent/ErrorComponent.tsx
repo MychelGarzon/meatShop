@@ -7,6 +7,7 @@ interface RouteError {
   message?: string;
 }
 
+// shows the error messages rendered on the page when an error occurs
 const ErrorComponent: React.FC = () => {
   const error = useRouteError() as RouteError;
   return (
