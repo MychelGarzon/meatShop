@@ -7,6 +7,7 @@ import { formatPrice } from '../../helpers/formatPrice';
 import { useLocation, useNavigate } from 'react-router';
 import { Product } from '../../data/data';
 import { setCart } from '../../store/cartSlice';
+import axios from 'axios';
 
 interface FormData {
   name: string;
@@ -68,7 +69,12 @@ const CartForm: React.FC = () => {
     dispatch(setUser(formData))
     dispatch(setCart(removeZeroRows(cart)))
     // this is a mock of the order submission
-    console.log({ user: formData, order: removeZeroRows(cart), summary: { total } })
+    axios.post('https://by7lazbnj4.execute-api.sa-east-1.amazonaws.com/prod/order',
+      { message: 'hello' }).catch((error) => {
+        console.log(error);
+      })
+
+    console.log({ user: formData, order: removeZeroRows(cart), totalPrice: { total } })
     navigate('/success')
   };
 
