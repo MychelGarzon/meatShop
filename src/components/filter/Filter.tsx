@@ -18,8 +18,11 @@ const Filter: React.FC<FilterProps> = ({ data, setFilteredProducts }) => {
 
   useEffect(() => {
     const filteredProducts = data.filter((product) => {
+      // If the filter includes "Todas" or no filter is selected, return all products
       if (typeFilter.includes(filterAll) || typeFilter.length === 0) return true;
+      // If the filter includes "Otros" and the product type is not in the filter categories, return the product
       if (typeFilter.includes(filterOther) && !filterCategories.includes(product.type)) return true;
+      // If the filter includes the product type, return the product
       return typeFilter.includes(product.type);
     });
 
@@ -27,13 +30,17 @@ const Filter: React.FC<FilterProps> = ({ data, setFilteredProducts }) => {
   }, [typeFilter, data, setFilteredProducts]);
 
   const handleFilter = (newFilter: string) => {
+    // If the filter is "Todas", then select only "Todas"
     if (newFilter === filterAll) {
       setTypeFilter([filterAll]);
+      // If the filter includes "Todas", then remove it and add the new filter
     } else if (typeFilter.includes(filterAll)) {
       setTypeFilter([newFilter]);
+      // If the filter includes the new filter, then remove it from the current filters
     } else if (typeFilter.includes(newFilter)) {
       const updatedFilter = typeFilter.filter((f: string) => f !== newFilter);
       setTypeFilter(updatedFilter);
+      // If the filter does not include the new filter, then add it
     } else {
       const updatedFilter = [...typeFilter, newFilter];
       setTypeFilter(updatedFilter);
@@ -41,6 +48,7 @@ const Filter: React.FC<FilterProps> = ({ data, setFilteredProducts }) => {
   }
 
   const handleDelete = (filter: string) => {
+    // Remove the selected filter
     const newFilter = typeFilter.filter(f => f !== filter);
     setTypeFilter(newFilter);
   }
