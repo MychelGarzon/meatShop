@@ -4,7 +4,7 @@ import styles from './filter.module.css';
 import React, { useEffect } from 'react';
 import { Products } from '../../data/data';
 
-const filterAll = "todas";
+const filterAll = 'todas';
 const filterOther = 'otros';
 const filterCategories = ['res', 'cerdo', 'pollo', 'charcutería', filterOther];
 
