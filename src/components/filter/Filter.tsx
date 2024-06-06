@@ -1,37 +1,48 @@
 import { Box, Chip } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import styles from './filter.module.css';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Products } from '../../data/data';
+
+const filterAll = "todas";
+const filterOther = 'otros';
+const filterCategories = ['res', 'cerdo', 'pollo', 'charcutería', filterOther];
 
 type FilterProps = {
-  setFilter: (filter: string[]) => void;
+  data: Products[];
+  setFilteredProducts: (products: unknown[]) => void;
 };
 
-const Filter: React.FC<FilterProps> = ({ setFilter }) => {
-  const [selectedFilter, setSelectedFilter] = React.useState<string[]>([]);
+const Filter: React.FC<FilterProps> = ({ data, setFilteredProducts }) => {
+  const [typeFilter, setTypeFilter] = React.useState<string[]>([filterAll]);
 
-  const handleFilter = (filter: string) => {
-    if (filter === 'Todas') {
-      setSelectedFilter(['Todas']);
-      setFilter(['Todas']);
-    } else if (selectedFilter.includes('Todas')) {
-      setSelectedFilter([filter]);
-      setFilter([filter]);
-    } else if (selectedFilter.includes(filter)) {
-      const newFilter = selectedFilter.filter(f => f !== filter);
-      setSelectedFilter(newFilter);
-      setFilter(newFilter);
+  useEffect(() => {
+    const filteredProducts = data.filter((product) => {
+      if (typeFilter.includes(filterAll) || typeFilter.length === 0) return true;
+      if (typeFilter.includes(filterOther) && !filterCategories.includes(product.type)) return true;
+      return typeFilter.includes(product.type);
+    });
+
+    setFilteredProducts(filteredProducts);
+  }, [typeFilter, data, setFilteredProducts]);
+
+  const handleFilter = (newFilter: string) => {
+    if (newFilter === filterAll) {
+      setTypeFilter([filterAll]);
+    } else if (typeFilter.includes(filterAll)) {
+      setTypeFilter([newFilter]);
+    } else if (typeFilter.includes(newFilter)) {
+      const updatedFilter = typeFilter.filter((f: string) => f !== newFilter);
+      setTypeFilter(updatedFilter);
     } else {
-      const newFilter = [...selectedFilter, filter];
-      setSelectedFilter(newFilter);
-      setFilter(newFilter);
+      const updatedFilter = [...typeFilter, newFilter];
+      setTypeFilter(updatedFilter);
     }
   }
 
   const handleDelete = (filter: string) => {
-    const newFilter = selectedFilter.filter(f => f !== filter);
-    setSelectedFilter(newFilter);
-    setFilter(newFilter);
+    const newFilter = typeFilter.filter(f => f !== filter);
+    setTypeFilter(newFilter);
   }
 
   return (
@@ -45,12 +56,12 @@ const Filter: React.FC<FilterProps> = ({ setFilter }) => {
           color="primary"
           size="medium"
           variant="filled"
-          className={selectedFilter.includes("Todas") ? styles.chipClicked : styles.todasChip}
+          className={typeFilter.includes(filterAll) ? styles.chipClicked : styles.todasChip}
           component="button"
-          onClick={() => handleFilter("Todas")}
+          onClick={() => handleFilter(filterAll)}
         />
         <Box className={styles.divider} />
-        {["res", "cerdo", "pollo", "charcutería", "otros"].map((label) => (
+        {filterCategories.map((label) => (
           <Chip
             key={label}
             label={label.charAt(0).toUpperCase() + label.slice(1)}
@@ -59,9 +70,9 @@ const Filter: React.FC<FilterProps> = ({ setFilter }) => {
             variant="outlined"
             component="button"
             onClick={() => handleFilter(label)}
-            className={selectedFilter.includes(label) ? styles.chipClicked : styles.separateChip}
+            className={typeFilter.includes(label) ? styles.chipClicked : styles.separateChip}
             onDelete={() => handleDelete(label)}
-            deleteIcon={selectedFilter.includes(label) ? <CancelIcon style={{ color: 'lightgrey', opacity: "0.7" }} /> : <span />}
+            deleteIcon={typeFilter.includes(label) ? <CancelIcon style={{ color: 'lightgrey', opacity: "0.7" }} /> : <span />}
           />
         ))}
       </Box>
