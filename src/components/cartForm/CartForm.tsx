@@ -29,10 +29,10 @@ const CartForm: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const cart = useAppSelector((state) => state.cart.cart);
-
   const total = cart.reduce((total, item) => total + (item.subtotal ? item.subtotal : 0), 0);
   const vatTotal = cart.reduce((total, item) => total + (item.itemVatTotal ? item.itemVatTotal : 0), 0);
 
+  // validate if the form is completed (all the required fields are filled)
   const validateForm = (data: FormData) => {
     return data.name !== '' &&
       data.city !== '' &&
@@ -47,6 +47,7 @@ const CartForm: React.FC = () => {
     setIsFormCompleted(validateForm(formData));
   }, [formData]);
 
+  // update the state when user fills the form
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>) => {
     const target = event.target as HTMLInputElement;
     const { name, value } = target;
@@ -56,18 +57,23 @@ const CartForm: React.FC = () => {
     });
   };
 
+  // remove products with amount of 0 from the cart
   const removeZeroRows = (cart: Product[]) => {
     return cart.filter((item: Product) => item.amount && item.amount > 0);
   }
 
+  // update user and cart states and navigate to the success page
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(setUser(formData))
     dispatch(setCart(removeZeroRows(cart)))
+    // this is a mock of the order submission
     console.log({ user: formData, order: removeZeroRows(cart), summary: { total } })
     navigate('/success')
   };
 
+  /* user has to fill the form and add at least one item to cart to place an order,
+  user can leave products with amount of zero on the cart, but all of them can't be amount of zero*/
   const validateOrder = () => {
     return !isFormCompleted || cart.length === 0 || cart.every((item) => item.amount === 0);
   }

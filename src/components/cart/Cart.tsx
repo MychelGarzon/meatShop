@@ -1,18 +1,15 @@
 import { Link } from 'react-router-dom';
-
 import styles from './Cart.module.css'
 import { Button } from '@mui/material';
-
 import CartItem from '../cartItem/CartItem';
-import { useState } from 'react';
 import { useAppSelector } from '../../hooks/useAppDispatch';
 
 const Cart: React.FC = () => {
-  const [cartItems, setCartItems] = useState(useAppSelector((state) => state.cart.cart))
+  const cart = useAppSelector((state) => state.cart.cart)
 
   return (
     <>
-      {cartItems.length === 0
+      {cart.length === 0
         ?
         <div className={styles['no-items']}>
           <p>Aún no tienes productos seleccionados</p>
@@ -30,8 +27,8 @@ const Cart: React.FC = () => {
           <div className={`${styles.cart} ${styles.mobile}`}>
             <p>Lista de productos</p>
           </div>
-          {cartItems.map((item, index) => (
-            <CartItem key={item.id} item={item} index={index} cartItems={cartItems} setCartItems={setCartItems} />
+          {cart.map((item, index) => (
+            <CartItem key={item.id} item={item} index={index} cart={cart} />
           ))}
         </div>}
     </>

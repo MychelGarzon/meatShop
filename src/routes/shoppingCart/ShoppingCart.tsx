@@ -1,13 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
-
 import styles from './ShoppingCart.module.css'
 import { Button } from '@mui/material'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
-
 import Cart from '../../components/cart/Cart'
 import CartForm from '../../components/cartForm/CartForm'
 
 const ShoppingCart: React.FC = () => {
+    // affect styling and layout based on the current route
     const { pathname } = useLocation();
 
     return (

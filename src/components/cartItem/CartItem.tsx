@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './CartItem.module.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ConfirmationModal from '../confirmationModal/ConfirmationModal';
 
 import MinusButton from '../minusPlusButton/MinusButton';
 import PlusButton from '../minusPlusButton/PlusButton';
-import { useAppDispatch, useAppSelector } from '../../hooks/useAppDispatch';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { setCart } from '../../store/cartSlice';
 
 import { formatNumber } from '../../helpers/formatNumber';
@@ -16,19 +16,19 @@ import { useLocation } from 'react-router';
 interface Props {
   index: number;
   item: Product;
-  cartItems: Product[];
-  setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
+  cart: Product[];
 }
 
-const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
+const CartItem: React.FC<Props> = ({ index, item, cart }) => {
   const [quantity, setQuantity] = useState<number>(item.amount || 0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [precio, setPrecio] = useState<number>(item.subtotal || 0);
 
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();
-  const cart = useAppSelector((state) => state.cart.cart);
+  const prevQuantityRef = useRef(quantity);
 
+  // increase or decrease the quantity of the product
   const handleQuantity = (action: string) => {
     if (action === 'add') {
       setQuantity((prevQuantity) => prevQuantity + 1)
@@ -37,27 +37,30 @@ const CartItem: React.FC<Props> = ({ index, item, setCartItems }) => {
     }
   }
 
-  const updateCart = (id: string) => {
+  /* update the cart with the new quantity:
+  calculate new subtotal and vat total for the cart item */
+  const updateCart = useCallback((id: string) => {
     const updatedCart: Product[] = cart.map(cartItem =>
       cartItem.id === id ? { ...cartItem, amount: quantity, subtotal: quantity * cartItem.price, itemVatTotal: quantity * cartItem.price * cartItem.vat } : cartItem
     );
     cart.map(cartItem => cartItem.id === id ? setPrecio(quantity * cartItem.price) : null)
 
     dispatch(setCart(updatedCart))
-  }
+  }, [cart, quantity, dispatch, setPrecio]);
 
+  useEffect(() => {
+    if (quantity !== prevQuantityRef.current) {
+      updateCart(item.id);
+      prevQuantityRef.current = quantity;
+    }
+  }, [quantity, item.id, updateCart]);
+
+  // delete the product from the cart
   const handleDelete = (id: string) => {
-    // find by id and delete
     const newArr = cart.filter((item) => item.id !== id);
-    setCartItems(newArr);
     dispatch(setCart(newArr));
     setIsModalOpen(false);
   };
-
-  useEffect(() => {
-    handleQuantity
-    updateCart(item.id)
-  }, [quantity])
 
   const openModal = () => {
     setIsModalOpen(true);
