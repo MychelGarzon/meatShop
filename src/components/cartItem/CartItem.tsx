@@ -87,9 +87,8 @@ const CartItem: React.FC<Props> = ({ index, item, cart }) => {
         {pathname !== '/success' && <MinusButton id={item.id} onClick={() => handleQuantity('')} />
        }
           <p className={styles.quantity}>{quantity} {pathname === '/success' && item.unit}</p>
-          {pathname !== '/success' && <div role="button" onClick={() => handleQuantity('add')}>
-            <PlusButton />
-          </div>}
+          {pathname !== '/success' && <PlusButton id={item.id} onClick={() => handleQuantity('add')}/>}
+
         </div>
         <div className={styles.flex2}>
           <p className={styles.price}>{formatPrice(precio)}</p>
@@ -114,13 +113,11 @@ const CartItem: React.FC<Props> = ({ index, item, cart }) => {
             </div>
             <div className={styles.flex2}>
               <div className={styles.flex3}>
-                {pathname !== '/success' && <div role="button" onClick={() => handleQuantity('')}>
-                  <MinusButton id={item.id} />
-                </div>}
+              {pathname !== '/success' && <MinusButton id={item.id} onClick={() => handleQuantity('')} />
+       }
                 <p className={styles.quantity}>{quantity} {pathname === '/success' && item.unit}</p>
-                {pathname !== '/success' && <div role="button" onClick={() => handleQuantity('add')}>
-                  <PlusButton />
-                </div>}
+                {pathname !== '/success' && <PlusButton id={item.id} onClick={() => handleQuantity('add')}/>}
+              
               </div>
               {pathname !== '/success' && <p className={styles.delete}>
                 <DeleteIcon color="primary" onClick={openModal} />
