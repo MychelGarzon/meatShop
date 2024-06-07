@@ -1,9 +1,23 @@
 import styles from './minusPlusButton.module.css';
 
-function PlusButton() {
+interface Props {
+  id: string;
+  onClick?: (id: string) => void;
+}
+
+const PlusButton: React.FC<Props> = ({ id, onClick }) => {
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick(id);
+    }
+  };
+
   return (
     <button
-      className={`${styles.minusPlusButton} ${styles.plusButton}`}>
+      className={`${styles.minusPlusButton} ${styles.plusButton}`} 
+      onClick={handleClick}
+    >
       +
     </button>
   );
