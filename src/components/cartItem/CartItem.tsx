@@ -88,9 +88,8 @@ const CartItem: React.FC<Props> = ({ index, item, cart }) => {
             <MinusButton id={item.id} />
           </div>}
           <p className={styles.quantity}>{quantity} {pathname === '/success' && item.unit}</p>
-          {pathname !== '/success' && <div role="button" onClick={() => handleQuantity('add')}>
-            <PlusButton />
-          </div>}
+          {pathname !== '/success' && <MinusButton id={item.id} onClick={() => handleQuantity('')} />
+       }
         </div>
         <div className={styles.flex2}>
           <p className={styles.price}>{formatPrice(precio)}</p>
