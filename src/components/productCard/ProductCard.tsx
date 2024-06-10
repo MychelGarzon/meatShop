@@ -111,7 +111,7 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
                   </div>
                 )}
                 <Typography variant="h6" className={styles.quantity}>
-                  {quantity} {unit === "Paquete" ? "agregada(s)" : "agregado(s)"}
+                  {quantity} {unit === "Paquete" ? "agregado(s)" : "agregada(s)"}
                 </Typography>
                 <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
                   <PlusButton id={id} />
