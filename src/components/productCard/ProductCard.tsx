@@ -14,6 +14,7 @@ import { ShoppingCart } from "@mui/icons-material";
 const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, vat, description }) => {
   const [quantity, setQuantity] = useState<number>(useAppSelector((state) => state.cart.cart.find((item) => item.id === id)?.amount || 0));
   const [open, setOpen] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const [alert, setAlert] = useState<{ type: 'success' | 'warning', message: string, icon: JSX.Element } | null>(null);
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart.cart);
@@ -22,6 +23,7 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
   const handleClose = () => setOpen(false);
 
   const handleQuantity = (action: string) => {
+    setClicked(true);
     if (action === 'add') {
       setQuantity((prevQuantity) => prevQuantity + 1);
     } else if (action === 'subtract') {
@@ -33,15 +35,15 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
     const newObj = { image, name, price, type, id, unit, description, vat, itemVatTotal: quantity * price * vat, amount: quantity, subtotal: quantity * price };
 
     const index = cart.findIndex(obj => obj.id === id);
-
+    if (clicked) {
+      setAlert({ type: 'success', message: `'${name}' ha sido agregado al carrito correctamente.`, icon: <ShoppingCart /> });
+    }
     if (index === -1) {
       dispatch(setCart([...cart, newObj]));
-      setAlert({ type: 'success', message: `'${name}' ha sido agregado al carrito correctamente.`, icon: <ShoppingCart /> });
     } else {
       const updatedCart: Product[] = cart.map(cartItem =>
         cartItem.id === id ? { image, name, price, type, id, unit, description, vat, itemVatTotal: quantity * cartItem.price * vat, amount: quantity, subtotal: quantity * price } : cartItem
       );
-
       dispatch(setCart(updatedCart));
     }
   };
@@ -49,21 +51,24 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
   const deleteFromCart = () => {
     const newArr = cart.filter((item) => item.id !== id);
     dispatch(setCart(newArr));
-    setAlert({
-      type: 'warning', message: `'${name}' ha sido eliminado del carrito correctamente.`, icon: <DeleteIcon />
-    });
+    if (clicked) {
+      setAlert({
+        type: 'warning', message: `'${name}' ha sido eliminado del carrito correctamente.`, icon: <DeleteIcon />
+      });
+    }
   };
 
   useEffect(() => {
     if (quantity === 0) {
       deleteFromCart();
-      return;
+    } else {
+      addToCart();
     }
-    addToCart();
   }, [quantity]);
 
   useEffect(() => {
     if (alert) {
+      setClicked(false);
       const timer = setTimeout(() => {
         setAlert(null);
       }, 3000);
