@@ -70,11 +70,11 @@ const CartForm: React.FC = () => {
     dispatch(setCart(removeZeroRows(cart)))
     // send data to the API Gateway
     axios.post('https://by7lazbnj4.execute-api.sa-east-1.amazonaws.com/prod/test',
-      { user: formData, order: removeZeroRows(cart), total: { price: total, vat: vatTotal } }, {
+      { body: JSON.stringify({ user: formData, order: cart, total: { price: total, vat: vatTotal } }) }, {
       headers: {
-        'Content-Type': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': '*'
+        'Access-Control-Allow-Methods': '*',
       }
     })
       .catch((error) => {

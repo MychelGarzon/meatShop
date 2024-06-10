@@ -1,17 +1,20 @@
-import { Box, Card, CardContent, CardMedia, Typography, Modal } from "@mui/material";
-import styles from './productCard.module.css';
-import { Product } from "../../data/data";
-import MinusButton from "../minusPlusButton/MinusButton";
-import PlusButton from "../minusPlusButton/PlusButton";
-import ScreenDetails from "../screenDetails/ScreenDetails";
+import { Box, Card, CardContent, CardMedia, Typography, Modal, Button, Alert } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Product } from "../../data/data";
 import { setCart } from "../../store/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/useAppDispatch";
 import { formatPrice } from "../../helpers/formatPrice";
+import MinusButton from "../minusPlusButton/MinusButton";
+import PlusButton from "../minusPlusButton/PlusButton";
+import ScreenDetails from "../screenDetails/ScreenDetails";
+import DeleteIcon from '@mui/icons-material/Delete';
+import styles from './productCard.module.css';
+import { ShoppingCart } from "@mui/icons-material";
 
 const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, vat, description }) => {
   const [quantity, setQuantity] = useState<number>(useAppSelector((state) => state.cart.cart.find((item) => item.id === id)?.amount || 0));
   const [open, setOpen] = useState(false);
+  const [alert, setAlert] = useState<{ type: 'success' | 'warning', message: string, icon: JSX.Element } | null>(null);
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart.cart);
 
@@ -33,6 +36,7 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
 
     if (index === -1) {
       dispatch(setCart([...cart, newObj]));
+      setAlert({ type: 'success', message: `'${name}' ha sido agregado al carrito correctamente.`, icon: <ShoppingCart /> });
     } else {
       const updatedCart: Product[] = cart.map(cartItem =>
         cartItem.id === id ? { image, name, price, type, id, unit, description, vat, itemVatTotal: quantity * cartItem.price * vat, amount: quantity, subtotal: quantity * price } : cartItem
@@ -45,6 +49,9 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
   const deleteFromCart = () => {
     const newArr = cart.filter((item) => item.id !== id);
     dispatch(setCart(newArr));
+    setAlert({
+      type: 'warning', message: `'${name}' ha sido eliminado del carrito correctamente.`, icon: <DeleteIcon />
+    });
   };
 
   useEffect(() => {
@@ -54,6 +61,15 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
     }
     addToCart();
   }, [quantity]);
+
+  useEffect(() => {
+    if (alert) {
+      const timer = setTimeout(() => {
+        setAlert(null);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [alert]);
 
   return (
     <>
@@ -73,19 +89,30 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
             {`Precio por ${unit}`}
           </Typography>
           <Box className={styles.quantityBox}>
-            <Box className={styles.minusButton}>
-              <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('subtract'); }}>
-                <MinusButton id={id} />
-              </div>
-            </Box>
-            <Box className={styles.quantity}>
-              <Typography variant="h6">{quantity}</Typography>
-            </Box>
-            <Box className={styles.plusButton}>
-              <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
-                <PlusButton />
-              </div>
-            </Box>
+            {quantity === 0 ? (
+              <Button variant="contained" className={styles.addToCartButton} color="primary" size="large" onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
+                <ShoppingCart className={styles.addToCartIcon} />
+                Agregar
+              </Button>
+            ) : (
+              <Box className={styles.quantityControls}>
+                {quantity > 1 ? (
+                  <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('subtract'); }}>
+                    <MinusButton id={id} />
+                  </div>
+                ) : (
+                  <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('subtract'); }}>
+                    <DeleteIcon className={styles.deleteIcon} />
+                  </div>
+                )}
+                <Typography variant="h6" className={styles.quantity}>
+                  {quantity} {unit === "Paquete" ? "agregada(s)" : "agregado(s)"}
+                </Typography>
+                <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
+                  <PlusButton id={id} />
+                </div>
+              </Box>
+            )}
           </Box>
         </CardContent>
       </Card>
@@ -99,6 +126,14 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
           />
         </div>
       </Modal>
+      {alert && (
+        <Alert variant="filled" severity={alert.type} className={styles.alert} icon={false}>
+          <Box display="flex" alignItems="center">
+            {alert.icon}
+            <Box ml={1}>{alert.message}</Box>
+          </Box>
+        </Alert>
+      )}
     </>
   );
 };
