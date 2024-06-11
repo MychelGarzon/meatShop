@@ -68,23 +68,27 @@ const CartForm: React.FC = () => {
     event.preventDefault();
     dispatch(setUser(formData))
     dispatch(setCart(removeZeroRows(cart)))
-    // send data to the API Gateway
-    axios.post('https://by7lazbnj4.execute-api.sa-east-1.amazonaws.com/prod/test',
-      { body: JSON.stringify({ user: formData, order: cart, total: { price: total, vat: vatTotal } }) }, {
-      headers: {
-        'Access-Control-Allow-Headers': 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': '*',
-      }
+    
+    const data = { 
+      user: formData, 
+      order: removeZeroRows(cart),
+      total: { 
+        price: total, 
+        vat: vatTotal 
+      } 
+    };
+
+    axios.post('https://lt81x9p8s2.execute-api.sa-east-1.amazonaws.com/api',
+      data
+    ).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
     })
-      .catch((error) => {
-        console.log(error);
-      })
 
     console.log({ user: formData, order: removeZeroRows(cart), total: { price: total, vat: vatTotal } })
     navigate('/success')
   };
-
 
   /* user has to fill the form and add at least one item to cart to place an order,
   user can leave products with amount of zero on the cart, but all of them can't be amount of zero*/
