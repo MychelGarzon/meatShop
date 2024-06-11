@@ -3,9 +3,8 @@ import { Typography, IconButton, CardContent, CardMedia, Box, useMediaQuery } fr
 import CloseIcon from '@mui/icons-material/Close';
 import { Product } from "../../data/data";
 import styles from './screenDetails.module.css';
-import MinusButton from '../minusPlusButton/MinusButton';
-import PlusButton from '../minusPlusButton/PlusButton';
 import { formatPrice } from '../../helpers/formatPrice';
+import QuantityControls from '../quantityControls/QuantityControls';
 
 interface ScreenDetailsProps {
     product: Product;
@@ -50,19 +49,7 @@ const ScreenDetails: React.FC<ScreenDetailsProps> = ({ product, handleClose, qua
                     <Typography variant="h4" className={styles.priceInfo}>{formatPrice(product.price)}</Typography>
                     <Typography variant="body2">{`Precio por ${product.unit}`}</Typography>
                     <Box className={styles.quantityBoxDetails}>
-                        <Box className={styles.minusButton}>
-                            <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('subtract'); }}>
-                                <MinusButton id={product.id} />
-                            </div>
-                        </Box>
-                        <Box className={styles.quantity}>
-                            <Typography variant="body1">{quantity}</Typography>
-                        </Box>
-                        <Box className={styles.plusButton}>
-                            <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
-                                <PlusButton />
-                            </div>
-                        </Box>
+                        <QuantityControls id={product.id} quantity={quantity} unit={product.unit} handleQuantity={handleQuantity} />
                     </Box>
                 </CardContent>
                 <Box className={styles.closeIconBox}>

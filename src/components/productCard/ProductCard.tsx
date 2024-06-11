@@ -1,15 +1,14 @@
-import { Box, Card, CardContent, CardMedia, Typography, Modal, Button, Alert } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Typography, Modal, Alert } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Product } from "../../data/data";
 import { setCart } from "../../store/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/useAppDispatch";
 import { formatPrice } from "../../helpers/formatPrice";
-import MinusButton from "../minusPlusButton/MinusButton";
-import PlusButton from "../minusPlusButton/PlusButton";
 import ScreenDetails from "../screenDetails/ScreenDetails";
-import DeleteIcon from '@mui/icons-material/Delete';
+import QuantityControls from "../quantityControls/QuantityControls";
 import styles from './productCard.module.css';
 import { ShoppingCart } from "@mui/icons-material";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, vat, description }) => {
   const [quantity, setQuantity] = useState<number>(useAppSelector((state) => state.cart.cart.find((item) => item.id === id)?.amount || 0));
@@ -35,7 +34,7 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
     const newObj = { image, name, price, type, id, unit, description, vat, itemVatTotal: quantity * price * vat, amount: quantity, subtotal: quantity * price };
 
     const index = cart.findIndex(obj => obj.id === id);
-    if (clicked) {
+    if (clicked && index === -1) {
       setAlert({ type: 'success', message: `'${name}' ha sido agregado al carrito correctamente.`, icon: <ShoppingCart /> });
     }
     if (index === -1) {
@@ -94,30 +93,7 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
             {`Precio por ${unit}`}
           </Typography>
           <Box className={styles.quantityBox}>
-            {quantity === 0 ? (
-              <Button variant="contained" className={styles.addToCartButton} color="primary" size="large" onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
-                <ShoppingCart className={styles.addToCartIcon} />
-                Agregar
-              </Button>
-            ) : (
-              <Box className={styles.quantityControls}>
-                {quantity > 1 ? (
-                  <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('subtract'); }}>
-                    <MinusButton id={id} />
-                  </div>
-                ) : (
-                  <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('subtract'); }}>
-                    <DeleteIcon className={styles.deleteIcon} />
-                  </div>
-                )}
-                <Typography variant="h6" className={styles.quantity}>
-                  {quantity} {unit === "Paquete" ? "agregado(s)" : "agregada(s)"}
-                </Typography>
-                <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
-                  <PlusButton id={id} />
-                </div>
-              </Box>
-            )}
+            <QuantityControls id={id} quantity={quantity} unit={unit} handleQuantity={handleQuantity} />
           </Box>
         </CardContent>
       </Card>
