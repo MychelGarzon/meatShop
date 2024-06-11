@@ -1,7 +1,7 @@
 .overlayScreenDetails {
   display: flex;
   position: fixed;
-  z-index: 2;
+  z-index: 1000;
   left: 0;
   top: 0;
   height: 100vh;
@@ -19,6 +19,7 @@
   background-color: black;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
+  z-index: 1100;
   color: white;
   max-width: 894px;
   max-height: 538px;
@@ -68,7 +69,7 @@
   display: flex !important;
   justify-content: left !important;
   align-items: center !important;
-  margin: 1rem 0 0.5rem !important;
+  margin: 2rem 0 0.5rem !important;
 }
 
 .minusButton {
@@ -99,6 +100,10 @@
     width: 400px;
     height: 400px;
   }
+
+  .quantityBoxDetails {
+    width: 40%;
+  }
 }
 
 /* tablet */
@@ -124,6 +129,10 @@
   .screenDetails {
     min-width: 894px;
     max-height: 538px;
+  }
+
+  .quantityBoxDetails {
+    width: 50%;
   }
 }
 
@@ -161,6 +170,10 @@
   .type {
     margin-left: 20px;
   }
+
+  .quantityBoxDetails {
+    width: 100%;
+  }
 }
 
 /* android */
@@ -196,5 +209,9 @@
     max-height: 250px;
     margin: 0;
     align-self: center;
+  }
+
+  .quantityBoxDetails {
+    width: 100%;
   }
 }
