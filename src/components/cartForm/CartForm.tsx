@@ -69,7 +69,6 @@ const CartForm: React.FC = () => {
     dispatch(setUser(formData))
     dispatch(setCart(removeZeroRows(cart)))
     
-    // send data to the API Gateway
     const data = { 
       user: formData, 
       order: removeZeroRows(cart),
@@ -84,7 +83,7 @@ const CartForm: React.FC = () => {
     ).then((response) => {
       console.log(response);
     }).catch((error) => {
-        console.log(error);
+      console.log(error);
     })
 
     console.log({ user: formData, order: removeZeroRows(cart), total: { price: total, vat: vatTotal } })

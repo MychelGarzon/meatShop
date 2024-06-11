@@ -28,14 +28,11 @@
     justify-content: left !important;
     align-items: center !important;
     margin: 1rem 0 0.5rem !important;
+    width: 100%;
 }
 
-.minusButton {
-    margin-right: 1rem !important;
-}
-
-.plusButton {
-    margin-left: 1rem !important;
+.productType {
+    text-transform: capitalize !important;
 }
 
 .productName,
@@ -43,6 +40,21 @@
 .productPrice,
 .pricePerKilo {
     line-height: 1.2;
+}
+
+.alert {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 2000 !important;
+    width: 320px;
+    height: 68px;
+    font-size: 14px;
+    border-radius: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 6px, 16px, 6px, 16px;
 }
 
 /* android/XS */
