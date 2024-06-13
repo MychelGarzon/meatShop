@@ -49,7 +49,12 @@ const ScreenDetails: React.FC<ScreenDetailsProps> = ({ product, handleClose, qua
                     <Typography variant="h4" className={styles.priceInfo}>{formatPrice(product.price)}</Typography>
                     <Typography variant="body2">{`Precio por ${product.unit}`}</Typography>
                     <Box className={styles.quantityBoxDetails}>
-                        <QuantityControls id={product.id} quantity={quantity} unit={product.unit} handleQuantity={handleQuantity} />
+                        <QuantityControls
+                            id={product.id}
+                            quantity={quantity}
+                            unit={product.unit}
+                            handleQuantity={handleQuantity}
+                            isScreenDetailsOpen={true} />
                     </Box>
                 </CardContent>
                 <Box className={styles.closeIconBox}>
