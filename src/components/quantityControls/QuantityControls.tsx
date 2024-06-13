@@ -10,13 +10,18 @@ interface QuantityControlsProps {
     quantity: number;
     unit: string;
     handleQuantity: (action: string) => void;
+    isScreenDetailsOpen?: boolean;
 }
 
-const QuantityControls: React.FC<QuantityControlsProps> = ({ id, quantity, unit, handleQuantity }) => {
+const QuantityControls: React.FC<QuantityControlsProps> = ({ id, quantity, unit, handleQuantity, isScreenDetailsOpen }) => {
     return (
         <Box className={styles.quantityBox}>
             {quantity === 0 ? (
-                <Button variant="contained" className={styles.addToCartButton} color="primary" size="large" onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
+                <Button
+                    variant="contained"
+                    className={`${styles.addToCartButton} ${isScreenDetailsOpen ? styles.screenDetailsBorder : ''}`}
+                    size="large"
+                    onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
                     <ShoppingCart className={styles.addToCartIcon} />
                     Agregar
                 </Button>
@@ -32,7 +37,7 @@ const QuantityControls: React.FC<QuantityControlsProps> = ({ id, quantity, unit,
                         </div>
                     )}
                     <Typography variant="h6" className={styles.quantity}>
-                        {quantity} {unit === "Paquete" ? "agregada(s)" : "agregado(s)"}
+                        {quantity} {unit === "Paquete" ? "agregado(s)" : "agregada(s)"}
                     </Typography>
                     <div role="button" onClick={(e) => { e.stopPropagation(); handleQuantity('add'); }}>
                         <PlusButton id={id} />
