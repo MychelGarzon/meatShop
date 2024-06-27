@@ -1,3 +1,4 @@
+import styles from "./mail.module.css"
 const { DateTime } = require('luxon');
 const AWS = require('aws-sdk');
 const ses = new AWS.SES({ region: 'sa-east-1' });
@@ -78,8 +79,7 @@ exports.handler = async (event) => {
 </div>
 </body>
         `;
-
-
+        
         await sendEmail('alcortecarnescol@gmail.com', 'alcortecarnescol@gmail.com', user.email, 'Order Confirmation', emailBody);
 
         return {
