@@ -32,7 +32,7 @@ const CartItem: React.FC<Props> = ({ index, item, cart }) => {
   const handleQuantity = (action: string) => {
     if (action === 'add') {
       setQuantity((prevQuantity) => prevQuantity + 1)
-    } else if (quantity > 0) {
+    } else if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1)
     }
   }
@@ -84,10 +84,10 @@ const CartItem: React.FC<Props> = ({ index, item, cart }) => {
           </div>
         </div>
         <div className={styles.flex}>
-        {pathname !== '/success' && <MinusButton id={item.id} onClick={() => handleQuantity('')} />
-       }
+          {pathname !== '/success' && <MinusButton id={item.id} onClick={() => handleQuantity('')} />
+          }
           <p className={styles.quantity}>{quantity} {pathname === '/success' && item.unit}</p>
-          {pathname !== '/success' && <PlusButton id={item.id} onClick={() => handleQuantity('add')}/>}
+          {pathname !== '/success' && <PlusButton id={item.id} onClick={() => handleQuantity('add')} />}
 
         </div>
         <div className={styles.flex2}>
@@ -113,11 +113,11 @@ const CartItem: React.FC<Props> = ({ index, item, cart }) => {
             </div>
             <div className={styles.flex2}>
               <div className={styles.flex3}>
-              {pathname !== '/success' && <MinusButton id={item.id} onClick={() => handleQuantity('')} />
-       }
+                {pathname !== '/success' && <MinusButton id={item.id} onClick={() => handleQuantity('')} />
+                }
                 <p className={styles.quantity}>{quantity} {pathname === '/success' && item.unit}</p>
-                {pathname !== '/success' && <PlusButton id={item.id} onClick={() => handleQuantity('add')}/>}
-              
+                {pathname !== '/success' && <PlusButton id={item.id} onClick={() => handleQuantity('add')} />}
+
               </div>
               {pathname !== '/success' && <p className={styles.delete}>
                 <DeleteIcon color="primary" onClick={openModal} />

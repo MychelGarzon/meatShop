@@ -1,11 +1,11 @@
 .quantityControls {
     border: 1px solid #E0E0E0;
-    height: 58px;
-    padding: 0 8px;
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    height: 58px !important;
+    padding: 0 8px !important;
+    border-radius: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
 }
 
 .quantityBox {
@@ -13,7 +13,7 @@
 }
 
 .addToCartIcon {
-    margin-right: 8px;
+    margin-right: 8px !important;
 }
 
 .addToCartButton {

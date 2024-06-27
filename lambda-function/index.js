@@ -7,102 +7,79 @@ exports.handler = async (event) => {
     const bogotaDateTime = DateTime.now().setZone('America/Bogota');
     const formattedDateTime = bogotaDateTime.toFormat('MM/dd/yyyy-HH:mm:ss');
 
+    // Use the event body directly without parsing
+
     try {
         console.log('Event:', JSON.stringify(event, null, 2));
 
-        // Use the event body directly without parsing
+
         const orderData = event.body;
         console.log('Order Data:', JSON.stringify(orderData, null, 2));
 
         const user = orderData.user;
         const order = orderData.order;
         const total = orderData.total;
-        
+
         // Generate order number using the current date and time, and the user's email 
         const orderNumber = `${formattedDateTime}-${user.email}`
 
         // Generate product table
         let productTable = `
-            <table class="${styles.table}">
-                <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                </tr>
+        <table style="max-width: 100%; border-collapse: collapse; margin-bottom: 1.5rem;;">
+        <tr style="font-size: 16px;">
+            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Producto</th>
+            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Cantidad</th>
+            <th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f2f2f2; font-weight: bold;">Precio</th>
+        </tr>
         `;
 
-        order.forEach(item => {
+        order.forEach((item, index) => {
             productTable += `
-                <tr>
-                    <td>${item.name}</td>
-                    <td>${item.amount}</td>
-                    <td>$${item.subtotal}</td>
+                <tr style="background-color: ${index % 2 === 0 ? '#f9f9f9' : 'transparent'}; font-size: 14px;">
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">${item.name}</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">${item.amount}</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">$${item.subtotal}</td>
                 </tr>
             `;
         });
 
         productTable += '</table>';
 
-        // Format the email body
-        const emailBody = `      
-         <style>
-                .table {
-                    width: 100%;
-                    border-collapse: collapse;
-                }
-                .table th, .table td {
-                    border: 1px solid #ddd;
-                    padding: 8px;
-                    text-align: left;
-                }
-                .table th {
-                    background-color: #f2f2f2;
-                    font-weight: bold;
-                }
-                .table tr:nth-child(even) {
-                    background-color: #f9f9f9;
-                }
-                .table tr:hover {
-                    background-color: #ddd;
-                }
-                .thank-you {
-                    text-align: center;
-                    margin: 20px 0;
-                }
-                .thank-you .title {
-                    font-size: 1.5em;
-                    margin-bottom: 10px;
-                }
-                .thank-you .text {
-                    font-size: 1em;
-                }
-            </style>
-            <div class="thank-you">
-                <h2 class="title">¡Gracias ${user.name}, por realizar tu pedido con nosotros!</h2>
-                <p class="text">En un momento nuestro equipo de ventas se comunicará contigo para coordinar el envío de tus productos.</p>
-            </div>
-            <h1>Here is a summary of your order:</h1>
-            <p><strong>Order number:</strong> ${orderNumber}</p>
-            <h2>Order Confirmation</h2>
-            <p><strong>Nombre:</strong> ${user.name}</p>
-            <p><strong>Ciudad:</strong> ${user.city}</p>
-            <p><strong>Direccion:</strong> ${user.address}</p>
-            <p><strong>Barrio:</strong> ${user.neighborhood}</p>
-            <p><strong>Localidad:</strong> ${user.locality}</p>
-            <p><strong>Telefono de contacto:</strong> ${user.phone}</p>
-            <p><strong>Correo electronico:</strong> ${user.email}</p>
-            <p><strong>Comentarios:</strong> ${user.comments}</p>
-            <h2>Productos</h2>
-            ${productTable}
-            <p><strong>Subtotal:</strong> $${total.price}</p>
-            <p><strong>VAT:</strong> $${total.vat}</p>
-            <p><strong>Total:</strong> $${total.price}</p>
-            <p>¡Gracias por realizar tu pedido con nosotros!</p>
-            <p>En un momento nuestro equipo de ventas se comunicará contigo para coordinar el envío de tus productos.</p>
+        // Format email body
+        const emailBody = `
+           <body style="margin: 0; 
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            color: black;">
+    <div style="text-align: center; margin: 0 0 20px 0; padding: 48px 24px; font-family: 'Roboto', sans-serif; text-align: center;  background-color: rgba(46, 125, 50, 0.3);">     
+        <h2 style="font-size: 1.5em; margin: 2rem 0 0.5rem; font-weight: 600; font-size: 30px;">¡Gracias ${user.name}, por realizar tu pedido con nosotros!</h2>
+        <p style="font-size: 1em;">En un momento nuestro equipo de ventas se comunicará contigo para coordinar el envío de tus productos.</p>
+    </div>
+    <div style="margin: 2rem 0.5rem 2rem 1.3rem;">
+    <h1 style="margin: 1.5rem 0; font-size: 24px;">Here is a summary of your order:</h1>
+    <p style="margin: 1rem 0;"><strong>Order number:</strong> ${orderNumber}</p>
+    <h2 style="margin: 1.5rem 0; font-size: 20px;">Order Confirmation</h2>
+    <p style="margin: 1rem 0;"><strong>Nombre:</strong> ${user.name}</p>
+    <p style="margin: 1rem 0;"><strong>Ciudad:</strong> ${user.city}</p>
+    <p style="margin: 1rem 0;"><strong>Direccion:</strong> ${user.address}</p>
+    <p style="margin: 1rem 0;"><strong>Barrio:</strong> ${user.neighborhood}</p>
+    <p style="margin: 1rem 0;"><strong>Localidad:</strong> ${user.locality}</p>
+    <p style="margin: 1rem 0;"><strong>Telefono de contacto:</strong> ${user.phone}</p>
+    <p style="margin: 1rem 0;"><strong>Correo electronico:</strong> ${user.email}</p>
+    <p style="margin: 1rem 0;"><strong>Comentarios:</strong> ${user.comments}</p>
+    <h2 style="margin: 1.5rem 0;font-size: 20px;">Productos</h2>
+        ${productTable}
+    <p><strong>Subtotal:</strong> $${total.price}</p>
+    <p><strong>VAT:</strong> $${total.vat}</p>
+    <p><strong>Total:</strong> $${total.price}</p>
+    <p style="margin: 2rem 0 0rem;">¡Gracias por realizar tu pedido con nosotros!</p>
+    <p style="margin: 1rem 0 3rem;">En un momento nuestro equipo de ventas se comunicará contigo para coordinar el envío de tus productos.</p>
+    </div>
+</div>
+</body>
         `;
         
-
-        // Send email using SES
         await sendEmail('alcortecarnescol@gmail.com', 'alcortecarnescol@gmail.com', user.email, 'Order Confirmation', emailBody);
 
         return {
@@ -112,7 +89,6 @@ exports.handler = async (event) => {
     } catch (error) {
         console.error('Error:', error);
 
-        // Return detailed error information
         return {
             statusCode: 500,
             body: JSON.stringify({ message: 'Error sending email', error: error.message })
@@ -120,6 +96,7 @@ exports.handler = async (event) => {
     }
 };
 
+// Send an email using Amazon SES
 async function sendEmail(from, to1, to2, subject, body) {
     const params = {
         Source: from,
