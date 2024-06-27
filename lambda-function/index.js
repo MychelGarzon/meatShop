@@ -6,8 +6,11 @@ exports.handler = async (event) => {
     const bogotaDateTime = DateTime.now().setZone('America/Bogota');
     const formattedDateTime = bogotaDateTime.toFormat('MM/dd/yyyy-HH:mm:ss');
 
+    // Use the event body directly without parsing
+
     try {
         console.log('Event:', JSON.stringify(event, null, 2));
+
 
         const orderData = event.body;
         console.log('Order Data:', JSON.stringify(orderData, null, 2));
@@ -16,8 +19,10 @@ exports.handler = async (event) => {
         const order = orderData.order;
         const total = orderData.total;
 
-        const orderNumber = `${formattedDateTime}-${user.email}`;
+        // Generate order number using the current date and time, and the user's email 
+        const orderNumber = `${formattedDateTime}-${user.email}`
 
+        // Generate product table
         let productTable = `
         <table style="max-width: 100%; border-collapse: collapse; margin-bottom: 1.5rem;;">
         <tr style="font-size: 16px;">
@@ -39,6 +44,7 @@ exports.handler = async (event) => {
 
         productTable += '</table>';
 
+        // Format email body
         const emailBody = `
            <body style="margin: 0; 
             padding: 0;
@@ -73,6 +79,7 @@ exports.handler = async (event) => {
 </body>
         `;
 
+
         await sendEmail('alcortecarnescol@gmail.com', 'alcortecarnescol@gmail.com', user.email, 'Order Confirmation', emailBody);
 
         return {
@@ -89,6 +96,7 @@ exports.handler = async (event) => {
     }
 };
 
+// Send an email using Amazon SES
 async function sendEmail(from, to1, to2, subject, body) {
     const params = {
         Source: from,
