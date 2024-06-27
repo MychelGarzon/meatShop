@@ -8,8 +8,9 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: auto;
   background-color: rgba(255, 255, 255, 0.9);
+  flex-grow: 1;
 }
 
 .screenDetails {
@@ -21,8 +22,6 @@
   border-radius: 8px;
   z-index: 1100;
   color: white;
-  max-width: 894px;
-  max-height: 538px;
   font-family: var(--subTittleFontFamily);
 }
 
@@ -84,7 +83,7 @@
 @media (min-width: 1195px) {
   .screenDetails {
     max-width: 1284px;
-    max-height: 496px;
+    max-height: auto;
   }
 
   .nameProduct {
@@ -127,8 +126,8 @@
   }
 
   .screenDetails {
-    min-width: 894px;
-    max-height: 538px;
+    max-width: 850px;
+    max-height: auto;
   }
 
   .quantityBoxDetails {
@@ -140,17 +139,19 @@
 @media (min-width: 430px) and (max-width: 833px) {
   .screenDetails {
     max-width: 356px;
-    max-height: 813px;
-    padding: 20px;
+    max-height: auto;
+    padding: 10px !important;
   }
 
   .cardContent {
     margin-left: 10px;
     margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px !important;
   }
 
   .priceInfo {
-    font-size: 30px !important;
+    font-size: 24px !important;
     text-align: left;
   }
 
@@ -162,17 +163,23 @@
   }
 
   .nameProduct {
-    font-size: 34px !important;
+    font-size: 24px !important;
     text-align: left;
     margin-left: 20px;
   }
 
+  .cardDetails {
+    font-size: 14px;
+  }
+
   .type {
     margin-left: 20px;
+    font-size: 16px;
   }
 
   .quantityBoxDetails {
     width: 100%;
+    margin: 1rem 0 0 0 !important;
   }
 }
 
@@ -180,8 +187,8 @@
 @media (max-width: 429px) {
   .screenDetails {
     max-width: 298px;
-    max-height: 813px;
-    padding: 20px;
+    height: auto !important;
+    padding: 10px !important;
   }
 
   .cardContent {
@@ -191,17 +198,22 @@
   }
 
   .nameProduct {
-    font-size: 30px !important;
+    font-size: 24px !important;
     margin-left: 20px;
   }
 
   .type {
     margin-left: 20px;
+    font-size: 16px;
   }
 
   .priceInfo {
-    font-size: 30px !important;
+    font-size: 25px !important;
     text-align: left;
+  }
+
+  .priceUnit {
+    font-size: 14px;
   }
 
   .productImage {
@@ -211,7 +223,12 @@
     align-self: center;
   }
 
+  .cardDetails {
+    font-size: 14px;
+  }
+
   .quantityBoxDetails {
     width: 100%;
+    margin: 1rem 0 0 0 !important;
   }
 }
