@@ -1,4 +1,3 @@
-import styles from "./mail.module.css"
 const { DateTime } = require('luxon');
 const AWS = require('aws-sdk');
 const ses = new AWS.SES({ region: 'sa-east-1' });
@@ -57,16 +56,16 @@ exports.handler = async (event) => {
         <p style="font-size: 1em;">En un momento nuestro equipo de ventas se comunicará contigo para coordinar el envío de tus productos.</p>
     </div>
     <div style="margin: 2rem 0.5rem 2rem 1.3rem;">
-    <h1 style="margin: 1.5rem 0; font-size: 24px;">Here is a summary of your order:</h1>
-    <p style="margin: 1rem 0;"><strong>Order number:</strong> ${orderNumber}</p>
-    <h2 style="margin: 1.5rem 0; font-size: 20px;">Order Confirmation</h2>
+    <h1 style="margin: 1.5rem 0; font-size: 24px;">Aquí está el resumen de tu orden:</h1>
+    <p style="margin: 1rem 0;"><strong>Número de orden:</strong> ${orderNumber}</p>
+    <h2 style="margin: 1.5rem 0; font-size: 20px;">Confirmación de la orden</h2>
     <p style="margin: 1rem 0;"><strong>Nombre:</strong> ${user.name}</p>
     <p style="margin: 1rem 0;"><strong>Ciudad:</strong> ${user.city}</p>
-    <p style="margin: 1rem 0;"><strong>Direccion:</strong> ${user.address}</p>
+    <p style="margin: 1rem 0;"><strong>Dirección:</strong> ${user.address}</p>
     <p style="margin: 1rem 0;"><strong>Barrio:</strong> ${user.neighborhood}</p>
     <p style="margin: 1rem 0;"><strong>Localidad:</strong> ${user.locality}</p>
-    <p style="margin: 1rem 0;"><strong>Telefono de contacto:</strong> ${user.phone}</p>
-    <p style="margin: 1rem 0;"><strong>Correo electronico:</strong> ${user.email}</p>
+    <p style="margin: 1rem 0;"><strong>Teléfono de contacto:</strong> ${user.phone}</p>
+    <p style="margin: 1rem 0;"><strong>Correo electrónico:</strong> ${user.email}</p>
     <p style="margin: 1rem 0;"><strong>Comentarios:</strong> ${user.comments}</p>
     <h2 style="margin: 1.5rem 0;font-size: 20px;">Productos</h2>
         ${productTable}
@@ -80,7 +79,7 @@ exports.handler = async (event) => {
 </body>
         `;
         
-        await sendEmail('alcortecarnescol@gmail.com', 'alcortecarnescol@gmail.com', user.email, 'Order Confirmation', emailBody);
+        await sendEmail('alcortecarnescol@gmail.com', 'alcortecarnescol@gmail.com', user.email, 'Confirmación de orden Al Corte', emailBody);
 
         return {
             statusCode: 200,
