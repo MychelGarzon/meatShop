@@ -5,8 +5,7 @@ import React, { useEffect } from 'react';
 import { Product } from '../../data/data';
 
 const filterAll = 'todas';
-const filterOther = 'otros';
-const filterCategories = ['res', 'cerdo', 'pollo', 'charcutería', filterOther];
+const filterCategories = ['res', 'cerdo', 'pollo'];
 
 type FilterProps = {
   data: Product[];
@@ -21,7 +20,7 @@ const Filter: React.FC<FilterProps> = ({ data, setFilteredProducts }) => {
       // If the filter includes "Todas" or no filter is selected, return all products
       if (typeFilter.includes(filterAll) || typeFilter.length === 0) return true;
       // If the filter includes "Otros" and the product type is not in the filter categories, return the product
-      if (typeFilter.includes(filterOther) && !filterCategories.includes(product.type)) return true;
+
       // If the filter includes the product type, return the product
       return typeFilter.includes(product.type);
     });
@@ -55,6 +54,7 @@ const Filter: React.FC<FilterProps> = ({ data, setFilteredProducts }) => {
 
   return (
     <Box className={styles.filterContainer}>
+     
       <p className={styles.filterTitle}>
         Selecciona la categoría de tu interés
       </p>

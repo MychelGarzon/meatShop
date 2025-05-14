@@ -7,7 +7,7 @@ describe('Add products', () => {
 
     it("Should select products to the cart and see the description of the product", () =>{
     cy.get('._filterButtons_1eah2_14 > :nth-child(7)').click()
-    cy.get('._quantityBox_m5rcp_11 > .MuiButtonBase-root').click()
+    cy.get('._quantityBox_lwte8_11 > .MuiButtonBase-root').click()
     cy.get('.MuiCardMedia-root').click()
     cy.get('._quantityBoxDetails_1avy0_68 > ._quantityBox_m5rcp_11 > ._quantityControls_m5rcp_1 > :nth-child(3) > ._minusPlusButton_1mdb6_1').click()
     cy.get('._quantityBoxDetails_1avy0_68 > ._quantityBox_m5rcp_11 > ._quantityControls_m5rcp_1 > :nth-child(1) > ._minusPlusButton_1mdb6_1').click()

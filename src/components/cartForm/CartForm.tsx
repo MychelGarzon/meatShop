@@ -21,7 +21,7 @@ interface FormData {
 }
 
 const CartForm: React.FC = () => {
-  const cities = ['Barrios Unidos', 'Chapinero', 'Suba', 'Teusaquillo', 'Usaquen'];
+  const cities = ['Bogotá', 'Mosquera', 'Madrid'];
   const [isFormCompleted, setIsFormCompleted] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>(useAppSelector((state) => state.user.user));
 
@@ -30,8 +30,9 @@ const CartForm: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const cart = useAppSelector((state) => state.cart.cart);
-  const total = cart.reduce((total, item) => total + (item.subtotal ? item.subtotal : 0), 0);
+  const total = cart.reduce((total, item) => total + (item.subtotal ? item.subtotal : 0), 0) ;
   const vatTotal = cart.reduce((total, item) => total + (item.itemVatTotal ? item.itemVatTotal : 0), 0);
+  const delivery = cart.length > 0 ? 6000 : 0;
 
   // validate if the form is completed (all the required fields are filled)
   const validateForm = (data: FormData) => {
@@ -73,7 +74,7 @@ const CartForm: React.FC = () => {
       user: formData, 
       order: removeZeroRows(cart),
       total: { 
-        price: total, 
+        price: total + delivery, 
         vat: vatTotal 
       } 
     };
@@ -111,11 +112,11 @@ const CartForm: React.FC = () => {
       </div>
       <div className={`${styles.flex} ${styles.line} ${styles.child}`}>
         <p>Envío</p>
-        <p>Por definir</p>
+        <p>{formatPrice(delivery)}</p>
       </div>
       <div className={`${styles.flex} ${styles.total} ${styles.child}`}>
         <p>Total</p>
-        <p>{formatPrice(total)}</p>
+        <p>{formatPrice(total+delivery)}</p>
       </div>
     </div>
 

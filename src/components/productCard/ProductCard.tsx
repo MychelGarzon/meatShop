@@ -77,12 +77,12 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
 
   return (
     <>
-      <Card className={styles.productCard} onClick={handleOpen}>
+      <Card sx={{cursor: "pointer"}} className={styles.productCard} onClick={handleOpen}>
         <CardMedia className={styles.cardMedia} image={image} title="product image" />
         <CardContent className={styles.cardContent}>
-          <Typography variant="body1" component="div" className={styles.productType}>
+          {/*<Typography variant="body1" component="div" className={styles.productType}>
             {type}
-          </Typography>
+          </Typography>*/}
           <Typography variant="h5" className={styles.productName}>
             {name}
           </Typography>
@@ -90,7 +90,7 @@ const ProductCard: React.FC<Product> = ({ image, name, price, type, id, unit, va
             {formatPrice(price)}
           </Typography>
           <Typography variant="body1" className={styles.pricePerKilo}>
-            {`Precio por ${unit}`}
+            {`Precio ${unit}`}
           </Typography>
           <Box className={styles.quantityBox}>
             <QuantityControls id={id} quantity={quantity} unit={unit} handleQuantity={handleQuantity} />

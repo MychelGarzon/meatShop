@@ -5,7 +5,7 @@
     flex-direction: column;
     font-family: var(--titleFontFamily);
     font-weight: 500;
-    height: 247px;
+    min-height: 400px;
     width: 100%;
     background-color: #FFF4E5;
     border-radius: 5px;
@@ -20,7 +20,11 @@
 .extraInfoSubTitle {
     margin-bottom: 16px;
 }
-
+.link {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits text color from parent */
+  }
+  
 /* android */
 @media (min-width: 0px) {
     .extraInfoBanner {

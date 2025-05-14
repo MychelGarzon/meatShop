@@ -1,17 +1,18 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import styles from './CartItem.module.css';
-import DeleteIcon from '@mui/icons-material/Delete';
-import ConfirmationModal from '../confirmationModal/ConfirmationModal';
+import { useCallback, useEffect, useRef, useState } from "react";
+import styles from "./CartItem.module.css";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ConfirmationModal from "../confirmationModal/ConfirmationModal";
 
-import MinusButton from '../minusPlusButton/MinusButton';
-import PlusButton from '../minusPlusButton/PlusButton';
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { setCart } from '../../store/cartSlice';
+import MinusButton from "../minusPlusButton/MinusButton";
+import PlusButton from "../minusPlusButton/PlusButton";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { setCart } from "../../store/cartSlice";
 
-import { formatNumber } from '../../helpers/formatNumber';
-import { formatPrice } from '../../helpers/formatPrice';
-import { Product } from '../../data/data';
-import { useLocation } from 'react-router';
+import { formatNumber } from "../../helpers/formatNumber";
+import { formatPrice } from "../../helpers/formatPrice";
+import { Product } from "../../data/data";
+import { useLocation } from "react-router";
+import { List, ListItem, ListItemText, Typography } from "@mui/material";
 
 interface Props {
   index: number;
@@ -30,23 +31,35 @@ const CartItem: React.FC<Props> = ({ index, item, cart }) => {
 
   // increase or decrease the quantity of the product
   const handleQuantity = (action: string) => {
-    if (action === 'add') {
-      setQuantity((prevQuantity) => prevQuantity + 1)
+    if (action === "add") {
+      setQuantity((prevQuantity) => prevQuantity + 1);
     } else if (quantity > 1) {
-      setQuantity((prevQuantity) => prevQuantity - 1)
+      setQuantity((prevQuantity) => prevQuantity - 1);
     }
-  }
+  };
 
   /* update the cart with the new quantity:
   calculate new subtotal and vat total for the cart item */
-  const updateCart = useCallback((id: string) => {
-    const updatedCart: Product[] = cart.map(cartItem =>
-      cartItem.id === id ? { ...cartItem, amount: quantity, subtotal: quantity * cartItem.price, itemVatTotal: quantity * cartItem.price * cartItem.vat } : cartItem
-    );
-    cart.map(cartItem => cartItem.id === id ? setPrecio(quantity * cartItem.price) : null)
+  const updateCart = useCallback(
+    (id: string) => {
+      const updatedCart: Product[] = cart.map((cartItem) =>
+        cartItem.id === id
+          ? {
+              ...cartItem,
+              amount: quantity,
+              subtotal: quantity * cartItem.price,
+              itemVatTotal: quantity * cartItem.price * cartItem.vat,
+            }
+          : cartItem
+      );
+      cart.map((cartItem) =>
+        cartItem.id === id ? setPrecio(quantity * cartItem.price) : null
+      );
 
-    dispatch(setCart(updatedCart))
-  }, [cart, quantity, dispatch, setPrecio]);
+      dispatch(setCart(updatedCart));
+    },
+    [cart, quantity, dispatch, setPrecio]
+  );
 
   useEffect(() => {
     if (quantity !== prevQuantityRef.current) {
@@ -73,55 +86,100 @@ const CartItem: React.FC<Props> = ({ index, item, cart }) => {
   return (
     <>
       {/* desktop view */}
-      <div className={`${styles['cart-item']} ${styles.desktop}`}>
+      <div className={`${styles["cart-item"]} ${styles.desktop}`}>
         <div className={styles.flex}>
-          <p className={styles['line-number']}>{formatNumber(index + 1)}</p>
+          <p className={styles["line-number"]}>{formatNumber(index + 1)}</p>
           <div>
             <img src={item.image} alt="product" />
             <p className={styles.name}>{item.name}</p>
-            <p className={styles.type}>{item.type}</p>
-            <p className={styles['kilo-price']}>{`${formatPrice(item.price)} / ${item.unit}`}</p>
+            {item.id !== "120" && item.id !== "121" && (
+              <div>
+              <Typography sx={{marginTop:"10px"}} gutterBottom>
+                Incluye:
+              </Typography>
+              <List disablePadding>
+                <ListItem disableGutters>
+                  <ListItemText primary={`Arepas: ${quantity * 5} unidades`} />
+                </ListItem>
+                <ListItem disableGutters>
+                  <ListItemText primary={`Chorizos: ${quantity * 5} unidades`} />
+                </ListItem>
+                <ListItem disableGutters>
+                  <ListItemText primary={`Rellenas: ${quantity * 5} unidades`} />
+                </ListItem>
+                <ListItem disableGutters>
+                  <ListItemText primary={`Carnes en total: ${quantity * 1500} Gramos`} />
+                </ListItem>
+              </List>
+            </div>
+            )}{/*  
+            <p className={styles["kilo-price"]}>{`${formatPrice(
+              item.price
+            )} / ${item.unit}`}</p>
+            <p className={styles.name}>{item.name}</p>{" "}
+            */}
           </div>
         </div>
+        
         <div className={styles.flex}>
-          {pathname !== '/success' && <MinusButton id={item.id} onClick={() => handleQuantity('')} />
-          }
-          <p className={styles.quantity}>{quantity} {pathname === '/success' && item.unit}</p>
-          {pathname !== '/success' && <PlusButton id={item.id} onClick={() => handleQuantity('add')} />}
-
+          {pathname !== "/success" && (
+            <MinusButton id={item.id} onClick={() => handleQuantity("")} />
+          )}
+          <p className={styles.quantity}>
+            {quantity} {pathname === "/success" && item.unit}
+          </p>
+          {pathname !== "/success" && (
+            <PlusButton id={item.id} onClick={() => handleQuantity("add")} />
+          )}
         </div>
         <div className={styles.flex2}>
           <p className={styles.price}>{formatPrice(precio)}</p>
-          {pathname !== '/success' && <p className={styles.delete}>
-            <DeleteIcon color="primary" onClick={openModal} />
-          </p>}
+          {pathname !== "/success" && (
+            <p className={styles.delete}>
+              <DeleteIcon color="primary" onClick={openModal} />
+            </p>
+          )}
         </div>
       </div>
       {/* mobile view */}
-      <div className={`${styles['cart-item']} ${styles.mobile}`}>
-        <p className={styles['line-number']}>{formatNumber(index + 1)}</p>
+      <div className={`${styles["cart-item"]} ${styles.mobile}`}>
+        <p className={styles["line-number"]}>{formatNumber(index + 1)}</p>
         <div className={styles.flex4}>
           <div>
             <img src={item.image} alt="product" />
           </div>
-          <div className={styles['mob-right-col']}>
+          <div className={styles["mob-right-col"]}>
             <p className={styles.type}>{item.type}</p>
             <p className={styles.name}>{item.name}</p>
-            <p className={styles['kilo-price']}>{`${formatPrice(item.price)} / ${item.unit}`}</p>
-            <div className={styles['mob-price']}>
+            <p className={styles["kilo-price"]}>{`${formatPrice(
+              item.price
+            )} / ${item.unit}`}</p>
+            <div className={styles["mob-price"]}>
               <p className={styles.price}>{formatPrice(precio)}</p>
             </div>
             <div className={styles.flex2}>
               <div className={styles.flex3}>
-                {pathname !== '/success' && <MinusButton id={item.id} onClick={() => handleQuantity('')} />
-                }
-                <p className={styles.quantity}>{quantity} {pathname === '/success' && item.unit}</p>
-                {pathname !== '/success' && <PlusButton id={item.id} onClick={() => handleQuantity('add')} />}
-
+                {pathname !== "/success" && (
+                  <MinusButton
+                    id={item.id}
+                    onClick={() => handleQuantity("")}
+                  />
+                )}
+                <p className={styles.quantity}>
+                  {quantity} {pathname === "/success" && item.unit}
+                </p>
+                {pathname !== "/success" && (
+                  <PlusButton
+                    id={item.id}
+                    onClick={() => handleQuantity("add")}
+                  />
+                )}
               </div>
-              {pathname !== '/success' && <p className={styles.delete}>
-                <DeleteIcon color="primary" onClick={openModal} />
-              </p>}
+              {pathname !== "/success" && (
+                <p className={styles.delete}>
+                  <DeleteIcon color="primary" onClick={openModal} />
+                </p>
+              )}
             </div>
           </div>
         </div>

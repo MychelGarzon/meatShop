@@ -19,8 +19,8 @@ const Footer: React.FC = () => {
           </Box>
           <Box className={styles.column}>
             <p className={styles.footerTitle}>Contacto</p>
-            <p className={styles.footerSubTitle}>WA: +571234567890</p>
-            <p className={styles.footerSubTitle}>alcorte@gmail.com</p>
+            <p className={styles.footerSubTitle}>WhatsApp: +573124199896</p>
+            <p className={styles.footerSubTitle}>alcortecarnescol@gmail.com</p>
           </Box>
         </Box>
       </Box>

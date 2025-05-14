@@ -6,6 +6,7 @@ import Box from '@mui/material/Box'
 import data from '../../data/data'
 import { useState } from 'react'
 import Filter from '../../components/filter/Filter'
+import ComboInstructions from '../../components/ComboInstructios'
 
 const Home: React.FC = () => {
   const [filteredProducts, setFilteredProducts] = useState(data);
@@ -15,9 +16,24 @@ const Home: React.FC = () => {
       <Box className={styles.bannerBox}>
         <Banner />
       </Box>
+     
       <Box className={styles.extraInfoBox}>
         <ExtraInfoBanner />
       </Box>
+      <Box
+  sx={{
+    display: "flex", 
+    justifyContent: "center",
+    alignItems: "center", 
+    width: "100%", 
+    height: "100%", 
+    margin: 0,
+    padding: 0, 
+  }}
+>
+  <ComboInstructions />
+</Box>
+
       <Box className={styles.filterBox}>
         <Filter data={data} setFilteredProducts={setFilteredProducts as (products: unknown[]) => void} />
       </Box>

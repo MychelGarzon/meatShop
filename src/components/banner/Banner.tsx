@@ -9,9 +9,11 @@ const Banner = () => {
                 <source src={banner} type='video/mp4' />
                 <track kind="captions" label='meat-bbq' />
             </video>
+            <div></div>
             <p className={styles.bannerText}>
-                Conoce nuestros productos y agrégalos a tu orden
-            </p>
+            Perniles de cerdo y anchetas de carnes, ideales para esta Navidad.
+</p>
+
         </Box>
     )
 }
